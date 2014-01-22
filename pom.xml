@@ -4,6 +4,38 @@
   <groupId>com.bizo</groupId>
   <artifactId>aws-java-sdk-stubs</artifactId>
   <version>1.2.0</version>
+  <packaging>jar</packaging>
+  <name>aws-java-sdk-stubs</name>
+  <description>stubs for the aws-java-sdk services</description>
+  <url>https://github.com/bizo/aws-java-sdk-stubs</url>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>https://github.com/bizo/aws-java-sdk-stubs</url>
+    <connection>https://github.com/bizo/aws-java-sdk-stubs.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>larry</id>
+      <name>Larry Ogrodnek</name>
+      <email>larry@bizo.com</email>
+    </developer>
+    <developer>
+      <id>stephen</id>
+      <name>Stephen Haberman</name>
+      <email>stephen@bizo.com</email>
+    </developer>
+    <developer>
+      <id>dietz</id>
+      <name>Mark Dietz</name>
+      <email>dietz@bizo.com</email>
+    </developer>        
+  </developers>
   <dependencies>
     <dependency>
       <groupId>commons-io</groupId>
