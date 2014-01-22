@@ -1,4 +1,5 @@
-# Services should come with stubs
+# aws-java-sdk-stubs
+## Services should come with stubs
 
 This project provides stub classes for the [aws-sdk-java](https://github.com/aws/aws-sdk-java) services to make writing good tests much easier.
 
