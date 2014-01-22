@@ -1,0 +1,1 @@
+Stub classes for the [aws-sdk-java](https://github.com/aws/aws-sdk-java) services to make writing tests easier.
