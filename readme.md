@@ -17,3 +17,6 @@ This project provides stub classes for the [aws-sdk-java](https://github.com/aws
 `mvn clean test` to compile and run tests
 
 `mvn clean package` to build the jar
+
+## License
+[Apache 2](http://www.apache.org/licenses/LICENSE-2.0.html)
