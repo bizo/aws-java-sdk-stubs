@@ -1,5 +1,7 @@
 package com.bizo.awsstubs.services.autoscaling;
 
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
@@ -264,6 +266,23 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
 
   @Override
   public ResponseMetadata getCachedResponseMetadata(final AmazonWebServiceRequest arg0) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void attachInstances(final AttachInstancesRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeAccountLimitsResult describeAccountLimits() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeAccountLimitsResult describeAccountLimits(final DescribeAccountLimitsRequest arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
     throw new UnsupportedOperationException();
   }
 }

@@ -1,5 +1,7 @@
 package com.bizo.awsstubs.services.elasticloadbalancing;
 
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
@@ -165,6 +167,19 @@ public class AmazonElasticLoadBalancingStub implements AmazonElasticLoadBalancin
 
   @Override
   public ResponseMetadata getCachedResponseMetadata(final AmazonWebServiceRequest arg0) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeLoadBalancerAttributesResult describeLoadBalancerAttributes(
+      final DescribeLoadBalancerAttributesRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ModifyLoadBalancerAttributesResult modifyLoadBalancerAttributes(final ModifyLoadBalancerAttributesRequest arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
