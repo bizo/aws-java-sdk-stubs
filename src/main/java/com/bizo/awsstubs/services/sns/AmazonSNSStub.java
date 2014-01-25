@@ -1,5 +1,7 @@
 package com.bizo.awsstubs.services.sns;
 
+import java.util.List;
+
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
@@ -193,6 +195,124 @@ public class AmazonSNSStub implements AmazonSNS {
 
   @Override
   public ListPlatformApplicationsResult listPlatformApplications() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void addPermission(final String arg0, final String arg1, final List<String> arg2, final List<String> arg3)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ConfirmSubscriptionResult confirmSubscription(final String arg0, final String arg1)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ConfirmSubscriptionResult confirmSubscription(final String arg0, final String arg1, final String arg2)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CreateTopicResult createTopic(final String arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void deleteTopic(final String arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetSubscriptionAttributesResult getSubscriptionAttributes(final String arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetTopicAttributesResult getTopicAttributes(final String arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListSubscriptionsResult listSubscriptions(final String arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListSubscriptionsByTopicResult listSubscriptionsByTopic(final String arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListSubscriptionsByTopicResult listSubscriptionsByTopic(final String arg0, final String arg1)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListTopicsResult listTopics(final String arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public PublishResult publish(final String arg0, final String arg1)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public PublishResult publish(final String arg0, final String arg1, final String arg2)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void removePermission(final String arg0, final String arg1)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void setSubscriptionAttributes(final String arg0, final String arg1, final String arg2)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void setTopicAttributes(final String arg0, final String arg1, final String arg2)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public SubscribeResult subscribe(final String arg0, final String arg1, final String arg2)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void unsubscribe(final String arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 

@@ -162,4 +162,24 @@ public class AmazonElasticMapReduceStub implements AmazonElasticMapReduce {
   public DescribeClusterResult describeCluster() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
+
+  @Override
+  public AddTagsResult addTags() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AddTagsResult addTags(final AddTagsRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public RemoveTagsResult removeTags() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public RemoveTagsResult removeTags(final RemoveTagsRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
 }

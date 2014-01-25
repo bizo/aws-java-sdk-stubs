@@ -18,5 +18,7 @@ This project provides stub classes for the [aws-sdk-java](https://github.com/aws
 
 `mvn clean package` to build the jar
 
+Make sure M2_REPO is defined in java build path classpath variables
+
 ## License
 [Apache 2](http://www.apache.org/licenses/LICENSE-2.0.html)

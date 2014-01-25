@@ -1,5 +1,7 @@
 package com.bizo.awsstubs.services.identitymanagement;
 
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
@@ -444,6 +446,46 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
 
   @Override
   public ResponseMetadata getCachedResponseMetadata(final AmazonWebServiceRequest arg0) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CreateSAMLProviderResult createSAMLProvider(final CreateSAMLProviderRequest arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void deleteSAMLProvider(final DeleteSAMLProviderRequest arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetSAMLProviderResult getSAMLProvider(final GetSAMLProviderRequest arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListSAMLProvidersResult listSAMLProviders() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListSAMLProvidersResult listSAMLProviders(final ListSAMLProvidersRequest arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public UpdateSAMLProviderResult updateSAMLProvider(final UpdateSAMLProviderRequest arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
