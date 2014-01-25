@@ -8,7 +8,7 @@ This project provides stub classes for the [aws-sdk-java](https://github.com/aws
 
 ## Download
 
-* [aws-java-sdk-stubs-1.2.0.jar](https://drone.io/github.com/bizo/aws-java-sdk-stubs/files/target/aws-java-sdk-stubs-1.2.0.jar)
+See [Releases](https://github.com/bizo/aws-java-sdk-stubs/releases/) for release notes and downloadable jars.
 
 ## Building/Eclipse
 
