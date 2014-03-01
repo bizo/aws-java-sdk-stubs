@@ -2,6 +2,8 @@ package com.bizo.awsstubs.services.s3;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -15,7 +17,11 @@ import com.amazonaws.AmazonServiceException.ErrorType;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.S3ClientOptions;
 import com.amazonaws.services.s3.S3ResponseMetadata;
+import com.amazonaws.services.s3.internal.Mimetypes;
+import com.amazonaws.services.s3.internal.RepeatableFileInputStream;
 import com.amazonaws.services.s3.model.*;
+import com.amazonaws.util.BinaryUtils;
+import com.amazonaws.util.Md5Utils;
 
 public class AmazonS3Stub implements AmazonS3 {
 
@@ -378,16 +384,55 @@ public class AmazonS3Stub implements AmazonS3 {
 
   @Override
   public PutObjectResult putObject(final PutObjectRequest req) {
+    ObjectMetadata metadata = req.getMetadata();
+    if (metadata == null) {
+      metadata = new ObjectMetadata();
+    }
+    InputStream input = req.getInputStream();
+    
+    // If a file is specified for upload, we need to pull some additional
+    // information from it to auto-configure a few options
+    if (req.getFile() != null) {
+      File file = req.getFile();
+
+      // Always set the content length, even if it's already set
+      metadata.setContentLength(file.length());
+
+      // Only set the content type if it hasn't already been set
+      if (metadata.getContentType() == null) {
+        metadata.setContentType(Mimetypes.getInstance().getMimetype(file));
+      }
+
+      FileInputStream fileInputStream = null;
+      try {
+        fileInputStream = new FileInputStream(file);
+        byte[] md5Hash = Md5Utils.computeMD5Hash(fileInputStream);
+        metadata.setContentMD5(BinaryUtils.toBase64(md5Hash));
+      } catch (Exception e) {
+        throw new AmazonClientException(
+          "Unable to calculate MD5 hash: " + e.getMessage(), e);
+      } finally {
+        try {fileInputStream.close();} catch (Exception e) {}
+      }
+
+      try {
+        input = new RepeatableFileInputStream(file);
+      } catch (FileNotFoundException fnfe) {
+        throw new AmazonClientException("Unable to find file to upload", fnfe);
+      } 
+    }
+
     final BucketInfo bucket = getBucketInfo(req.getBucketName());
     for (final S3ObjectInfo object : bucket.objects) {
       if (object.key.equals(req.getKey())) {
-        object.setData(req.getInputStream(), req.getMetadata());
+        object.setData(input, metadata);
         return new PutObjectResult();
       }
     }
+    
     // make a new one
     final S3ObjectInfo object = new S3ObjectInfo(req.getKey());
-    object.setData(req.getInputStream(), req.getMetadata());
+    object.setData(input, metadata);
     bucket.objects.add(object);
     return new PutObjectResult();
   }
