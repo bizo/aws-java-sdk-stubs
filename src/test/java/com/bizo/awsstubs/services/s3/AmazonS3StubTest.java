@@ -176,7 +176,7 @@ public class AmazonS3StubTest {
   @Test
   public void putObjectFromFile() throws Exception {
     s3.createBucket("b");
-    File z = new File("z.txt");
+    File z = File.createTempFile("zzz", ".tmp");
     try {
       Writer writer = new BufferedWriter(new FileWriter(z));
       writer.write("z");
