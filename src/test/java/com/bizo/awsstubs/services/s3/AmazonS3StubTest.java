@@ -4,7 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
-import java.io.ByteArrayInputStream;
+import java.io.*;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
@@ -171,6 +171,24 @@ public class AmazonS3StubTest {
     s3.putObject("b", "a", key1Stream(), key1Data());
     final ObjectListing l1 = s3.listObjects("b");
     assertThat(l1.getObjectSummaries().get(0).getSize(), is(4L));
+  }
+
+  @Test
+  public void putObjectFromFile() throws Exception {
+    s3.createBucket("b");
+    File z = File.createTempFile("zzz", ".tmp");
+    try {
+      Writer writer = new BufferedWriter(new FileWriter(z));
+      writer.write("z");
+      writer.close();
+
+      s3.putObject("b", "c", z);
+
+      final S3Object c = s3.getObject("b", "c");
+      assertThat(IOUtils.toString(c.getObjectContent()), is("z"));
+    } finally {
+      z.delete();
+    }
   }
 
   @Test
