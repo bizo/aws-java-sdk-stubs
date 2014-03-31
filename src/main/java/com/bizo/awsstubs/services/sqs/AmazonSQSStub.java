@@ -1,5 +1,8 @@
 package com.bizo.awsstubs.services.sqs;
 
+import java.util.List;
+import java.util.Map;
+
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
@@ -104,6 +107,95 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public ResponseMetadata getCachedResponseMetadata(final AmazonWebServiceRequest arg0) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListDeadLetterSourceQueuesResult listDeadLetterSourceQueues(
+      final ListDeadLetterSourceQueuesRequest listDeadLetterSourceQueuesRequest) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void setQueueAttributes(final String queueUrl, final Map<String, String> attributes) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ChangeMessageVisibilityBatchResult changeMessageVisibilityBatch(
+      final String queueUrl,
+      final List<ChangeMessageVisibilityBatchRequestEntry> entries) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void changeMessageVisibility(final String queueUrl, final String receiptHandle, final Integer visibilityTimeout) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetQueueUrlResult getQueueUrl(final String queueName) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void removePermission(final String queueUrl, final String label) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetQueueAttributesResult getQueueAttributes(final String queueUrl, final List<String> attributeNames) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public SendMessageBatchResult sendMessageBatch(final String queueUrl, final List<SendMessageBatchRequestEntry> entries) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void deleteQueue(final String queueUrl) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public SendMessageResult sendMessage(final String queueUrl, final String messageBody) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ReceiveMessageResult receiveMessage(final String queueUrl) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListQueuesResult listQueues(final String queueNamePrefix) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DeleteMessageBatchResult deleteMessageBatch(
+      final String queueUrl,
+      final List<DeleteMessageBatchRequestEntry> entries) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CreateQueueResult createQueue(final String queueName) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void addPermission(
+      final String queueUrl,
+      final String label,
+      final List<String> aWSAccountIds,
+      final List<String> actions) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void deleteMessage(final String queueUrl, final String receiptHandle) {
     throw new UnsupportedOperationException();
   }
 

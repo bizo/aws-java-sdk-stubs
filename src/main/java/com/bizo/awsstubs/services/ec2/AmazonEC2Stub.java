@@ -1,7 +1,5 @@
 package com.bizo.awsstubs.services.ec2;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
@@ -272,27 +270,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public DescribeLicensesResult describeLicenses() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DescribeLicensesResult describeLicenses(final DescribeLicensesRequest arg0) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public DescribeVolumeStatusResult describeVolumeStatus(final DescribeVolumeStatusRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public DescribeVolumeStatusResult describeVolumeStatus() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void activateLicense(final ActivateLicenseRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -353,11 +336,6 @@ public class AmazonEC2Stub implements AmazonEC2 {
 
   @Override
   public AssociateAddressResult associateAddress(final AssociateAddressRequest arg0) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void deactivateLicense(final DeactivateLicenseRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -1009,31 +987,78 @@ public class AmazonEC2Stub implements AmazonEC2 {
 
   @Override
   public ModifyReservedInstancesResult modifyReservedInstances(
-      final ModifyReservedInstancesRequest modifyReservedInstancesRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+      final ModifyReservedInstancesRequest modifyReservedInstancesRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public DescribeReservedInstancesModificationsResult describeReservedInstancesModifications(
-      final DescribeReservedInstancesModificationsRequest describeReservedInstancesModificationsRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+      final DescribeReservedInstancesModificationsRequest describeReservedInstancesModificationsRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public DescribeReservedInstancesModificationsResult describeReservedInstancesModifications()
-      throws AmazonServiceException,
-      AmazonClientException {
+  public DescribeReservedInstancesModificationsResult describeReservedInstancesModifications() {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public <X extends AmazonWebServiceRequest> DryRunResult<X> dryRun(final DryRunSupportedRequest<X> request)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public <X extends AmazonWebServiceRequest> DryRunResult<X> dryRun(final DryRunSupportedRequest<X> request) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(
+      final RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection(
+      final AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CreateVpcPeeringConnectionResult createVpcPeeringConnection(
+      final CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(
+      final DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections(
+      final DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CreateVpcPeeringConnectionResult createVpcPeeringConnection() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections() {
     throw new UnsupportedOperationException();
   }
 
