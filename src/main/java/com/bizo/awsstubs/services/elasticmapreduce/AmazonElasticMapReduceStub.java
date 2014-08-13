@@ -128,17 +128,17 @@ public class AmazonElasticMapReduceStub implements AmazonElasticMapReduce {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public ListBootstrapActionsResult listBootstrapActions() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public ListStepsResult listSteps() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public DescribeStepResult describeStep() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
@@ -148,22 +148,22 @@ public class AmazonElasticMapReduceStub implements AmazonElasticMapReduce {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public ListInstanceGroupsResult listInstanceGroups() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public ListInstancesResult listInstances() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public DescribeClusterResult describeCluster() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public AddTagsResult addTags() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
@@ -173,7 +173,7 @@ public class AmazonElasticMapReduceStub implements AmazonElasticMapReduce {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public RemoveTagsResult removeTags() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
