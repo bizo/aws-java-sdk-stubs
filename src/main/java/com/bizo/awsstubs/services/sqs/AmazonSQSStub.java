@@ -2,16 +2,27 @@ package com.bizo.awsstubs.services.sqs;
 
 // com.amazonaws.services.sqs.model defines its own UnsupportedOperationException, for some reason
 import java.lang.UnsupportedOperationException;
+import java.util.ArrayList;
+import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.model.*;
 
 public class AmazonSQSStub implements AmazonSQS {
+  
+  private static final int MAX_MESSAGES_PER_RECEIVE_RESULT = 10;
+  
+  Map<String, Queue> queuesByQueueUrl = new TreeMap<String, Queue>();
+  Region region = Region.getRegion(Regions.US_EAST_1);
+  
   @Override
   public void shutdown() {
     throw new UnsupportedOperationException();
@@ -23,8 +34,8 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void setRegion(final Region arg0) {
-    throw new UnsupportedOperationException();
+  public void setRegion(final Region region) {
+    this.region = region;
   }
 
   @Override
@@ -43,8 +54,8 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public GetQueueUrlResult getQueueUrl(final GetQueueUrlRequest arg0) {
-    throw new UnsupportedOperationException();
+  public GetQueueUrlResult getQueueUrl(final GetQueueUrlRequest request) {
+    return new GetQueueUrlResult().withQueueUrl(generateQueueUrl(request.getQueueName()));
   }
 
   @Override
@@ -68,13 +79,27 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public SendMessageResult sendMessage(final SendMessageRequest arg0) {
-    throw new UnsupportedOperationException();
+  public SendMessageResult sendMessage(final SendMessageRequest request) {
+    final Message message =
+      new Message()
+        .withBody(request.getMessageBody())
+        .withMessageAttributes(request.getMessageAttributes());
+    final Queue queue = queuesByQueueUrl.get(request.getQueueUrl());
+    queue.sendMessage(message);
+    return new SendMessageResult().withMessageId(message.getMessageId());
   }
 
   @Override
-  public ReceiveMessageResult receiveMessage(final ReceiveMessageRequest arg0) {
-    throw new UnsupportedOperationException();
+  public ReceiveMessageResult receiveMessage(final ReceiveMessageRequest request) {
+    final Queue queue = queuesByQueueUrl.get(request.getQueueUrl());
+    
+    final List<Message> messages = new ArrayList<Message>();
+    Message m;
+    while (messages.size() < MAX_MESSAGES_PER_RECEIVE_RESULT && (m = queue.receiveMessage()) != null) {
+      messages.add(m);
+    }
+    
+    return new ReceiveMessageResult().withMessages(messages);
   }
 
   @Override
@@ -84,7 +109,7 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public ListQueuesResult listQueues() {
-    throw new UnsupportedOperationException();
+    return new ListQueuesResult().withQueueUrls(queuesByQueueUrl.keySet());
   }
 
   @Override
@@ -93,8 +118,19 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public CreateQueueResult createQueue(final CreateQueueRequest arg0) {
-    throw new UnsupportedOperationException();
+  public CreateQueueResult createQueue(final CreateQueueRequest request) {
+    final String queueName = request.getQueueName();
+    final String queueUrl = generateQueueUrl(queueName);
+    
+    synchronized (queuesByQueueUrl) {
+      if (queuesByQueueUrl.containsKey(queueUrl)) {
+        throw new QueueNameExistsException(queueName);
+      }
+      
+      queuesByQueueUrl.put(queueUrl, new Queue());
+    }
+    
+    return new CreateQueueResult().withQueueUrl(queueUrl);
   }
 
   @Override
@@ -183,7 +219,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public CreateQueueResult createQueue(final String queueName) {
+  public CreateQueueResult createQueue(final String arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -198,7 +234,39 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public void deleteMessage(final String queueUrl, final String receiptHandle) {
+    
     throw new UnsupportedOperationException();
   }
-
+  
+  private String generateQueueUrl(final String queueName) {
+    return "https://sqs." + region.getName() + ".amazonaws.com/000000000000/" + queueName;
+  }
+  
+  static class Queue {
+    final LinkedBlockingQueue<Message> messageQueue = new LinkedBlockingQueue<Message>();
+    final AtomicInteger sequenceNumber = new AtomicInteger(0);
+    
+    public void sendMessage(final Message message) {
+      message.setMessageId(generateMessageId(sequenceNumber.incrementAndGet()));
+      messageQueue.offer(message);
+    }
+    
+    public Message receiveMessage() {
+      Message message = messageQueue.peek();
+      // TODO
+      message.setReceiptHandle("receiptHandle");
+      return message;
+    }
+    
+    public void deleteMessage(final String receiptHandle) {
+      Message message = messageQueue.peek();
+      if (message.getReceiptHandle().equals(receiptHandle)) {
+        messageQueue.remove();
+      }
+    }
+    
+    private String generateMessageId(int messageNumber) {
+      return "message-" + messageNumber;
+    }
+  }
 }
