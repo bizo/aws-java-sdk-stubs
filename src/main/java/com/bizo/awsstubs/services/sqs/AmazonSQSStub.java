@@ -3,9 +3,11 @@ package com.bizo.awsstubs.services.sqs;
 // com.amazonaws.services.sqs.model defines its own UnsupportedOperationException, for some reason
 import java.lang.UnsupportedOperationException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -234,7 +236,6 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public void deleteMessage(final String queueUrl, final String receiptHandle) {
-    
     throw new UnsupportedOperationException();
   }
   
@@ -243,7 +244,13 @@ public class AmazonSQSStub implements AmazonSQS {
   }
   
   static class Queue {
-    final LinkedBlockingQueue<Message> messageQueue = new LinkedBlockingQueue<Message>();
+    // Sent messages go into this queue.
+    final BlockingQueue<Message> messageQueue = new LinkedBlockingQueue<Message>();
+    
+    // Received messages move from messageQueue into this list and are considered "in-flight" (and are not "visible").
+    // For testing purposes, they are in-flight indefinitely (they do not return to the queue and become visible again).
+    final List<Message> inflightMessages = new LinkedList<Message>();
+    
     final AtomicInteger sequenceNumber = new AtomicInteger(0);
     
     public void sendMessage(final Message message) {
@@ -252,16 +259,20 @@ public class AmazonSQSStub implements AmazonSQS {
     }
     
     public Message receiveMessage() {
-      Message message = messageQueue.peek();
-      // TODO
-      message.setReceiptHandle("receiptHandle");
+      Message message = messageQueue.poll();
+      if (message != null) {
+        message.setReceiptHandle("receiptHandle-" + System.currentTimeMillis());
+        inflightMessages.add(message);
+      }
       return message;
     }
     
     public void deleteMessage(final String receiptHandle) {
-      Message message = messageQueue.peek();
-      if (message.getReceiptHandle().equals(receiptHandle)) {
-        messageQueue.remove();
+      for (Message message : inflightMessages) {
+        if (message.getReceiptHandle().equals(receiptHandle)) {
+          inflightMessages.remove(message);
+          return;
+        }
       }
     }
     

@@ -76,7 +76,7 @@ public class AmazonSQSStubTest {
   }
   
   @Test
-  public void receiveMessageReturnsXMessagesAtATime() {
+  public void receiveMessageReturnsAtMostXMessagesAtATime() {
     final String queueName = "bizo";
     final String baseMessageBody = "hi everybody";
     
@@ -87,26 +87,39 @@ public class AmazonSQSStubTest {
     final GetQueueUrlResult getQueueUrlResult = sqs.getQueueUrl(getQueueUrlRequest);
     final String queueUrl = getQueueUrlResult.getQueueUrl();
     
-    final List<String> messageBodies = new ArrayList<String>();
+    final List<String> expectedMessageBodies = new ArrayList<String>();
     final int numMessages = 13;
     for (int i = 0; i < numMessages; i++) {
-      messageBodies.add(baseMessageBody + " " + i);
+      expectedMessageBodies.add(baseMessageBody + " " + i);
     }
     
-    for (String messageBody : messageBodies) {
+    for (String messageBody : expectedMessageBodies) {
       final SendMessageRequest sendMessageRequest =
         new SendMessageRequest().withQueueUrl(queueUrl).withMessageBody(messageBody);
       sqs.sendMessage(sendMessageRequest);
     }
     
     final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest().withQueueUrl(queueUrl);
-    final ReceiveMessageResult receiveMessageResult = sqs.receiveMessage(receiveMessageRequest);
     
-    final List<Message> firstMessages = receiveMessageResult.getMessages();
+    final ReceiveMessageResult receiveMessageResult1 = sqs.receiveMessage(receiveMessageRequest);
+    final List<Message> messages1 = receiveMessageResult1.getMessages();
+    assertThat(messages1.size(), equalTo(10));
     
-    assertThat(firstMessages.size(), equalTo(10));
+    final ReceiveMessageResult receiveMessageResult2 = sqs.receiveMessage(receiveMessageRequest);
+    final List<Message> messages2 = receiveMessageResult2.getMessages();
+    assertThat(messages2.size(), equalTo(3));
     
+    final ReceiveMessageResult receiveMessageResult3 = sqs.receiveMessage(receiveMessageRequest);
+    final List<Message> messages3 = receiveMessageResult3.getMessages();
+    assertThat(messages3.size(), equalTo(0));
     
-    
+    final List<String> actualMessageBodies = new ArrayList<String>();
+    for (Message m : messages1) {
+      actualMessageBodies.add(m.getBody());
+    }
+    for (Message m : messages2) {
+      actualMessageBodies.add(m.getBody());
+    }
+    assertThat(expectedMessageBodies, equalTo(actualMessageBodies));
   }
 }
