@@ -3,12 +3,16 @@ package com.bizo.awsstubs.services.sqs;
 // com.amazonaws.services.sqs.model defines its own UnsupportedOperationException, for some reason
 import java.lang.UnsupportedOperationException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.amazonaws.AmazonWebServiceRequest;
@@ -236,48 +240,73 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public void deleteMessage(final String queueUrl, final String receiptHandle) {
-    throw new UnsupportedOperationException();
+    final Queue queue = queuesByQueueUrl.get(queueUrl);
+    queue.deleteMessage(receiptHandle);
   }
   
-  private String generateQueueUrl(final String queueName) {
+  // Testing support
+  
+  public String generateQueueUrl(final String queueName) {
     return "https://sqs." + region.getName() + ".amazonaws.com/000000000000/" + queueName;
   }
   
+  /** 
+   * Return message back to the queue, so it can be received again.
+   * <p>
+   * @see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html">http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html</a>
+   */
+  public void returnMessage(final String queueUrl, final Message message) {
+    final Queue queue = queuesByQueueUrl.get(queueUrl);
+    queue.returnMessage(message);
+  }
+  
   static class Queue {
-    // Sent messages go into this queue.
-    final BlockingQueue<Message> messageQueue = new LinkedBlockingQueue<Message>();
-    
-    // Received messages move from messageQueue into this list and are considered "in-flight" (and are not "visible").
-    // For testing purposes, they are in-flight indefinitely (they do not return to the queue and become visible again).
-    final List<Message> inflightMessages = new LinkedList<Message>();
-    
     final AtomicInteger sequenceNumber = new AtomicInteger(0);
     
+    // Sent messages go into this queue and can be received. If a received message is returned, it goes back into
+    // this queue. The message with the lowest sequence number is received first.
+    final BlockingQueue<Message> messageQueue = new PriorityBlockingQueue<Message>(11, new Comparator<Message>() {
+      @Override
+      public int compare(Message m1, Message m2) {
+        return Integer.parseInt(m1.getMessageId()) - Integer.parseInt(m2.getMessageId());
+      }
+    });
+    
+    // Received messages move into this list and are considered in-flight and are not visible.
+    final List<Message> inflightMessages = Collections.synchronizedList(new LinkedList<Message>());
+    
     public void sendMessage(final Message message) {
-      message.setMessageId(generateMessageId(sequenceNumber.incrementAndGet()));
+      message.setMessageId(String.valueOf(sequenceNumber.incrementAndGet()));
       messageQueue.offer(message);
     }
     
     public Message receiveMessage() {
-      Message message = messageQueue.poll();
+      final Message message = messageQueue.poll();
+      
       if (message != null) {
-        message.setReceiptHandle("receiptHandle-" + System.currentTimeMillis());
+        message.setReceiptHandle(message.getMessageId() + "-" + System.currentTimeMillis());
         inflightMessages.add(message);
       }
+      
       return message;
     }
     
     public void deleteMessage(final String receiptHandle) {
-      for (Message message : inflightMessages) {
-        if (message.getReceiptHandle().equals(receiptHandle)) {
-          inflightMessages.remove(message);
-          return;
+      synchronized (inflightMessages) {
+        Iterator<Message> it = inflightMessages.iterator();
+        while (it.hasNext()) {
+          Message m = it.next();
+          if (m.getReceiptHandle().equals(receiptHandle)) {
+            it.remove();
+            return;
+          }
         }
       }
     }
     
-    private String generateMessageId(int messageNumber) {
-      return "message-" + messageNumber;
+    public void returnMessage(final Message message) {
+      inflightMessages.remove(message);
+      messageQueue.offer(message);
     }
   }
 }
