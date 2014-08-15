@@ -21,6 +21,14 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.model.*;
 
+/**
+ * An AmazonSQS stub which stores its queues in memory.
+ * <p>
+ * This stub doesn't handle visibility timeouts (<a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html">http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html</a>),
+ * i.e. if a received message hasn't been deleted before its visibility timeout expires, it doesn't become visible and
+ * return to its queue automatically. To simulate a message being returned to its queue, use the {@link
+ * #returnMessage(String, Message)} method.
+ */
 public class AmazonSQSStub implements AmazonSQS {
   
   private static final int MAX_MESSAGES_PER_RECEIVE_RESULT = 10;
@@ -179,7 +187,7 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public GetQueueUrlResult getQueueUrl(final String queueName) {
-    throw new UnsupportedOperationException();
+    return getQueueUrl(new GetQueueUrlRequest().withQueueName(queueName));
   }
 
   @Override
@@ -225,8 +233,8 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public CreateQueueResult createQueue(final String arg0) {
-    throw new UnsupportedOperationException();
+  public CreateQueueResult createQueue(final String queueName) {
+    return createQueue(new CreateQueueRequest().withQueueName(queueName));
   }
 
   @Override
