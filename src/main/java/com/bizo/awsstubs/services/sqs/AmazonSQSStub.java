@@ -1,5 +1,7 @@
 package com.bizo.awsstubs.services.sqs;
 
+// com.amazonaws.services.sqs.model defines its own UnsupportedOperationException, for some reason
+import java.lang.UnsupportedOperationException;
 import java.util.List;
 import java.util.Map;
 

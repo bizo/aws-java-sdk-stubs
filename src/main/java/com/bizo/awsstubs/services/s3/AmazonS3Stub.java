@@ -861,4 +861,19 @@ public class AmazonS3Stub implements AmazonS3 {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public void disableRequesterPays(String arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void enableRequesterPays(String arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public boolean isRequesterPaysEnabled(String arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
 }
