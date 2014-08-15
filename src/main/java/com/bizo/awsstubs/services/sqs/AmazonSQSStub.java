@@ -3,16 +3,13 @@ package com.bizo.awsstubs.services.sqs;
 // com.amazonaws.services.sqs.model defines its own UnsupportedOperationException, for some reason
 import java.lang.UnsupportedOperationException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
@@ -33,8 +30,8 @@ public class AmazonSQSStub implements AmazonSQS {
   
   private static final int MAX_MESSAGES_PER_RECEIVE_RESULT = 10;
   
-  final Map<String, Queue> queuesByQueueUrl = new TreeMap<String, Queue>();
-  Region region = Region.getRegion(Regions.US_EAST_1);
+  private final Map<String, Queue> queuesByQueueUrl = new TreeMap<String, Queue>();
+  private Region region = Region.getRegion(Regions.US_EAST_1);
   
   @Override
   public void shutdown() {
@@ -135,13 +132,11 @@ public class AmazonSQSStub implements AmazonSQS {
     final String queueName = request.getQueueName();
     final String queueUrl = generateQueueUrl(queueName);
     
-    synchronized (queuesByQueueUrl) {
-      if (queuesByQueueUrl.containsKey(queueUrl)) {
-        throw new QueueNameExistsException(queueName);
-      }
-      
-      queuesByQueueUrl.put(queueUrl, new Queue());
+    if (queuesByQueueUrl.containsKey(queueUrl)) {
+      throw new QueueNameExistsException(queueName);
     }
+
+    queuesByQueueUrl.put(queueUrl, new Queue());
     
     return new CreateQueueResult().withQueueUrl(queueUrl);
   }
@@ -267,12 +262,12 @@ public class AmazonSQSStub implements AmazonSQS {
     queue.returnMessage(message);
   }
   
-  static class Queue {
-    final AtomicInteger sequenceNumber = new AtomicInteger(0);
+  private static class Queue {
+    private int sequenceNumber = 0;
     
     // Sent messages go into this queue and can be received. If a received message is returned, it goes back into
     // this queue. The message with the lowest sequence number is received first.
-    final BlockingQueue<Message> messageQueue = new PriorityBlockingQueue<Message>(11, new Comparator<Message>() {
+    private final PriorityQueue<Message> messageQueue = new PriorityQueue<Message>(11, new Comparator<Message>() {
       @Override
       public int compare(Message m1, Message m2) {
         return Integer.parseInt(m1.getMessageId()) - Integer.parseInt(m2.getMessageId());
@@ -280,10 +275,10 @@ public class AmazonSQSStub implements AmazonSQS {
     });
     
     // Received messages move into this list and are considered in-flight and are not visible.
-    final List<Message> inflightMessages = Collections.synchronizedList(new LinkedList<Message>());
+    private final List<Message> inflightMessages = new LinkedList<Message>();
     
     public void sendMessage(final Message message) {
-      message.setMessageId(String.valueOf(sequenceNumber.incrementAndGet()));
+      message.setMessageId(String.valueOf(++sequenceNumber));
       messageQueue.offer(message);
     }
     
@@ -299,18 +294,16 @@ public class AmazonSQSStub implements AmazonSQS {
     }
     
     public void deleteMessage(final String receiptHandle) throws ReceiptHandleIsInvalidException {
-      synchronized (inflightMessages) {
-        final Iterator<Message> it = inflightMessages.iterator();
-        while (it.hasNext()) {
-          final Message m = it.next();
-          if (m.getReceiptHandle().equals(receiptHandle)) {
-            it.remove();
-            return;
-          }
+      final Iterator<Message> it = inflightMessages.iterator();
+      while (it.hasNext()) {
+        final Message m = it.next();
+        if (m.getReceiptHandle().equals(receiptHandle)) {
+          it.remove();
+          return;
         }
-        
-        throw new ReceiptHandleIsInvalidException(receiptHandle);
       }
+
+      throw new ReceiptHandleIsInvalidException(receiptHandle);
     }
     
     public void returnMessage(final Message message) {
