@@ -33,7 +33,7 @@ public class AmazonSQSStub implements AmazonSQS {
   
   private static final int MAX_MESSAGES_PER_RECEIVE_RESULT = 10;
   
-  Map<String, Queue> queuesByQueueUrl = new TreeMap<String, Queue>();
+  final Map<String, Queue> queuesByQueueUrl = new TreeMap<String, Queue>();
   Region region = Region.getRegion(Regions.US_EAST_1);
   
   @Override
@@ -300,9 +300,9 @@ public class AmazonSQSStub implements AmazonSQS {
     
     public void deleteMessage(final String receiptHandle) throws ReceiptHandleIsInvalidException {
       synchronized (inflightMessages) {
-        Iterator<Message> it = inflightMessages.iterator();
+        final Iterator<Message> it = inflightMessages.iterator();
         while (it.hasNext()) {
-          Message m = it.next();
+          final Message m = it.next();
           if (m.getReceiptHandle().equals(receiptHandle)) {
             it.remove();
             return;
