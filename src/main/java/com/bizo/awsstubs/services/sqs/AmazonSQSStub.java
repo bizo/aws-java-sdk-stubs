@@ -28,8 +28,6 @@ import com.amazonaws.services.sqs.model.*;
  */
 public class AmazonSQSStub implements AmazonSQS {
   
-  private static final int MAX_MESSAGES_PER_RECEIVE_RESULT = 10;
-  
   private final Map<String, Queue> queuesByQueueUrl = new TreeMap<String, Queue>();
   private Region region = Region.getRegion(Regions.US_EAST_1);
   
@@ -105,7 +103,9 @@ public class AmazonSQSStub implements AmazonSQS {
     
     final List<Message> messages = new ArrayList<Message>();
     Message m;
-    while (messages.size() < MAX_MESSAGES_PER_RECEIVE_RESULT && (m = queue.receiveMessage()) != null) {
+    final int maxNumberOfMessages =
+      request.getMaxNumberOfMessages() == null ? 1 : Math.min(request.getMaxNumberOfMessages(), 10);
+    while (messages.size() < maxNumberOfMessages && (m = queue.receiveMessage()) != null) {
       messages.add(m);
     }
     

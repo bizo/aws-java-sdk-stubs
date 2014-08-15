@@ -70,7 +70,10 @@ public class AmazonSQSStubTest {
       new SendMessageRequest().withQueueUrl(queueUrl).withMessageBody(messageBody);
     sqs.sendMessage(sendMessageRequest);
     
-    final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest().withQueueUrl(queueUrl);
+    final int maxNumberOfMessages = 10;
+    
+    final ReceiveMessageRequest receiveMessageRequest =
+      new ReceiveMessageRequest().withQueueUrl(queueUrl).withMaxNumberOfMessages(maxNumberOfMessages);
     final ReceiveMessageResult receiveMessageResult = sqs.receiveMessage(receiveMessageRequest);
     final List<Message> messages = receiveMessageResult.getMessages();
     
@@ -79,7 +82,49 @@ public class AmazonSQSStubTest {
   }
   
   @Test
-  public void receiveMessageReturnsAtMostXMessagesAtATime() {
+  public void receiveMessageReturnsMaxNumberOfMessages() {
+    final String queueName = "bizo";
+    final String baseMessageBody = "hi everybody";
+    
+    final CreateQueueRequest createQueueRequest = new CreateQueueRequest().withQueueName(queueName);
+    sqs.createQueue(createQueueRequest);
+    
+    final GetQueueUrlRequest getQueueUrlRequest = new GetQueueUrlRequest().withQueueName(queueName);
+    final GetQueueUrlResult getQueueUrlResult = sqs.getQueueUrl(getQueueUrlRequest);
+    final String queueUrl = getQueueUrlResult.getQueueUrl();
+    
+    final List<String> sentMessageBodies = new ArrayList<String>();
+    final int numMessages = 7;
+    for (int i = 0; i < numMessages; i++) {
+      sentMessageBodies.add(baseMessageBody + " " + i);
+    }
+    
+    for (String messageBody : sentMessageBodies) {
+      final SendMessageRequest sendMessageRequest =
+        new SendMessageRequest().withQueueUrl(queueUrl).withMessageBody(messageBody);
+      sqs.sendMessage(sendMessageRequest);
+    }
+    
+    final int maxNumberOfMessages = 5;
+    
+    final List<String> expectedMessageBodies = sentMessageBodies.subList(0, maxNumberOfMessages);
+    
+    final ReceiveMessageRequest receiveMessageRequest =
+      new ReceiveMessageRequest().withQueueUrl(queueUrl).withMaxNumberOfMessages(maxNumberOfMessages);
+    
+    final ReceiveMessageResult receiveMessageResult = sqs.receiveMessage(receiveMessageRequest);
+    final List<Message> messages = receiveMessageResult.getMessages();
+    assertThat(messages.size(), equalTo(maxNumberOfMessages));
+    
+    final List<String> actualMessageBodies = new ArrayList<String>();
+    for (Message m : messages) {
+      actualMessageBodies.add(m.getBody());
+    }
+    assertThat(expectedMessageBodies, equalTo(actualMessageBodies));
+  }
+  
+  @Test
+  public void receiveMessageNeverReturnsMoreThanMaxNumberOfMessages() {
     final String queueName = "bizo";
     final String baseMessageBody = "hi everybody";
     
@@ -102,7 +147,10 @@ public class AmazonSQSStubTest {
       sqs.sendMessage(sendMessageRequest);
     }
     
-    final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest().withQueueUrl(queueUrl);
+    final int maxNumberOfMessages = 10;
+    
+    final ReceiveMessageRequest receiveMessageRequest =
+      new ReceiveMessageRequest().withQueueUrl(queueUrl).withMaxNumberOfMessages(maxNumberOfMessages);
     
     final ReceiveMessageResult receiveMessageResult1 = sqs.receiveMessage(receiveMessageRequest);
     final List<Message> messages1 = receiveMessageResult1.getMessages();
@@ -142,7 +190,10 @@ public class AmazonSQSStubTest {
       new SendMessageRequest().withQueueUrl(queueUrl).withMessageBody(messageBody);
     sqs.sendMessage(sendMessageRequest);
     
-    final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest().withQueueUrl(queueUrl);
+    final int maxNumberOfMessages = 10;
+    
+    final ReceiveMessageRequest receiveMessageRequest =
+      new ReceiveMessageRequest().withQueueUrl(queueUrl).withMaxNumberOfMessages(maxNumberOfMessages);
     final ReceiveMessageResult receiveMessageResult = sqs.receiveMessage(receiveMessageRequest);
     final List<Message> messages = receiveMessageResult.getMessages();
     assertThat(messages.size(), equalTo(1));
@@ -209,7 +260,10 @@ public class AmazonSQSStubTest {
       new SendMessageRequest().withQueueUrl(queueUrl).withMessageBody("hi everybody 3");
     sqs.sendMessage(sendMessageRequest3);
 
-    final ReceiveMessageRequest receiveMessageRequest1 = new ReceiveMessageRequest().withQueueUrl(queueUrl);
+    final int maxNumberOfMessages = 10;
+    
+    final ReceiveMessageRequest receiveMessageRequest1 =
+      new ReceiveMessageRequest().withQueueUrl(queueUrl).withMaxNumberOfMessages(maxNumberOfMessages);
     final ReceiveMessageResult receiveMessageResult1 = sqs.receiveMessage(receiveMessageRequest1);
     final List<Message> messages1 = receiveMessageResult1.getMessages();
 
@@ -220,7 +274,8 @@ public class AmazonSQSStubTest {
     // "hi everybody 2" should be at the top of the queue after being returned.
     sqs.returnMessage(queueUrl, messages1.get(1));
 
-    final ReceiveMessageRequest receiveMessageRequest2 = new ReceiveMessageRequest().withQueueUrl(queueUrl);
+    final ReceiveMessageRequest receiveMessageRequest2 =
+      new ReceiveMessageRequest().withQueueUrl(queueUrl).withMaxNumberOfMessages(maxNumberOfMessages);
     final ReceiveMessageResult receiveMessageResult2 = sqs.receiveMessage(receiveMessageRequest2);
     final List<Message> messages2 = receiveMessageResult2.getMessages();
 
