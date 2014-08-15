@@ -11,7 +11,6 @@ import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -145,8 +144,9 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void deleteMessage(final DeleteMessageRequest arg0) {
-    throw new UnsupportedOperationException();
+  public void deleteMessage(final DeleteMessageRequest request) {
+    final Queue queue = queuesByQueueUrl.get(request.getQueueUrl());
+    queue.deleteMessage(request.getReceiptHandle());
   }
 
   @Override
@@ -204,12 +204,12 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public SendMessageResult sendMessage(final String queueUrl, final String messageBody) {
-    throw new UnsupportedOperationException();
+    return sendMessage(new SendMessageRequest().withQueueUrl(queueUrl).withMessageBody(messageBody));
   }
 
   @Override
   public ReceiveMessageResult receiveMessage(final String queueUrl) {
-    throw new UnsupportedOperationException();
+    return receiveMessage(new ReceiveMessageRequest().withQueueUrl(queueUrl));
   }
 
   @Override
@@ -240,8 +240,7 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public void deleteMessage(final String queueUrl, final String receiptHandle) {
-    final Queue queue = queuesByQueueUrl.get(queueUrl);
-    queue.deleteMessage(receiptHandle);
+    deleteMessage(new DeleteMessageRequest().withQueueUrl(queueUrl).withReceiptHandle(receiptHandle));
   }
   
   // Testing support
@@ -291,7 +290,7 @@ public class AmazonSQSStub implements AmazonSQS {
       return message;
     }
     
-    public void deleteMessage(final String receiptHandle) {
+    public void deleteMessage(final String receiptHandle) throws ReceiptHandleIsInvalidException {
       synchronized (inflightMessages) {
         Iterator<Message> it = inflightMessages.iterator();
         while (it.hasNext()) {
@@ -301,6 +300,8 @@ public class AmazonSQSStub implements AmazonSQS {
             return;
           }
         }
+        
+        throw new ReceiptHandleIsInvalidException(receiptHandle);
       }
     }
     

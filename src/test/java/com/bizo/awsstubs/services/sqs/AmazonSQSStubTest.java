@@ -11,10 +11,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.amazonaws.services.sqs.model.CreateQueueRequest;
+import com.amazonaws.services.sqs.model.DeleteMessageRequest;
 import com.amazonaws.services.sqs.model.GetQueueUrlRequest;
 import com.amazonaws.services.sqs.model.GetQueueUrlResult;
 import com.amazonaws.services.sqs.model.ListQueuesResult;
 import com.amazonaws.services.sqs.model.Message;
+import com.amazonaws.services.sqs.model.ReceiptHandleIsInvalidException;
 import com.amazonaws.services.sqs.model.ReceiveMessageRequest;
 import com.amazonaws.services.sqs.model.ReceiveMessageResult;
 import com.amazonaws.services.sqs.model.SendMessageRequest;
@@ -125,8 +127,63 @@ public class AmazonSQSStubTest {
   }
   
   @Test
-  public void deleteMessage() {
-    fail();
+  public void deleteMessageSucceedsWithValidReceiptHandle() {
+    final String queueName = "bizo";
+    final String messageBody = "hi everybody";
+    
+    final CreateQueueRequest createQueueRequest = new CreateQueueRequest().withQueueName(queueName);
+    sqs.createQueue(createQueueRequest);
+    
+    final GetQueueUrlRequest getQueueUrlRequest = new GetQueueUrlRequest().withQueueName(queueName);
+    final GetQueueUrlResult getQueueUrlResult = sqs.getQueueUrl(getQueueUrlRequest);
+    final String queueUrl = getQueueUrlResult.getQueueUrl();
+    
+    final SendMessageRequest sendMessageRequest =
+      new SendMessageRequest().withQueueUrl(queueUrl).withMessageBody(messageBody);
+    sqs.sendMessage(sendMessageRequest);
+    
+    final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest().withQueueUrl(queueUrl);
+    final ReceiveMessageResult receiveMessageResult = sqs.receiveMessage(receiveMessageRequest);
+    final List<Message> messages = receiveMessageResult.getMessages();
+    assertThat(messages.size(), equalTo(1));
+    
+    final String receiptHandle = messages.get(0).getReceiptHandle();
+    final DeleteMessageRequest deleteMessageRequest =
+      new DeleteMessageRequest().withQueueUrl(queueUrl).withReceiptHandle(receiptHandle);
+    
+    try {
+      sqs.deleteMessage(deleteMessageRequest);
+    } catch (ReceiptHandleIsInvalidException e) {
+      fail("ReceiptHandleIsInvalidException was thrown");
+    }
+  }
+  
+  @Test(expected = ReceiptHandleIsInvalidException.class)
+  public void deleteMessageFailsWithInvalidReceiptHandle() {
+    final String queueName = "bizo";
+    final String messageBody = "hi everybody";
+    
+    final CreateQueueRequest createQueueRequest = new CreateQueueRequest().withQueueName(queueName);
+    sqs.createQueue(createQueueRequest);
+    
+    final GetQueueUrlRequest getQueueUrlRequest = new GetQueueUrlRequest().withQueueName(queueName);
+    final GetQueueUrlResult getQueueUrlResult = sqs.getQueueUrl(getQueueUrlRequest);
+    final String queueUrl = getQueueUrlResult.getQueueUrl();
+    
+    final SendMessageRequest sendMessageRequest =
+      new SendMessageRequest().withQueueUrl(queueUrl).withMessageBody(messageBody);
+    sqs.sendMessage(sendMessageRequest);
+    
+    final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest().withQueueUrl(queueUrl);
+    final ReceiveMessageResult receiveMessageResult = sqs.receiveMessage(receiveMessageRequest);
+    final List<Message> messages = receiveMessageResult.getMessages();
+    assertThat(messages.size(), equalTo(1));
+    
+    final String receiptHandle = "bizo";
+    final DeleteMessageRequest deleteMessageRequest =
+      new DeleteMessageRequest().withQueueUrl(queueUrl).withReceiptHandle(receiptHandle);
+    
+    sqs.deleteMessage(deleteMessageRequest);
   }
   
   @Test
