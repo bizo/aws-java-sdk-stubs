@@ -4,6 +4,7 @@ package com.bizo.awsstubs.services.sqs;
 import java.lang.UnsupportedOperationException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -27,10 +28,10 @@ import com.amazonaws.services.sqs.model.*;
  * #returnMessage(String, Message)} method.
  */
 public class AmazonSQSStub implements AmazonSQS {
-  
+
   private final Map<String, Queue> queuesByQueueUrl = new TreeMap<String, Queue>();
   private Region region = Region.getRegion(Regions.US_EAST_1);
-  
+
   @Override
   public void shutdown() {
     throw new UnsupportedOperationException();
@@ -100,15 +101,29 @@ public class AmazonSQSStub implements AmazonSQS {
   @Override
   public ReceiveMessageResult receiveMessage(final ReceiveMessageRequest request) {
     final Queue queue = queuesByQueueUrl.get(request.getQueueUrl());
-    
+
     final List<Message> messages = new ArrayList<Message>();
-    Message m;
     final int maxNumberOfMessages =
       request.getMaxNumberOfMessages() == null ? 1 : Math.min(request.getMaxNumberOfMessages(), 10);
+    Message m;
     while (messages.size() < maxNumberOfMessages && (m = queue.receiveMessage()) != null) {
-      messages.add(m);
+      final Map<String, String> attributes = new HashMap<String, String>(m.getAttributes());
+      attributes.keySet().retainAll(request.getAttributeNames());
+
+      final Map<String, MessageAttributeValue> messageAttributes =
+        new HashMap<String, MessageAttributeValue>(m.getMessageAttributes());
+      messageAttributes.keySet().retainAll(request.getMessageAttributeNames());
+
+      Message transformedMessage =
+        new Message()
+          .withBody(m.getBody())
+          .withMessageId(m.getMessageId())
+          .withReceiptHandle(m.getReceiptHandle())
+          .withAttributes(attributes)
+          .withMessageAttributes(messageAttributes);
+      messages.add(transformedMessage);
     }
-    
+
     return new ReceiveMessageResult().withMessages(messages);
   }
 
@@ -131,13 +146,13 @@ public class AmazonSQSStub implements AmazonSQS {
   public CreateQueueResult createQueue(final CreateQueueRequest request) {
     final String queueName = request.getQueueName();
     final String queueUrl = generateQueueUrl(queueName);
-    
+
     if (queuesByQueueUrl.containsKey(queueUrl)) {
       throw new QueueNameExistsException(queueName);
     }
 
     queuesByQueueUrl.put(queueUrl, new Queue());
-    
+
     return new CreateQueueResult().withQueueUrl(queueUrl);
   }
 
@@ -245,15 +260,15 @@ public class AmazonSQSStub implements AmazonSQS {
   public void deleteMessage(final String queueUrl, final String receiptHandle) {
     deleteMessage(new DeleteMessageRequest().withQueueUrl(queueUrl).withReceiptHandle(receiptHandle));
   }
-  
+
   // Testing support
-  
+
   public String generateQueueUrl(final String queueName) {
     return "https://sqs." + region.getName() + ".amazonaws.com/000000000000/" + queueName;
   }
-  
-  /** 
-   * Return message back to the queue, so it can be received again.
+
+  /**
+   * Return message back to a queue, so it can be received again.
    * <p>
    * @see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html">http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html</a>
    */
@@ -261,10 +276,18 @@ public class AmazonSQSStub implements AmazonSQS {
     final Queue queue = queuesByQueueUrl.get(queueUrl);
     queue.returnMessage(message);
   }
-  
+
+  /**
+   * Get messages belonging to a particular queue so that they can be examined.
+   */
+  public List<Message> getMessages(final String queueUrl) {
+    final Queue queue = queuesByQueueUrl.get(queueUrl);
+    return new ArrayList<Message>(queue.messageQueue);
+  }
+
   private static class Queue {
     private int sequenceNumber = 0;
-    
+
     // Sent messages go into this queue and can be received. If a received message is returned, it goes back into
     // this queue. The message with the lowest sequence number is received first.
     private final PriorityQueue<Message> messageQueue = new PriorityQueue<Message>(11, new Comparator<Message>() {
@@ -273,26 +296,26 @@ public class AmazonSQSStub implements AmazonSQS {
         return Integer.parseInt(m1.getMessageId()) - Integer.parseInt(m2.getMessageId());
       }
     });
-    
+
     // Received messages move into this list and are considered in-flight and are not visible.
     private final List<Message> inflightMessages = new LinkedList<Message>();
-    
+
     public void sendMessage(final Message message) {
       message.setMessageId(String.valueOf(++sequenceNumber));
       messageQueue.offer(message);
     }
-    
+
     public Message receiveMessage() {
       final Message message = messageQueue.poll();
-      
+
       if (message != null) {
         message.setReceiptHandle(message.getMessageId() + "-" + System.currentTimeMillis());
         inflightMessages.add(message);
       }
-      
+
       return message;
     }
-    
+
     public void deleteMessage(final String receiptHandle) throws ReceiptHandleIsInvalidException {
       final Iterator<Message> it = inflightMessages.iterator();
       while (it.hasNext()) {
@@ -305,7 +328,7 @@ public class AmazonSQSStub implements AmazonSQS {
 
       throw new ReceiptHandleIsInvalidException(receiptHandle);
     }
-    
+
     public void returnMessage(final Message message) {
       inflightMessages.remove(message);
       messageQueue.offer(message);
