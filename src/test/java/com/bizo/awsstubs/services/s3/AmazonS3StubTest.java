@@ -159,7 +159,7 @@ public class AmazonS3StubTest {
     assertThat(l1.getObjectSummaries().get(0).getKey(), is("a"));
     final S3Object a = s3.getObject("b", "a");
     assertThat(IOUtils.toString(a.getObjectContent()), is("a"));
-    
+
     s3.putObject("b", "c", "z");
     final S3Object c = s3.getObject("b", "c");
     assertThat(IOUtils.toString(c.getObjectContent()), is("z"));
@@ -176,9 +176,9 @@ public class AmazonS3StubTest {
   @Test
   public void putObjectFromFile() throws Exception {
     s3.createBucket("b");
-    File z = File.createTempFile("zzz", ".tmp");
+    final File z = File.createTempFile("zzz", ".tmp");
     try {
-      Writer writer = new BufferedWriter(new FileWriter(z));
+      final Writer writer = new BufferedWriter(new FileWriter(z));
       writer.write("z");
       writer.close();
 
@@ -222,6 +222,34 @@ public class AmazonS3StubTest {
     assertThat(IOUtils.toString(a.getObjectContent()), is("data"));
     assertThat(a.getObjectMetadata().getContentType(), is("text/plain"));
     assertThat(a.getObjectMetadata().getContentLength(), is(4L));
+  }
+
+  @Test
+  public void deleteObject() throws Exception {
+    s3.createBucket("b");
+    s3.putObject("b", "a", key1Stream(), key1Data());
+    s3.deleteObject(new DeleteObjectRequest("b", "a"));
+    final ObjectListing listing = s3.listObjects("b");
+    assertThat(listing.getObjectSummaries().isEmpty(), is(true));
+  }
+
+  @Test
+  public void deleteObjectWithString() throws Exception {
+    s3.createBucket("b");
+    s3.putObject("b", "a", key1Stream(), key1Data());
+    s3.deleteObject("b", "a");
+    final ObjectListing listing = s3.listObjects("b");
+    assertThat(listing.getObjectSummaries().isEmpty(), is(true));
+  }
+
+  @Test
+  public void deleteObjects() throws Exception {
+    s3.createBucket("b");
+    s3.putObject("b", "one", key1Stream(), key1Data());
+    s3.putObject("b", "two", key1Stream(), key1Data());
+    s3.deleteObjects(new DeleteObjectsRequest("b").withKeys("one", "two"));
+    final ObjectListing listing = s3.listObjects("b");
+    assertThat(listing.getObjectSummaries().isEmpty(), is(true));
   }
 
   private static final ByteArrayInputStream key1Stream() {

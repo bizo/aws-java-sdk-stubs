@@ -15,6 +15,8 @@ import com.amazonaws.services.s3.S3ResponseMetadata;
 import com.amazonaws.services.s3.internal.Mimetypes;
 import com.amazonaws.services.s3.internal.RepeatableFileInputStream;
 import com.amazonaws.services.s3.model.*;
+import com.amazonaws.services.s3.model.DeleteObjectsRequest.KeyVersion;
+import com.amazonaws.services.s3.model.DeleteObjectsResult.DeletedObject;
 import com.amazonaws.util.BinaryUtils;
 import com.amazonaws.util.Md5Utils;
 
@@ -419,17 +421,36 @@ public class AmazonS3Stub implements AmazonS3 {
 
   @Override
   public void deleteObject(final String bucketName, final String key) {
-    throw new UnsupportedOperationException();
+    deleteObject(new DeleteObjectRequest(bucketName, key));
   }
 
   @Override
   public void deleteObject(final DeleteObjectRequest deleteObjectRequest) {
-    throw new UnsupportedOperationException();
+    final BucketInfo bucket = buckets.get(deleteObjectRequest.getBucketName());
+    bucket.deleteObject(deleteObjectRequest.getKey());
   }
 
+  /**
+   * {@inheritDoc}
+   * 
+   * The stub does not currently support versions so this stub only supports full deletes of the objects. Passing in a
+   * list of KeyVersion specs to be deleted will completely delete those objects from the stubs.
+   * 
+   * @see com.amazonaws.services.s3.AmazonS3#deleteObjects(com.amazonaws.services.s3.model.DeleteObjectsRequest)
+   */
   @Override
   public DeleteObjectsResult deleteObjects(final DeleteObjectsRequest deleteObjectsRequest) {
-    throw new UnsupportedOperationException();
+    final List<DeleteObjectsResult.DeletedObject> deletedObjects = new ArrayList<DeletedObject>();
+    final BucketInfo bucket = getBucketInfo(deleteObjectsRequest.getBucketName());
+    for (final KeyVersion key : deleteObjectsRequest.getKeys()) {
+      final boolean found = bucket.deleteObject(key.getKey());
+      if (!deleteObjectsRequest.getQuiet() && found) {
+        final DeleteObjectsResult.DeletedObject result = new DeleteObjectsResult.DeletedObject();
+        result.setKey(key.getKey());
+        deletedObjects.add(result);
+      }
+    }
+    return new DeleteObjectsResult(deletedObjects);
   }
 
   @Override
@@ -682,6 +703,21 @@ public class AmazonS3Stub implements AmazonS3 {
       }
       return info;
     }
+
+    /**
+     * Deletes the object specified by key from this bucket.
+     * 
+     * Returns true if the object was found and false otherwise
+     */
+    private boolean deleteObject(final String key) {
+      final S3ObjectInfo info = getObjectOrNull(key);
+      if (info == null) {
+        return false;
+      } else {
+        objects.remove(info);
+        return true;
+      }
+    }
   }
 
   private static class S3ObjectInfo implements Comparable<S3ObjectInfo> {
@@ -862,17 +898,17 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public void disableRequesterPays(String arg0) throws AmazonServiceException, AmazonClientException {
+  public void disableRequesterPays(final String arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void enableRequesterPays(String arg0) throws AmazonServiceException, AmazonClientException {
+  public void enableRequesterPays(final String arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public boolean isRequesterPaysEnabled(String arg0) throws AmazonServiceException, AmazonClientException {
+  public boolean isRequesterPaysEnabled(final String arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
