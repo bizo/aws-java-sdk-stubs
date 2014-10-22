@@ -183,4 +183,24 @@ public class AmazonElasticLoadBalancingStub implements AmazonElasticLoadBalancin
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public AddTagsResult addTags(final AddTagsRequest addTagsRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public RemoveTagsResult removeTags(final RemoveTagsRequest removeTagsRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeTagsResult describeTags(final DescribeTagsRequest describeTagsRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
 }
