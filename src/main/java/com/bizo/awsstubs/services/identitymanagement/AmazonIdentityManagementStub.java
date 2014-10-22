@@ -489,4 +489,34 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public GenerateCredentialReportResult generateCredentialReport() 
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+
+  @Override
+  public GenerateCredentialReportResult generateCredentialReport(final GenerateCredentialReportRequest generateCredentialReportRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetCredentialReportResult getCredentialReport(GetCredentialReportRequest getCredentialReportRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetCredentialReportResult getCredentialReport()
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+
 }

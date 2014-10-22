@@ -77,7 +77,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public void deleteSecurityGroup() {
     throw new UnsupportedOperationException();
   }
@@ -188,7 +188,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public ImportVolumeResult importVolume() {
     throw new UnsupportedOperationException();
   }
@@ -395,7 +395,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public void reportInstanceStatus() {
     throw new UnsupportedOperationException();
   }
@@ -612,7 +612,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public void authorizeSecurityGroupIngress() {
     throw new UnsupportedOperationException();
   }
@@ -875,7 +875,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public void disassociateAddress() {
     throw new UnsupportedOperationException();
   }
@@ -920,7 +920,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public void releaseAddress() {
     throw new UnsupportedOperationException();
   }
@@ -930,7 +930,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public void resetInstanceAttribute(final ResetInstanceAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
@@ -965,7 +965,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public RegisterImageResult registerImage() {
     throw new UnsupportedOperationException();
   }
@@ -1037,7 +1037,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection() {
     throw new UnsupportedOperationException();
   }
@@ -1052,13 +1052,19 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
+  @Deprecated
   public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection() {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void modifySubnetAttribute(
+      final ModifySubnetAttributeRequest modifySubnetAttributeRequest) { 
     throw new UnsupportedOperationException();
   }
 

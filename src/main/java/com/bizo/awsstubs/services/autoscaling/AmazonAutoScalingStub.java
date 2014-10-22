@@ -285,4 +285,75 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
       AmazonClientException {
     throw new UnsupportedOperationException();
   }
+
+  @Override
+  public DescribeLifecycleHookTypesResult describeLifecycleHookTypes()
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeLifecycleHookTypesResult describeLifecycleHookTypes(final DescribeLifecycleHookTypesRequest describeLifecycleHookTypesRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public RecordLifecycleActionHeartbeatResult recordLifecycleActionHeartbeat(final RecordLifecycleActionHeartbeatRequest recordLifecycleActionHeartbeatRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public EnterStandbyResult enterStandby(final EnterStandbyRequest enterStandbyRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DetachInstancesResult detachInstances(final DetachInstancesRequest detachInstancesRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CompleteLifecycleActionResult completeLifecycleAction(final CompleteLifecycleActionRequest completeLifecycleActionRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+  
+  @Override
+  public ExitStandbyResult exitStandby(final ExitStandbyRequest exitStandbyRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public PutLifecycleHookResult putLifecycleHook(final PutLifecycleHookRequest putLifecycleHookRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DeleteLifecycleHookResult deleteLifecycleHook(final DeleteLifecycleHookRequest deleteLifecycleHookRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeLifecycleHooksResult describeLifecycleHooks(final DescribeLifecycleHooksRequest describeLifecycleHooksRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
 }

@@ -220,6 +220,25 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public void removeTagsFromStream(final RemoveTagsFromStreamRequest removeTagsFromStreamRequest) 
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListTagsForStreamResult listTagsForStream(final ListTagsForStreamRequest listTagsForStreamRequest)
+      throws AmazonServiceException,
+      AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void addTagsToStream(final AddTagsToStreamRequest addTagsToStreamRequest) {
+    throw new UnsupportedOperationException();
+  }
+
   public static class Stream {
     public AtomicInteger sequenceNumber = new AtomicInteger(0);
     public BlockingQueue<Record> records = new LinkedBlockingQueue<Record>();
