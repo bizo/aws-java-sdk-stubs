@@ -9,6 +9,7 @@ import com.amazonaws.services.identitymanagement.AmazonIdentityManagement;
 import com.amazonaws.services.identitymanagement.model.*;
 
 public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
+
   @Override
   public void shutdown() {
     throw new UnsupportedOperationException();
@@ -450,23 +451,17 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public CreateSAMLProviderResult createSAMLProvider(final CreateSAMLProviderRequest arg0)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public CreateSAMLProviderResult createSAMLProvider(final CreateSAMLProviderRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteSAMLProvider(final DeleteSAMLProviderRequest arg0)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public void deleteSAMLProvider(final DeleteSAMLProviderRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public GetSAMLProviderResult getSAMLProvider(final GetSAMLProviderRequest arg0)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public GetSAMLProviderResult getSAMLProvider(final GetSAMLProviderRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -476,47 +471,214 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public ListSAMLProvidersResult listSAMLProviders(final ListSAMLProvidersRequest arg0)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public ListSAMLProvidersResult listSAMLProviders(final ListSAMLProvidersRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public UpdateSAMLProviderResult updateSAMLProvider(final UpdateSAMLProviderRequest arg0)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public UpdateSAMLProviderResult updateSAMLProvider(final UpdateSAMLProviderRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public GenerateCredentialReportResult generateCredentialReport() 
-      throws AmazonServiceException,
-      AmazonClientException {
-    throw new UnsupportedOperationException();
-  }
-
-
-  @Override
-  public GenerateCredentialReportResult generateCredentialReport(final GenerateCredentialReportRequest generateCredentialReportRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public GenerateCredentialReportResult generateCredentialReport() throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public GetCredentialReportResult getCredentialReport(GetCredentialReportRequest getCredentialReportRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public GenerateCredentialReportResult generateCredentialReport(final GenerateCredentialReportRequest generateCredentialReportRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public GetCredentialReportResult getCredentialReport()
-      throws AmazonServiceException,
-      AmazonClientException {
+  public GetCredentialReportResult getCredentialReport(GetCredentialReportRequest getCredentialReportRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public GetCredentialReportResult getCredentialReport() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void deleteOpenIDConnectProvider(DeleteOpenIDConnectProviderRequest deleteOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void attachRolePolicy(AttachRolePolicyRequest attachRolePolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public ListAttachedUserPoliciesResult listAttachedUserPolicies(ListAttachedUserPoliciesRequest listAttachedUserPoliciesRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public void deletePolicy(DeletePolicyRequest deletePolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public ListAttachedGroupPoliciesResult listAttachedGroupPolicies(ListAttachedGroupPoliciesRequest listAttachedGroupPoliciesRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public void deletePolicyVersion(DeletePolicyVersionRequest deletePolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public CreateOpenIDConnectProviderResult createOpenIDConnectProvider(CreateOpenIDConnectProviderRequest createOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public GetAccountAuthorizationDetailsResult getAccountAuthorizationDetails(
+    GetAccountAuthorizationDetailsRequest getAccountAuthorizationDetailsRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ListOpenIDConnectProvidersResult listOpenIDConnectProviders(ListOpenIDConnectProvidersRequest listOpenIDConnectProvidersRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public void updateOpenIDConnectProviderThumbprint(UpdateOpenIDConnectProviderThumbprintRequest updateOpenIDConnectProviderThumbprintRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void detachRolePolicy(DetachRolePolicyRequest detachRolePolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public CreatePolicyResult createPolicy(CreatePolicyRequest createPolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public GetPolicyResult getPolicy(GetPolicyRequest getPolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ListPolicyVersionsResult listPolicyVersions(ListPolicyVersionsRequest listPolicyVersionsRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ListPoliciesResult listPolicies(ListPoliciesRequest listPoliciesRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public void addClientIDToOpenIDConnectProvider(AddClientIDToOpenIDConnectProviderRequest addClientIDToOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void removeClientIDFromOpenIDConnectProvider(RemoveClientIDFromOpenIDConnectProviderRequest removeClientIDFromOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public GetPolicyVersionResult getPolicyVersion(GetPolicyVersionRequest getPolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ListAttachedRolePoliciesResult listAttachedRolePolicies(ListAttachedRolePoliciesRequest listAttachedRolePoliciesRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ListEntitiesForPolicyResult listEntitiesForPolicy(ListEntitiesForPolicyRequest listEntitiesForPolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public void detachGroupPolicy(DetachGroupPolicyRequest detachGroupPolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public GetOpenIDConnectProviderResult getOpenIDConnectProvider(GetOpenIDConnectProviderRequest getOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public void detachUserPolicy(DetachUserPolicyRequest detachUserPolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void attachUserPolicy(AttachUserPolicyRequest attachUserPolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void setDefaultPolicyVersion(SetDefaultPolicyVersionRequest setDefaultPolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void attachGroupPolicy(AttachGroupPolicyRequest attachGroupPolicyRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public CreatePolicyVersionResult createPolicyVersion(CreatePolicyVersionRequest createPolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public GetAccountAuthorizationDetailsResult getAccountAuthorizationDetails() throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ListOpenIDConnectProvidersResult listOpenIDConnectProviders() throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ListPoliciesResult listPolicies() throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
 }

@@ -49,12 +49,7 @@ public class AmazonS3Stub implements AmazonS3 {
 
   @Override
   public ObjectListing listNextBatchOfObjects(final ObjectListing p) {
-    return listObjects(new ListObjectsRequest(
-      p.getBucketName(),
-      p.getPrefix(),
-      p.getNextMarker(),
-      p.getDelimiter(),
-      p.getMaxKeys()));
+    return listObjects(new ListObjectsRequest(p.getBucketName(), p.getPrefix(), p.getNextMarker(), p.getDelimiter(), p.getMaxKeys()));
   }
 
   @Override
@@ -92,8 +87,7 @@ public class AmazonS3Stub implements AmazonS3 {
           subkey = object.key.substring(req.getPrefix().length());
         }
         if (subkey.contains(req.getDelimiter())) {
-          final String prefix =
-            object.key.substring(0, object.key.indexOf(req.getDelimiter(), req.getPrefix().length()) + 1);
+          final String prefix = object.key.substring(0, object.key.indexOf(req.getDelimiter(), req.getPrefix().length()) + 1);
           if (!l.getCommonPrefixes().contains(prefix)) {
             l.getCommonPrefixes().add(prefix);
           }
@@ -139,12 +133,12 @@ public class AmazonS3Stub implements AmazonS3 {
 
   @Override
   public VersionListing listVersions(
-      final String bucketName,
-      final String prefix,
-      final String keyMarker,
-      final String versionIdMarker,
-      final String delimiter,
-      final Integer maxResults) {
+    final String bucketName,
+    final String prefix,
+    final String keyMarker,
+    final String versionIdMarker,
+    final String delimiter,
+    final Integer maxResults) {
     throw new UnsupportedOperationException();
   }
 
@@ -233,20 +227,12 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public void setObjectAcl(
-      final String bucketName,
-      final String key,
-      final String versionId,
-      final AccessControlList acl) {
+  public void setObjectAcl(final String bucketName, final String key, final String versionId, final AccessControlList acl) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void setObjectAcl(
-      final String bucketName,
-      final String key,
-      final String versionId,
-      final CannedAccessControlList acl) {
+  public void setObjectAcl(final String bucketName, final String key, final String versionId, final CannedAccessControlList acl) {
     throw new UnsupportedOperationException();
   }
 
@@ -335,11 +321,7 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public PutObjectResult putObject(
-      final String bucketName,
-      final String key,
-      final InputStream input,
-      final ObjectMetadata metadata) {
+  public PutObjectResult putObject(final String bucketName, final String key, final InputStream input, final ObjectMetadata metadata) {
     return putObject(new PutObjectRequest(bucketName, key, input, metadata));
   }
 
@@ -402,10 +384,10 @@ public class AmazonS3Stub implements AmazonS3 {
 
   @Override
   public CopyObjectResult copyObject(
-      final String sourceBucketName,
-      final String sourceKey,
-      final String destinationBucketName,
-      final String destinationKey) {
+    final String sourceBucketName,
+    final String sourceKey,
+    final String destinationBucketName,
+    final String destinationKey) {
     throw new UnsupportedOperationException();
   }
 
@@ -469,8 +451,7 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public void setBucketLoggingConfiguration(
-      final SetBucketLoggingConfigurationRequest setBucketLoggingConfigurationRequest) {
+  public void setBucketLoggingConfiguration(final SetBucketLoggingConfigurationRequest setBucketLoggingConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -480,8 +461,7 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public void setBucketVersioningConfiguration(
-      final SetBucketVersioningConfigurationRequest setBucketVersioningConfigurationRequest) {
+  public void setBucketVersioningConfiguration(final SetBucketVersioningConfigurationRequest setBucketVersioningConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -491,9 +471,7 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public void setBucketLifecycleConfiguration(
-      final String bucketName,
-      final BucketLifecycleConfiguration bucketLifecycleConfiguration) {
+  public void setBucketLifecycleConfiguration(final String bucketName, final BucketLifecycleConfiguration bucketLifecycleConfiguration) {
     throw new UnsupportedOperationException();
   }
 
@@ -508,9 +486,7 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public void setBucketNotificationConfiguration(
-      final String bucketName,
-      final BucketNotificationConfiguration bucketNotificationConfiguration) {
+  public void setBucketNotificationConfiguration(final String bucketName, final BucketNotificationConfiguration bucketNotificationConfiguration) {
     throw new UnsupportedOperationException();
   }
 
@@ -520,8 +496,7 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public BucketWebsiteConfiguration getBucketWebsiteConfiguration(
-      final GetBucketWebsiteConfigurationRequest getBucketWebsiteConfigurationRequest) {
+  public BucketWebsiteConfiguration getBucketWebsiteConfiguration(final GetBucketWebsiteConfigurationRequest getBucketWebsiteConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -531,8 +506,7 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public void setBucketWebsiteConfiguration(
-      final SetBucketWebsiteConfigurationRequest setBucketWebsiteConfigurationRequest) {
+  public void setBucketWebsiteConfiguration(final SetBucketWebsiteConfigurationRequest setBucketWebsiteConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -542,8 +516,7 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public void deleteBucketWebsiteConfiguration(
-      final DeleteBucketWebsiteConfigurationRequest deleteBucketWebsiteConfigurationRequest) {
+  public void deleteBucketWebsiteConfiguration(final DeleteBucketWebsiteConfigurationRequest deleteBucketWebsiteConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -583,11 +556,7 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public URL generatePresignedUrl(
-      final String bucketName,
-      final String key,
-      final Date expiration,
-      final HttpMethod method) {
+  public URL generatePresignedUrl(final String bucketName, final String key, final Date expiration, final HttpMethod method) {
     throw new UnsupportedOperationException();
   }
 
@@ -856,44 +825,37 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public void setBucketLifecycleConfiguration(
-      final SetBucketLifecycleConfigurationRequest setBucketLifecycleConfigurationRequest) {
+  public void setBucketLifecycleConfiguration(final SetBucketLifecycleConfigurationRequest setBucketLifecycleConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteBucketLifecycleConfiguration(
-      final DeleteBucketLifecycleConfigurationRequest deleteBucketLifecycleConfigurationRequest) {
+  public void deleteBucketLifecycleConfiguration(final DeleteBucketLifecycleConfigurationRequest deleteBucketLifecycleConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void setBucketCrossOriginConfiguration(
-      final SetBucketCrossOriginConfigurationRequest setBucketCrossOriginConfigurationRequest) {
+  public void setBucketCrossOriginConfiguration(final SetBucketCrossOriginConfigurationRequest setBucketCrossOriginConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteBucketCrossOriginConfiguration(
-      final DeleteBucketCrossOriginConfigurationRequest deleteBucketCrossOriginConfigurationRequest) {
+  public void deleteBucketCrossOriginConfiguration(final DeleteBucketCrossOriginConfigurationRequest deleteBucketCrossOriginConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void setBucketTaggingConfiguration(
-      final SetBucketTaggingConfigurationRequest setBucketTaggingConfigurationRequest) {
+  public void setBucketTaggingConfiguration(final SetBucketTaggingConfigurationRequest setBucketTaggingConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteBucketTaggingConfiguration(
-      final DeleteBucketTaggingConfigurationRequest deleteBucketTaggingConfigurationRequest) {
+  public void deleteBucketTaggingConfiguration(final DeleteBucketTaggingConfigurationRequest deleteBucketTaggingConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void setBucketNotificationConfiguration(
-      final SetBucketNotificationConfigurationRequest setBucketNotificationConfigurationRequest) {
+  public void setBucketNotificationConfiguration(final SetBucketNotificationConfigurationRequest setBucketNotificationConfigurationRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -910,6 +872,36 @@ public class AmazonS3Stub implements AmazonS3 {
   @Override
   public boolean isRequesterPaysEnabled(final String arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void setObjectAcl(SetObjectAclRequest setObjectAclRequest) throws AmazonClientException, AmazonServiceException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void setBucketReplicationConfiguration(String bucketName, BucketReplicationConfiguration configuration) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void setBucketReplicationConfiguration(SetBucketReplicationConfigurationRequest setBucketReplicationConfigurationRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public BucketReplicationConfiguration getBucketReplicationConfiguration(String bucketName) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public void deleteBucketReplicationConfiguration(String bucketName) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
   }
 
 }

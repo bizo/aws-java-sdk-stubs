@@ -12,6 +12,8 @@ import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
 
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
@@ -89,10 +91,7 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public SendMessageResult sendMessage(final SendMessageRequest request) {
-    final Message message =
-      new Message()
-        .withBody(request.getMessageBody())
-        .withMessageAttributes(request.getMessageAttributes());
+    final Message message = new Message().withBody(request.getMessageBody()).withMessageAttributes(request.getMessageAttributes());
     final Queue queue = queuesByQueueUrl.get(request.getQueueUrl());
     queue.sendMessage(message);
     return new SendMessageResult().withMessageId(message.getMessageId());
@@ -103,24 +102,21 @@ public class AmazonSQSStub implements AmazonSQS {
     final Queue queue = queuesByQueueUrl.get(request.getQueueUrl());
 
     final List<Message> messages = new ArrayList<Message>();
-    final int maxNumberOfMessages =
-      request.getMaxNumberOfMessages() == null ? 1 : Math.min(request.getMaxNumberOfMessages(), 10);
+    final int maxNumberOfMessages = request.getMaxNumberOfMessages() == null ? 1 : Math.min(request.getMaxNumberOfMessages(), 10);
     Message m;
     while (messages.size() < maxNumberOfMessages && (m = queue.receiveMessage()) != null) {
       final Map<String, String> attributes = new HashMap<String, String>(m.getAttributes());
       attributes.keySet().retainAll(request.getAttributeNames());
 
-      final Map<String, MessageAttributeValue> messageAttributes =
-        new HashMap<String, MessageAttributeValue>(m.getMessageAttributes());
+      final Map<String, MessageAttributeValue> messageAttributes = new HashMap<String, MessageAttributeValue>(m.getMessageAttributes());
       messageAttributes.keySet().retainAll(request.getMessageAttributeNames());
 
-      Message transformedMessage =
-        new Message()
-          .withBody(m.getBody())
-          .withMessageId(m.getMessageId())
-          .withReceiptHandle(m.getReceiptHandle())
-          .withAttributes(attributes)
-          .withMessageAttributes(messageAttributes);
+      Message transformedMessage = new Message()
+        .withBody(m.getBody())
+        .withMessageId(m.getMessageId())
+        .withReceiptHandle(m.getReceiptHandle())
+        .withAttributes(attributes)
+        .withMessageAttributes(messageAttributes);
       messages.add(transformedMessage);
     }
 
@@ -173,8 +169,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public ListDeadLetterSourceQueuesResult listDeadLetterSourceQueues(
-      final ListDeadLetterSourceQueuesRequest listDeadLetterSourceQueuesRequest) {
+  public ListDeadLetterSourceQueuesResult listDeadLetterSourceQueues(final ListDeadLetterSourceQueuesRequest listDeadLetterSourceQueuesRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -185,8 +180,8 @@ public class AmazonSQSStub implements AmazonSQS {
 
   @Override
   public ChangeMessageVisibilityBatchResult changeMessageVisibilityBatch(
-      final String queueUrl,
-      final List<ChangeMessageVisibilityBatchRequestEntry> entries) {
+    final String queueUrl,
+    final List<ChangeMessageVisibilityBatchRequestEntry> entries) {
     throw new UnsupportedOperationException();
   }
 
@@ -236,9 +231,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public DeleteMessageBatchResult deleteMessageBatch(
-      final String queueUrl,
-      final List<DeleteMessageBatchRequestEntry> entries) {
+  public DeleteMessageBatchResult deleteMessageBatch(final String queueUrl, final List<DeleteMessageBatchRequestEntry> entries) {
     throw new UnsupportedOperationException();
   }
 
@@ -248,11 +241,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void addPermission(
-      final String queueUrl,
-      final String label,
-      final List<String> aWSAccountIds,
-      final List<String> actions) {
+  public void addPermission(final String queueUrl, final String label, final List<String> aWSAccountIds, final List<String> actions) {
     throw new UnsupportedOperationException();
   }
 
@@ -333,5 +322,11 @@ public class AmazonSQSStub implements AmazonSQS {
       inflightMessages.remove(message);
       messageQueue.offer(message);
     }
+  }
+
+  @Override
+  public void purgeQueue(PurgeQueueRequest purgeQueueRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+
   }
 }

@@ -26,23 +26,17 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   }
 
   @Override
-  public void createStream(final CreateStreamRequest createStreamRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public void createStream(final CreateStreamRequest createStreamRequest) throws AmazonServiceException, AmazonClientException {
     streams.putIfAbsent(createStreamRequest.getStreamName(), new Stream());
   }
 
   @Override
-  public void createStream(final String streamName, final Integer shardCount)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public void createStream(final String streamName, final Integer shardCount) throws AmazonServiceException, AmazonClientException {
     createStream(new CreateStreamRequest().withStreamName(streamName).withShardCount(shardCount));
   }
 
   @Override
-  public void deleteStream(final DeleteStreamRequest deleteStreamRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public void deleteStream(final DeleteStreamRequest deleteStreamRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -52,31 +46,22 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   }
 
   @Override
-  public DescribeStreamResult describeStream(final DescribeStreamRequest describeStreamRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public DescribeStreamResult describeStream(final DescribeStreamRequest describeStreamRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public DescribeStreamResult describeStream(final String streamName)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public DescribeStreamResult describeStream(final String streamName) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public DescribeStreamResult describeStream(final String streamName, final String exclusiveStartShardId)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public DescribeStreamResult describeStream(final String streamName, final String exclusiveStartShardId) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public DescribeStreamResult describeStream(
-      final String streamName,
-      final Integer limit,
-      final String exclusiveStartShardId) throws AmazonServiceException, AmazonClientException {
+  public DescribeStreamResult describeStream(final String streamName, final Integer limit, final String exclusiveStartShardId) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -86,33 +71,26 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   }
 
   @Override
-  public GetRecordsResult getRecords(final GetRecordsRequest request)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public GetRecordsResult getRecords(final GetRecordsRequest request) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public GetShardIteratorResult getShardIterator(final GetShardIteratorRequest getShardIteratorRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public GetShardIteratorResult getShardIterator(final GetShardIteratorRequest getShardIteratorRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public GetShardIteratorResult getShardIterator(
-      final String streamName,
-      final String shardId,
-      final String shardIteratorType) throws AmazonServiceException, AmazonClientException {
+  public GetShardIteratorResult getShardIterator(final String streamName, final String shardId, final String shardIteratorType) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public GetShardIteratorResult getShardIterator(
-      final String streamName,
-      final String shardId,
-      final String shardIteratorType,
-      final String startingSequenceNumber) throws AmazonServiceException, AmazonClientException {
+    final String streamName,
+    final String shardId,
+    final String shardIteratorType,
+    final String startingSequenceNumber) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -122,51 +100,38 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   }
 
   @Override
-  public ListStreamsResult listStreams(final ListStreamsRequest listStreamsRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public ListStreamsResult listStreams(final ListStreamsRequest listStreamsRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public ListStreamsResult listStreams(final String exclusiveStartStreamName)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public ListStreamsResult listStreams(final String exclusiveStartStreamName) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public ListStreamsResult listStreams(final Integer limit, final String exclusiveStartStreamName)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public ListStreamsResult listStreams(final Integer limit, final String exclusiveStartStreamName) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void mergeShards(final MergeShardsRequest mergeShardsRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public void mergeShards(final MergeShardsRequest mergeShardsRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void mergeShards(final String streamName, final String shardToMerge, final String adjacentShardToMerge)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public void mergeShards(final String streamName, final String shardToMerge, final String adjacentShardToMerge) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public PutRecordResult putRecord(final PutRecordRequest putRecordRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public PutRecordResult putRecord(final PutRecordRequest putRecordRequest) throws AmazonServiceException, AmazonClientException {
     if (putRecordRequest.getData().array().length > 50 * 1024) {
       throw new InvalidArgumentException("Payload exceeds 50 KB");
     }
 
     final Stream stream = streams.get(putRecordRequest.getStreamName());
-    final String nextSequenceNumber =
-      String.valueOf(streams.get(putRecordRequest.getStreamName()).sequenceNumber.incrementAndGet());
+    final String nextSequenceNumber = String.valueOf(streams.get(putRecordRequest.getStreamName()).sequenceNumber.incrementAndGet());
 
     stream.records.add(new Record()
       .withData(putRecordRequest.getData())
@@ -176,18 +141,16 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   }
 
   @Override
-  public PutRecordResult putRecord(final String streamName, final ByteBuffer data, final String partitionKey)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public PutRecordResult putRecord(final String streamName, final ByteBuffer data, final String partitionKey) throws AmazonServiceException, AmazonClientException {
     return putRecord(new PutRecordRequest().withStreamName(streamName).withData(data).withPartitionKey(partitionKey));
   }
 
   @Override
   public PutRecordResult putRecord(
-      final String streamName,
-      final ByteBuffer data,
-      final String partitionKey,
-      final String exclusiveMinimumSequenceNumber) throws AmazonServiceException, AmazonClientException {
+    final String streamName,
+    final ByteBuffer data,
+    final String partitionKey,
+    final String exclusiveMinimumSequenceNumber) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -207,30 +170,22 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   }
 
   @Override
-  public void splitShard(final SplitShardRequest splitShardRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public void splitShard(final SplitShardRequest splitShardRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void splitShard(final String streamName, final String shardToSplit, final String newStartingHashKey)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public void splitShard(final String streamName, final String shardToSplit, final String newStartingHashKey) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void removeTagsFromStream(final RemoveTagsFromStreamRequest removeTagsFromStreamRequest) 
-      throws AmazonServiceException,
-      AmazonClientException {
+  public void removeTagsFromStream(final RemoveTagsFromStreamRequest removeTagsFromStreamRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public ListTagsForStreamResult listTagsForStream(final ListTagsForStreamRequest listTagsForStreamRequest)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public ListTagsForStreamResult listTagsForStream(final ListTagsForStreamRequest listTagsForStreamRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -246,5 +201,11 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
 
   public BlockingQueue<Record> getRecordsForStream(final String streamName) {
     return streams.get(streamName).records;
+  }
+
+  @Override
+  public PutRecordsResult putRecords(PutRecordsRequest putRecordsRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
   }
 }

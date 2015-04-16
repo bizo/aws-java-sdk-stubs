@@ -1,5 +1,7 @@
 package com.bizo.awsstubs.services.ec2;
 
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
@@ -158,8 +160,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public CreateReservedInstancesListingResult createReservedInstancesListing(
-      final CreateReservedInstancesListingRequest arg0) {
+  public CreateReservedInstancesListingResult createReservedInstancesListing(final CreateReservedInstancesListingRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -219,8 +220,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public DescribeSpotDatafeedSubscriptionResult describeSpotDatafeedSubscription(
-      final DescribeSpotDatafeedSubscriptionRequest arg0) {
+  public DescribeSpotDatafeedSubscriptionResult describeSpotDatafeedSubscription(final DescribeSpotDatafeedSubscriptionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -380,8 +380,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public DescribeReservedInstancesListingsResult describeReservedInstancesListings(
-      final DescribeReservedInstancesListingsRequest arg0) {
+  public DescribeReservedInstancesListingsResult describeReservedInstancesListings(final DescribeReservedInstancesListingsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -496,8 +495,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public CreateSpotDatafeedSubscriptionResult createSpotDatafeedSubscription(
-      final CreateSpotDatafeedSubscriptionRequest arg0) {
+  public CreateSpotDatafeedSubscriptionResult createSpotDatafeedSubscription(final CreateSpotDatafeedSubscriptionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -597,8 +595,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public CancelReservedInstancesListingResult cancelReservedInstancesListing(
-      final CancelReservedInstancesListingRequest arg0) {
+  public CancelReservedInstancesListingResult cancelReservedInstancesListing(final CancelReservedInstancesListingRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -673,8 +670,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public DescribeNetworkInterfaceAttributeResult describeNetworkInterfaceAttribute(
-      final DescribeNetworkInterfaceAttributeRequest arg0) {
+  public DescribeNetworkInterfaceAttributeResult describeNetworkInterfaceAttribute(final DescribeNetworkInterfaceAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -729,8 +725,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public PurchaseReservedInstancesOfferingResult purchaseReservedInstancesOffering(
-      final PurchaseReservedInstancesOfferingRequest arg0) {
+  public PurchaseReservedInstancesOfferingResult purchaseReservedInstancesOffering(final PurchaseReservedInstancesOfferingRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -850,8 +845,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public DescribeReservedInstancesOfferingsResult describeReservedInstancesOfferings(
-      final DescribeReservedInstancesOfferingsRequest arg0) {
+  public DescribeReservedInstancesOfferingsResult describeReservedInstancesOfferings(final DescribeReservedInstancesOfferingsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -986,14 +980,13 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public ModifyReservedInstancesResult modifyReservedInstances(
-      final ModifyReservedInstancesRequest modifyReservedInstancesRequest) {
+  public ModifyReservedInstancesResult modifyReservedInstances(final ModifyReservedInstancesRequest modifyReservedInstancesRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public DescribeReservedInstancesModificationsResult describeReservedInstancesModifications(
-      final DescribeReservedInstancesModificationsRequest describeReservedInstancesModificationsRequest) {
+    final DescribeReservedInstancesModificationsRequest describeReservedInstancesModificationsRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -1008,32 +1001,28 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(
-      final RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest) {
+  public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(final RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection(
-      final AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest) {
+  public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection(final AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public CreateVpcPeeringConnectionResult createVpcPeeringConnection(
-      final CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest) {
+  public CreateVpcPeeringConnectionResult createVpcPeeringConnection(final CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(
-      final DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest) {
+  public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(final DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest) {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections(
-      final DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest) {
+    final DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -1063,9 +1052,56 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void modifySubnetAttribute(
-      final ModifySubnetAttributeRequest modifySubnetAttributeRequest) { 
+  public void modifySubnetAttribute(final ModifySubnetAttributeRequest modifySubnetAttributeRequest) {
     throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AttachClassicLinkVpcResult attachClassicLinkVpc(AttachClassicLinkVpcRequest attachClassicLinkVpcRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public DisableVpcClassicLinkResult disableVpcClassicLink(DisableVpcClassicLinkRequest disableVpcClassicLinkRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public DescribeVpcClassicLinkResult describeVpcClassicLink(DescribeVpcClassicLinkRequest describeVpcClassicLinkRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public DescribeClassicLinkInstancesResult describeClassicLinkInstances(DescribeClassicLinkInstancesRequest describeClassicLinkInstancesRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public EnableVpcClassicLinkResult enableVpcClassicLink(EnableVpcClassicLinkRequest enableVpcClassicLinkRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public DetachClassicLinkVpcResult detachClassicLinkVpc(DetachClassicLinkVpcRequest detachClassicLinkVpcRequest) throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public DescribeVpcClassicLinkResult describeVpcClassicLink() throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public DescribeClassicLinkInstancesResult describeClassicLinkInstances() throws AmazonServiceException, AmazonClientException {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }
