@@ -502,183 +502,158 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
 
   @Override
   public void deleteOpenIDConnectProvider(DeleteOpenIDConnectProviderRequest deleteOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void attachRolePolicy(AttachRolePolicyRequest attachRolePolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ListAttachedUserPoliciesResult listAttachedUserPolicies(ListAttachedUserPoliciesRequest listAttachedUserPoliciesRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void deletePolicy(DeletePolicyRequest deletePolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ListAttachedGroupPoliciesResult listAttachedGroupPolicies(ListAttachedGroupPoliciesRequest listAttachedGroupPoliciesRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void deletePolicyVersion(DeletePolicyVersionRequest deletePolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public CreateOpenIDConnectProviderResult createOpenIDConnectProvider(CreateOpenIDConnectProviderRequest createOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public GetAccountAuthorizationDetailsResult getAccountAuthorizationDetails(
     GetAccountAuthorizationDetailsRequest getAccountAuthorizationDetailsRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ListOpenIDConnectProvidersResult listOpenIDConnectProviders(ListOpenIDConnectProvidersRequest listOpenIDConnectProvidersRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void updateOpenIDConnectProviderThumbprint(UpdateOpenIDConnectProviderThumbprintRequest updateOpenIDConnectProviderThumbprintRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void detachRolePolicy(DetachRolePolicyRequest detachRolePolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public CreatePolicyResult createPolicy(CreatePolicyRequest createPolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public GetPolicyResult getPolicy(GetPolicyRequest getPolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ListPolicyVersionsResult listPolicyVersions(ListPolicyVersionsRequest listPolicyVersionsRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ListPoliciesResult listPolicies(ListPoliciesRequest listPoliciesRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void addClientIDToOpenIDConnectProvider(AddClientIDToOpenIDConnectProviderRequest addClientIDToOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void removeClientIDFromOpenIDConnectProvider(RemoveClientIDFromOpenIDConnectProviderRequest removeClientIDFromOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public GetPolicyVersionResult getPolicyVersion(GetPolicyVersionRequest getPolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ListAttachedRolePoliciesResult listAttachedRolePolicies(ListAttachedRolePoliciesRequest listAttachedRolePoliciesRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ListEntitiesForPolicyResult listEntitiesForPolicy(ListEntitiesForPolicyRequest listEntitiesForPolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void detachGroupPolicy(DetachGroupPolicyRequest detachGroupPolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public GetOpenIDConnectProviderResult getOpenIDConnectProvider(GetOpenIDConnectProviderRequest getOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void detachUserPolicy(DetachUserPolicyRequest detachUserPolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void attachUserPolicy(AttachUserPolicyRequest attachUserPolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void setDefaultPolicyVersion(SetDefaultPolicyVersionRequest setDefaultPolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void attachGroupPolicy(AttachGroupPolicyRequest attachGroupPolicyRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public CreatePolicyVersionResult createPolicyVersion(CreatePolicyVersionRequest createPolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public GetAccountAuthorizationDetailsResult getAccountAuthorizationDetails() throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ListOpenIDConnectProvidersResult listOpenIDConnectProviders() throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ListPoliciesResult listPolicies() throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetAccessKeyLastUsedResult getAccessKeyLastUsed(GetAccessKeyLastUsedRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
   }
 
 }
