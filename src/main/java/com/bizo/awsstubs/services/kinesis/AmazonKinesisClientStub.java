@@ -126,8 +126,8 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
 
   @Override
   public PutRecordResult putRecord(final PutRecordRequest putRecordRequest) throws AmazonServiceException, AmazonClientException {
-    if (putRecordRequest.getData().array().length > 50 * 1024) {
-      throw new InvalidArgumentException("Payload exceeds 50 KB");
+    if (putRecordRequest.getData().array().length > 1024 * 1024) {
+      throw new InvalidArgumentException("Payload exceeds 1 MB");
     }
 
     final Stream stream = streams.get(putRecordRequest.getStreamName());
@@ -204,7 +204,7 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   }
 
   @Override
-  public PutRecordsResult putRecords(PutRecordsRequest putRecordsRequest) throws AmazonServiceException, AmazonClientException {
+  public PutRecordsResult putRecords(final PutRecordsRequest putRecordsRequest) throws AmazonServiceException, AmazonClientException {
     // TODO Auto-generated method stub
     return null;
   }
