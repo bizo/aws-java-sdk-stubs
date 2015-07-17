@@ -1241,4 +1241,24 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public CreateFlowLogsResult createFlowLogs(CreateFlowLogsRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DeleteFlowLogsResult deleteFlowLogs(DeleteFlowLogsRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeFlowLogsResult describeFlowLogs() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeFlowLogsResult describeFlowLogs(DescribeFlowLogsRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
 }

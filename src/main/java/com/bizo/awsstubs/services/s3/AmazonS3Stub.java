@@ -414,10 +414,10 @@ public class AmazonS3Stub implements AmazonS3 {
 
   /**
    * {@inheritDoc}
-   * 
+   *
    * The stub does not currently support versions so this stub only supports full deletes of the objects. Passing in a
    * list of KeyVersion specs to be deleted will completely delete those objects from the stubs.
-   * 
+   *
    * @see com.amazonaws.services.s3.AmazonS3#deleteObjects(com.amazonaws.services.s3.model.DeleteObjectsRequest)
    */
   @Override
@@ -675,7 +675,7 @@ public class AmazonS3Stub implements AmazonS3 {
 
     /**
      * Deletes the object specified by key from this bucket.
-     * 
+     *
      * Returns true if the object was found and false otherwise
      */
     private boolean deleteObject(final String key) {
@@ -876,32 +876,37 @@ public class AmazonS3Stub implements AmazonS3 {
 
   @Override
   public void setObjectAcl(SetObjectAclRequest setObjectAclRequest) throws AmazonClientException, AmazonServiceException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void setBucketReplicationConfiguration(String bucketName, BucketReplicationConfiguration configuration) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void setBucketReplicationConfiguration(SetBucketReplicationConfigurationRequest setBucketReplicationConfigurationRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public BucketReplicationConfiguration getBucketReplicationConfiguration(String bucketName) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public void deleteBucketReplicationConfiguration(String bucketName) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException();
+  }
 
+  @Override
+  public BucketNotificationConfiguration getBucketNotificationConfiguration(GetBucketNotificationConfigurationRequest arg0) throws AmazonClientException, AmazonServiceException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public BucketReplicationConfiguration getBucketReplicationConfiguration(GetBucketReplicationConfigurationRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
   }
 
 }

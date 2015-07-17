@@ -327,7 +327,7 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
       AmazonClientException {
     throw new UnsupportedOperationException();
   }
-  
+
   @Override
   public ExitStandbyResult exitStandby(final ExitStandbyRequest exitStandbyRequest)
       throws AmazonServiceException,
@@ -353,6 +353,31 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   public DescribeLifecycleHooksResult describeLifecycleHooks(final DescribeLifecycleHooksRequest describeLifecycleHooksRequest)
       throws AmazonServiceException,
       AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AttachLoadBalancersResult attachLoadBalancers() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AttachLoadBalancersResult attachLoadBalancers(AttachLoadBalancersRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeLoadBalancersResult describeLoadBalancers(DescribeLoadBalancersRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DetachLoadBalancersResult detachLoadBalancers() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DetachLoadBalancersResult detachLoadBalancers(DetachLoadBalancersRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 

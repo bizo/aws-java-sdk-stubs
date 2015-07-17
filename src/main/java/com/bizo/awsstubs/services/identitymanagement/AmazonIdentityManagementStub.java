@@ -656,4 +656,34 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public void deleteSSHPublicKey(DeleteSSHPublicKeyRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetSSHPublicKeyResult getSSHPublicKey(GetSSHPublicKeyRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListSSHPublicKeysResult listSSHPublicKeys() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListSSHPublicKeysResult listSSHPublicKeys(ListSSHPublicKeysRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void updateSSHPublicKey(UpdateSSHPublicKeyRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public UploadSSHPublicKeyResult uploadSSHPublicKey(UploadSSHPublicKeyRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
 }
