@@ -916,36 +916,36 @@ public class AmazonS3Stub implements AmazonS3 {
 
   @Override
   public BucketCrossOriginConfiguration getBucketCrossOriginConfiguration(GetBucketCrossOriginConfigurationRequest arg0) {
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public BucketLifecycleConfiguration getBucketLifecycleConfiguration(GetBucketLifecycleConfigurationRequest arg0) {
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public BucketLoggingConfiguration getBucketLoggingConfiguration(GetBucketLoggingConfigurationRequest arg0) throws AmazonClientException, AmazonServiceException {
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public BucketVersioningConfiguration getBucketVersioningConfiguration(GetBucketVersioningConfigurationRequest arg0) throws AmazonClientException, AmazonServiceException {
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public Owner getS3AccountOwner(GetS3AccountOwnerRequest arg0) throws AmazonClientException, AmazonServiceException {
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public ObjectListing listNextBatchOfObjects(ListNextBatchOfObjectsRequest arg0) throws AmazonClientException, AmazonServiceException {
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public VersionListing listNextBatchOfVersions(ListNextBatchOfVersionsRequest arg0) throws AmazonClientException, AmazonServiceException {
-    return null;
+    throw new UnsupportedOperationException();
   }
 }
