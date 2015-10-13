@@ -1,6 +1,12 @@
 package com.bizo.awsstubs.services.kinesis;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -155,6 +161,42 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   }
 
   @Override
+  public PutRecordsResult putRecords(final PutRecordsRequest putRecordsRequest) throws AmazonServiceException, AmazonClientException {
+    try {
+      if (!isValidPutRecordsRequestSize(putRecordsRequest)) {
+        throw new InvalidArgumentException("Payload exceeds 5MB");
+      }
+      if (putRecordsRequest.getRecords().size() > 500) {
+        throw new InvalidArgumentException("Payload contains more than 500 records");
+      }
+    } catch (IOException e) {
+      throw new InvalidArgumentException("Payload failed to serialize");
+    }
+    final Stream stream = streams.get(putRecordsRequest.getStreamName());
+    int failedRecordCount = 0;
+    List<PutRecordsResultEntry> putRecordsResultEntries = new ArrayList<PutRecordsResultEntry>();
+    for (PutRecordsRequestEntry putRecordsRequestEntry : putRecordsRequest.getRecords()) {
+      if (putRecordsRequestEntry.getData().array().length > 1024 * 1024) {
+        failedRecordCount += 1;
+        putRecordsResultEntries.add(new PutRecordsResultEntry()
+            .withErrorCode("InternalFailure")
+            .withErrorMessage("Record exceeds 1MB"));
+      } else {
+        final String nextSequenceNumber = String.valueOf(stream.sequenceNumber.incrementAndGet());
+        putRecordsResultEntries.add(
+            new PutRecordsResultEntry()
+                .withSequenceNumber(nextSequenceNumber)
+                .withShardId("hard-coded-only-stub-shard"));
+        stream.records.add(new Record()
+            .withData(putRecordsRequestEntry.getData())
+            .withSequenceNumber(nextSequenceNumber)
+            .withPartitionKey(putRecordsRequestEntry.getPartitionKey()));
+      }
+    }
+    return new PutRecordsResult().withFailedRecordCount(failedRecordCount).withRecords(putRecordsResultEntries);
+  }
+
+  @Override
   public void setEndpoint(final String endpoint) throws IllegalArgumentException {
     throw new UnsupportedOperationException();
   }
@@ -203,9 +245,27 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
     return streams.get(streamName).records;
   }
 
-  @Override
-  public PutRecordsResult putRecords(final PutRecordsRequest putRecordsRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-    return null;
+  private boolean isValidPutRecordsRequestSize(final PutRecordsRequest putRecordsRequest) throws IOException {
+    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    ObjectOutput out = null;
+    try {
+      out = new ObjectOutputStream(bos);
+      out.writeObject(putRecordsRequest);
+      int byteLength = bos.toByteArray().length;
+      return (byteLength < 5 * 1e6);
+    } finally {
+      try {
+        if (out != null) {
+          out.close();
+        }
+      } catch (IOException ex) {
+        // ignore close exception
+      }
+      try {
+        bos.close();
+      } catch (IOException ex) {
+        // ignore close exception
+      }
+    }
   }
 }
