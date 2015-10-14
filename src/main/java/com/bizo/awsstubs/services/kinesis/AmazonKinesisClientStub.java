@@ -6,19 +6,21 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.amazonaws.AmazonClientException;
-import com.amazonaws.AmazonServiceException;
-import com.amazonaws.AmazonWebServiceRequest;
-import com.amazonaws.ResponseMetadata;
+import com.amazonaws.*;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.kinesis.AmazonKinesis;
 import com.amazonaws.services.kinesis.model.*;
+import com.amazonaws.services.kinesis.model.transform.PutRecordRequestMarshaller;
+import com.amazonaws.services.kinesis.model.transform.PutRecordsRequestMarshaller;
+
+import javax.xml.bind.DatatypeConverter;
 
 /**
  * This should be kept threadsafe so that off thread writes can be tested
@@ -160,17 +162,13 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
     throw new UnsupportedOperationException();
   }
 
+  /*
+    Doesn't validate that payload size is less than 5MB.
+   */
   @Override
   public PutRecordsResult putRecords(final PutRecordsRequest putRecordsRequest) throws AmazonServiceException, AmazonClientException {
-    try {
-      if (!isValidPutRecordsRequestSize(putRecordsRequest)) {
-        throw new InvalidArgumentException("Payload exceeds 5MB");
-      }
-      if (putRecordsRequest.getRecords().size() > 500) {
-        throw new InvalidArgumentException("Payload contains more than 500 records");
-      }
-    } catch (IOException e) {
-      throw new InvalidArgumentException("Payload failed to serialize");
+    if (putRecordsRequest.getRecords().size() > 500) {
+      throw new InvalidArgumentException("Payload contains more than 500 records");
     }
     final Stream stream = streams.get(putRecordsRequest.getStreamName());
     int failedRecordCount = 0;
@@ -243,29 +241,5 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
 
   public BlockingQueue<Record> getRecordsForStream(final String streamName) {
     return streams.get(streamName).records;
-  }
-
-  private boolean isValidPutRecordsRequestSize(final PutRecordsRequest putRecordsRequest) throws IOException {
-    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    ObjectOutput out = null;
-    try {
-      out = new ObjectOutputStream(bos);
-      out.writeObject(putRecordsRequest);
-      int byteLength = bos.toByteArray().length;
-      return (byteLength < 5 * 1e6);
-    } finally {
-      try {
-        if (out != null) {
-          out.close();
-        }
-      } catch (IOException ex) {
-        // ignore close exception
-      }
-      try {
-        bos.close();
-      } catch (IOException ex) {
-        // ignore close exception
-      }
-    }
   }
 }
