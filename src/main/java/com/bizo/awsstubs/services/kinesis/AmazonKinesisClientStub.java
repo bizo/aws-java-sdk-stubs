@@ -242,4 +242,14 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   public BlockingQueue<Record> getRecordsForStream(final String streamName) {
     return streams.get(streamName).records;
   }
+
+  @Override
+  public void decreaseStreamRetentionPeriod(DecreaseStreamRetentionPeriodRequest arg0) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void increaseStreamRetentionPeriod(IncreaseStreamRetentionPeriodRequest arg0) {
+    throw new UnsupportedOperationException();
+  }
 }

@@ -1261,4 +1261,9 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public ModifySpotFleetRequestResult modifySpotFleetRequest(ModifySpotFleetRequestRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
 }

@@ -948,4 +948,9 @@ public class AmazonS3Stub implements AmazonS3 {
   public VersionListing listNextBatchOfVersions(ListNextBatchOfVersionsRequest arg0) throws AmazonClientException, AmazonServiceException {
     throw new UnsupportedOperationException();
   }
+
+  @Override
+  public HeadBucketResult headBucket(HeadBucketRequest arg0) throws AmazonClientException, AmazonServiceException {
+    throw new UnsupportedOperationException();
+  }
 }
