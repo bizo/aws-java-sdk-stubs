@@ -381,4 +381,9 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public SetInstanceProtectionResult setInstanceProtection(SetInstanceProtectionRequest arg0) {
+    throw new UnsupportedOperationException();
+  }
+
 }

@@ -1266,4 +1266,69 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public AllocateHostsResult allocateHosts(AllocateHostsRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CreateNatGatewayResult createNatGateway(CreateNatGatewayRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DeleteNatGatewayResult deleteNatGateway(DeleteNatGatewayRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeHostsResult describeHosts() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeHostsResult describeHosts(DescribeHostsRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeIdFormatResult describeIdFormat() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeIdFormatResult describeIdFormat(DescribeIdFormatRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeNatGatewaysResult describeNatGateways() throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeNatGatewaysResult describeNatGateways(DescribeNatGatewaysRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ModifyHostsResult modifyHosts(ModifyHostsRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void modifyIdFormat(ModifyIdFormatRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ModifyInstancePlacementResult modifyInstancePlacement(ModifyInstancePlacementRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ReleaseHostsResult releaseHosts(ReleaseHostsRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
 }

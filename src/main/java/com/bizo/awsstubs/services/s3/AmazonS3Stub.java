@@ -953,4 +953,9 @@ public class AmazonS3Stub implements AmazonS3 {
   public HeadBucketResult headBucket(HeadBucketRequest arg0) throws AmazonClientException, AmazonServiceException {
     throw new UnsupportedOperationException();
   }
+
+  @Override
+  public void deleteBucketReplicationConfiguration(DeleteBucketReplicationConfigurationRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
 }
