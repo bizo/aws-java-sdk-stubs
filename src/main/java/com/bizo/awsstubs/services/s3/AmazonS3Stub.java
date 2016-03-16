@@ -958,4 +958,9 @@ public class AmazonS3Stub implements AmazonS3 {
   public void deleteBucketReplicationConfiguration(DeleteBucketReplicationConfigurationRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
+
+  @Override
+  public boolean doesObjectExist(String bucketName, String objectName) {
+    throw new UnsupportedOperationException();
+  }
 }

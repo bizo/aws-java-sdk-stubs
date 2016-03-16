@@ -90,7 +90,7 @@ public class AmazonElasticLoadBalancingStub implements AmazonElasticLoadBalancin
   }
 
   @Override
-  public void createLoadBalancerListeners(final CreateLoadBalancerListenersRequest arg0) {
+  public CreateLoadBalancerListenersResult createLoadBalancerListeners(final CreateLoadBalancerListenersRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -100,7 +100,7 @@ public class AmazonElasticLoadBalancingStub implements AmazonElasticLoadBalancin
   }
 
   @Override
-  public void deleteLoadBalancer(final DeleteLoadBalancerRequest arg0) {
+  public DeleteLoadBalancerResult deleteLoadBalancer(final DeleteLoadBalancerRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -111,7 +111,7 @@ public class AmazonElasticLoadBalancingStub implements AmazonElasticLoadBalancin
   }
 
   @Override
-  public void deleteLoadBalancerListeners(final DeleteLoadBalancerListenersRequest arg0) {
+  public DeleteLoadBalancerListenersResult deleteLoadBalancerListeners(final DeleteLoadBalancerListenersRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -122,7 +122,9 @@ public class AmazonElasticLoadBalancingStub implements AmazonElasticLoadBalancin
   }
 
   @Override
-  public void setLoadBalancerListenerSSLCertificate(final SetLoadBalancerListenerSSLCertificateRequest arg0) {
+  public SetLoadBalancerListenerSSLCertificateResult setLoadBalancerListenerSSLCertificate(final SetLoadBalancerListenerSSLCertificateRequest arg0)
+      throws AmazonServiceException,
+      AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
