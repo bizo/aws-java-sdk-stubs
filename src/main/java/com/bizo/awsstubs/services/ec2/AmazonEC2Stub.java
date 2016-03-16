@@ -1302,11 +1302,6 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public DescribeNatGatewaysResult describeNatGateways() throws AmazonServiceException, AmazonClientException {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public DescribeNatGatewaysResult describeNatGateways(DescribeNatGatewaysRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
@@ -1331,4 +1326,38 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public RunScheduledInstancesResult runScheduledInstances(RunScheduledInstancesRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeScheduledInstancesResult describeScheduledInstances(DescribeScheduledInstancesRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeScheduledInstanceAvailabilityResult describeScheduledInstanceAvailability(DescribeScheduledInstanceAvailabilityRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public PurchaseScheduledInstancesResult purchaseScheduledInstances(PurchaseScheduledInstancesRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public EnableVpcClassicLinkDnsSupportResult enableVpcClassicLinkDnsSupport(EnableVpcClassicLinkDnsSupportRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DisableVpcClassicLinkDnsSupportResult disableVpcClassicLinkDnsSupport(DisableVpcClassicLinkDnsSupportRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeVpcClassicLinkDnsSupportResult describeVpcClassicLinkDnsSupport(DescribeVpcClassicLinkDnsSupportRequest arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
 }
