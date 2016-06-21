@@ -263,12 +263,17 @@ public class AmazonS3Stub implements AmazonS3 {
 
   @Override
   public ObjectMetadata getObjectMetadata(final String bucketName, final String key) {
-    throw new UnsupportedOperationException();
+    return getObjectMetadata(new GetObjectMetadataRequest(bucketName, key));
   }
 
   @Override
   public ObjectMetadata getObjectMetadata(final GetObjectMetadataRequest getObjectMetadataRequest) {
-    throw new UnsupportedOperationException();
+    String bucketName = getObjectMetadataRequest.getBucketName();
+    String key = getObjectMetadataRequest.getKey();
+
+    final BucketInfo bucket = getBucketInfo(bucketName);
+    S3ObjectInfo objectInfo = bucket.getObject(key);
+    return objectInfo.metadata;
   }
 
   @Override
@@ -330,6 +335,9 @@ public class AmazonS3Stub implements AmazonS3 {
     ObjectMetadata metadata = req.getMetadata();
     if (metadata == null) {
       metadata = new ObjectMetadata();
+    }
+    if (metadata.getLastModified() == null) {
+      metadata.setLastModified(new Date());
     }
     InputStream input = req.getInputStream();
 
