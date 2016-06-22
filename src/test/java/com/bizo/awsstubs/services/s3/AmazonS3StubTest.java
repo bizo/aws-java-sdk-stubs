@@ -1,10 +1,12 @@
 package com.bizo.awsstubs.services.s3;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import java.io.*;
+import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
@@ -252,13 +254,40 @@ public class AmazonS3StubTest {
     assertThat(listing.getObjectSummaries().isEmpty(), is(true));
   }
 
+  @Test
+  public void getObjectMetadataWithBucketAndKey() throws Exception {
+    s3.createBucket("b");
+    s3.putObject("b", "one", key1Stream(), key1Data());
+    final ObjectMetadata objectMetadata = s3.getObjectMetadata("b", "one");
+    assertThat(objectMetadata.getContentLength(), equalTo(new Long(DATA.length())));
+    assertThat(objectMetadata.getContentType(), equalTo(CONTENT_TYPE));
+    assertThat(objectMetadata.getLastModified(), equalTo(LAST_MODIFIED_TIMESTAMP));
+  }
+
+  @Test
+  public void getObjectMetadata() throws Exception {
+    s3.createBucket("b");
+    s3.putObject("b", "one", key1Stream(), key1Data());
+    GetObjectMetadataRequest getObjectMetadataRequest = new GetObjectMetadataRequest("b", "one");
+    final ObjectMetadata objectMetadata = s3.getObjectMetadata(getObjectMetadataRequest);
+    assertThat(objectMetadata.getContentLength(), equalTo(new Long(DATA.length())));
+    assertThat(objectMetadata.getContentType(), equalTo(CONTENT_TYPE));
+    assertThat(objectMetadata.getLastModified(), equalTo(LAST_MODIFIED_TIMESTAMP));
+  }
+
+  private static final String DATA = "data";
+  private static final Date LAST_MODIFIED_TIMESTAMP = new Date();
+  private static final String CONTENT_TYPE = "text/plain";
+
   private static final ByteArrayInputStream key1Stream() {
-    return new ByteArrayInputStream("data".getBytes());
+    return new ByteArrayInputStream(DATA.getBytes());
   }
 
   private static final ObjectMetadata key1Data() {
     final ObjectMetadata meta = new ObjectMetadata();
-    meta.setContentType("text/plain");
+    meta.setContentType(CONTENT_TYPE);
+    meta.setContentLength(DATA.length());
+    meta.setLastModified(LAST_MODIFIED_TIMESTAMP);
     return meta;
   }
 }
