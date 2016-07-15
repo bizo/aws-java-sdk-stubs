@@ -23,6 +23,7 @@ import com.amazonaws.services.dynamodbv2.model.BatchGetItemResult;
 import com.amazonaws.services.dynamodbv2.model.BatchWriteItemRequest;
 import com.amazonaws.services.dynamodbv2.model.BatchWriteItemResult;
 import com.amazonaws.services.dynamodbv2.model.Capacity;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.ConsumedCapacity;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
@@ -360,8 +361,6 @@ public class AmazonDynamoDBStub implements AmazonDynamoDB {
       throw new ResourceNotFoundException("Resource " + tableName + " not found.");
     }
 
-    List<Map<String, AttributeValue>> rows = table.getRows();
-
     Map<String, AttributeValue> match = table.find(key, attributesToGet);
 
     GetItemResult getItemResult = null;
@@ -481,11 +480,24 @@ public class AmazonDynamoDBStub implements AmazonDynamoDB {
   public QueryResult query(QueryRequest queryRequest) {
     shutdownThrowsException();
 
-    QueryResult queryResult = new QueryResult()
-      .withCount(new Integer(0));
+    String tableName = queryRequest.getTableName();
+    Map<String, Condition> keyConditions = queryRequest.getKeyConditions();
+    List<String> attributesToGet = queryRequest.getAttributesToGet();
 
-    if (true) {
-      throw new InternalServerErrorException("Operation not supported.");
+    Table table = dynamoDB.get(tableName);
+
+    List<Map<String, AttributeValue>> match = table.query(keyConditions, attributesToGet);
+
+    QueryResult queryResult = null;
+
+    if (match != null) {
+      queryResult = new QueryResult()
+        .withItems(match)
+        .withConsumedCapacity(new ConsumedCapacity()
+          .withTableName(tableName)
+          .withCapacityUnits(CAPACITY_UNITS)
+          .withTable(new Capacity()
+            .withCapacityUnits(CAPACITY_UNITS)));
     }
 
     return queryResult;
@@ -726,6 +738,62 @@ public class AmazonDynamoDBStub implements AmazonDynamoDB {
       }
 
       return matches;
+    }
+
+    public List<Map<String, AttributeValue>> query(Map<String, Condition> keyConditions,
+      List<String> attributesToGet) {
+      List<Map<String, AttributeValue>> matches = new ArrayList<Map<String, AttributeValue>>();
+
+      List<Map<String, AttributeValue>> rows = this.getRows();
+
+      for (Map<String, AttributeValue> row : rows) {
+        boolean match = true;
+
+        for (Entry<String, Condition> keyCondition : keyConditions.entrySet()) {
+          String columnName = keyCondition.getKey();
+          Condition condition = keyCondition.getValue();
+
+          AttributeValue columnValue = row.get(columnName);
+
+          boolean comparisonMatch = comparisonMatch(columnValue, condition);
+          match &= comparisonMatch;
+        }
+
+        if (match) {
+          matches.add(row);
+        }
+      }
+
+      return matches;
+    }
+
+    private boolean comparisonMatch(AttributeValue columnValue, Condition condition) {
+      boolean comparisonMatch = false;
+
+      ComparisonOperator comparisonOperator = ComparisonOperator.fromValue(condition.getComparisonOperator());
+      AttributeValue comparisonAttributeValue = condition.getAttributeValueList().get(0);
+
+      switch (comparisonOperator) {
+        case EQ:
+          comparisonMatch = AttributeValueComparator.equal(columnValue, comparisonAttributeValue);
+          break;
+        case LT:
+          comparisonMatch = AttributeValueComparator.lessThan(columnValue, comparisonAttributeValue);
+          break;
+        case GT:
+          comparisonMatch = AttributeValueComparator.greaterThan(columnValue, comparisonAttributeValue);
+          break;
+        case LE:
+          comparisonMatch = AttributeValueComparator.lessThanEqual(columnValue, comparisonAttributeValue);
+          break;
+        case GE:
+          comparisonMatch = AttributeValueComparator.greaterThanEqual(columnValue, comparisonAttributeValue);
+          break;
+        default:
+          throw new InternalServerErrorException("Operation not supported.");
+      }
+
+      return comparisonMatch;
     }
 
     public Map<String, AttributeValue> delete(Map<String, AttributeValue> key) {

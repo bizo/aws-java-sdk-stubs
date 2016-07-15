@@ -22,6 +22,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
 import com.amazonaws.services.dynamodbv2.model.BatchGetItemResult;
 import com.amazonaws.services.dynamodbv2.model.BatchWriteItemResult;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.ConsumedCapacity;
 import com.amazonaws.services.dynamodbv2.model.CreateTableResult;
@@ -169,8 +170,6 @@ public class AmazonDynamoDBStubTest {
       .withAttributeType(ScalarAttributeType.S);
     attributeDefinitions.add(attributeDefinition);
 
-    String tableName = TEST_TABLE_NAME;
-
     List<KeySchemaElement> keySchema = new ArrayList<KeySchemaElement>();
     KeySchemaElement keySchemaElement = new KeySchemaElement()
       .withAttributeName(TEST_ATTRIBUTE)
@@ -180,7 +179,7 @@ public class AmazonDynamoDBStubTest {
       .withReadCapacityUnits(UNITS)
       .withWriteCapacityUnits(UNITS);
 
-    CreateTableResult result = dynamoDb.createTable(attributeDefinitions, tableName, keySchema, provisionedThroughput);
+    CreateTableResult result = dynamoDb.createTable(attributeDefinitions, TEST_TABLE_NAME, keySchema, provisionedThroughput);
 
     return result;
   }
@@ -380,11 +379,26 @@ public class AmazonDynamoDBStubTest {
     return result;
   }
 
-  @Test(expected=InternalServerErrorException.class)
+  @Test
   public void test_query() throws Exception {
-    QueryResult result = dynamoDb.query(new QueryRequest());
+    createTable();
+    putItem(TEST_ATTRIBUTE, TEST_ATTRIBUTE_VALUE);
 
-    return;
+    Condition keyCondition = new Condition()
+      .withComparisonOperator(ComparisonOperator.EQ)
+      .withAttributeValueList(new AttributeValue().withS(TEST_ATTRIBUTE_VALUE));
+
+    Map<String, Condition> keyConditions = new HashMap<String, Condition>();
+    keyConditions.put(TEST_ATTRIBUTE, keyCondition);
+
+    QueryRequest queryRequest = new QueryRequest()
+      .withTableName(TEST_TABLE_NAME)
+      .withKeyConditions(keyConditions);
+
+    QueryResult result = dynamoDb.query(queryRequest);
+    Double units = result.getConsumedCapacity().getCapacityUnits();
+
+    assertThat(units.doubleValue(), equalTo(1.0));
   }
 
 //  @Test(expected=InternalServerErrorException.class)
