@@ -3,6 +3,8 @@ package com.bizo.awsstubs.services.dynamodb2;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
@@ -396,9 +398,10 @@ public class AmazonDynamoDBStubTest {
       .withKeyConditions(keyConditions);
 
     QueryResult result = dynamoDb.query(queryRequest);
-    Double units = result.getConsumedCapacity().getCapacityUnits();
+    Integer found = result.getCount();
 
-    assertThat(units.doubleValue(), equalTo(1.0));
+    assertNotNull(found);
+    assertEquals(found.longValue(), 1);
   }
 
 //  @Test(expected=InternalServerErrorException.class)

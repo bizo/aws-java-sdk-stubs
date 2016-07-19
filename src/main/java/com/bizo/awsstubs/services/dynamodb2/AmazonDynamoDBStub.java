@@ -493,6 +493,7 @@ public class AmazonDynamoDBStub implements AmazonDynamoDB {
     if (match != null) {
       queryResult = new QueryResult()
         .withItems(match)
+        .withCount(match.size())
         .withConsumedCapacity(new ConsumedCapacity()
           .withTableName(tableName)
           .withCapacityUnits(CAPACITY_UNITS)
