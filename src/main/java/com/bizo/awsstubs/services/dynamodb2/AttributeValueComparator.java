@@ -7,253 +7,308 @@ public class AttributeValueComparator {
   private AttributeValueComparator() {
   }
 
-  // attribute1 == attribute2
-  public static boolean equal(AttributeValue attribute1, AttributeValue attribute2) {
-    if (attribute1 == attribute2)
+  // value == comparisonValue
+  //  true: 0
+  public static boolean equal(AttributeValue value, AttributeValue comparisonValue) {
+    if (value == comparisonValue)
       return true;
-    if ((attribute1 == null) || (attribute2 == null))
+    if ((value == null) || (comparisonValue == null))
         return false;
 
-    if (attribute2.getS() == null ^ attribute1.getS() == null)
+    if (value.getS() == null ^ comparisonValue.getS() == null)
         return false;
-    if (attribute2.getS() != null && attribute2.getS().equals(attribute1.getS()) == false)
+    if (value.getS() != null && value.getS().equals(comparisonValue.getS()) == false)
         return false;
-    if (attribute2.getN() == null ^ attribute1.getN() == null)
+
+    if (value.getN() == null ^ value.getN() == null)
         return false;
-    if (attribute2.getN() != null && attribute2.getN().equals(attribute1.getN()) == false)
+    if (value.getN() != null && value.getN().equals(comparisonValue.getN()) == false)
         return false;
-    if (attribute2.getB() == null ^ attribute1.getB() == null)
+
+    if (value.getB() == null ^ value.getB() == null)
         return false;
-    if (attribute2.getB() != null && attribute2.getB().equals(attribute1.getB()) == false)
+    if (value.getB() != null && value.getB().equals(comparisonValue.getB()) == false)
         return false;
-    if (attribute2.getSS() == null ^ attribute1.getSS() == null)
+
+    if (value.getSS() == null ^ value.getSS() == null)
         return false;
-    if (attribute2.getSS() != null && attribute2.getSS().equals(attribute1.getSS()) == false)
+    if (value.getSS() != null && value.getSS().equals(comparisonValue.getSS()) == false)
         return false;
-    if (attribute2.getNS() == null ^ attribute1.getNS() == null)
+
+    if (value.getNS() == null ^ value.getNS() == null)
         return false;
-    if (attribute2.getNS() != null && attribute2.getNS().equals(attribute1.getNS()) == false)
+    if (value.getNS() != null && value.getNS().equals(comparisonValue.getNS()) == false)
         return false;
-    if (attribute2.getBS() == null ^ attribute1.getBS() == null)
+
+    if (value.getBS() == null ^ value.getBS() == null)
         return false;
-    if (attribute2.getBS() != null && attribute2.getBS().equals(attribute1.getBS()) == false)
+    if (value.getBS() != null && value.getBS().equals(comparisonValue.getBS()) == false)
         return false;
-    if (attribute2.getM() == null ^ attribute1.getM() == null)
+
+    if (value.getM() == null ^ value.getM() == null)
         return false;
-    if (attribute2.getM() != null && attribute2.getM().equals(attribute1.getM()) == false)
+    if (value.getM() != null && value.getM().equals(comparisonValue.getM()) == false)
         return false;
-    if (attribute2.getL() == null ^ attribute1.getL() == null)
+
+    if (value.getL() == null ^ value.getL() == null)
         return false;
-    if (attribute2.getL() != null && attribute2.getL().equals(attribute1.getL()) == false)
+    if (value.getL() != null && value.getL().equals(comparisonValue.getL()) == false)
         return false;
-    if (attribute2.getNULL() == null ^ attribute1.getNULL() == null)
+
+    if (value.getNULL() == null ^ value.getNULL() == null)
         return false;
-    if (attribute2.getNULL() != null && attribute2.getNULL().equals(attribute1.getNULL()) == false)
+    if (value.getNULL() != null && value.getNULL().equals(comparisonValue.getNULL()) == false)
         return false;
-    if (attribute2.getBOOL() == null ^ attribute1.getBOOL() == null)
+
+    if (value.getBOOL() == null ^ value.getBOOL() == null)
         return false;
-    if (attribute2.getBOOL() != null && attribute2.getBOOL().equals(attribute1.getBOOL()) == false)
+    if (value.getBOOL() != null && value.getBOOL().equals(comparisonValue.getBOOL()) == false)
         return false;
+
     return true;
   }
 
-  // attribute1 < attribute2
-  public static boolean lessThan(AttributeValue attribute1, AttributeValue attribute2) {
-    if ((attribute1 == null) || (attribute2 == null))
+  // value < comparisonValue
+  //  true: -1
+  public static boolean lessThan(AttributeValue value, AttributeValue comparisonValue) {
+    if ((value == null) || (comparisonValue == null))
       throw new NullAttributeValueException("Both AttributeValue instances must be non-null.");
-    if (attribute1 == attribute2)
+    if (value == comparisonValue)
       return false;
 
-    if (attribute2.getS() == null ^ attribute1.getS() == null)
+    if (value.getS() == null ^ value.getS() == null)
         return false;
-    if (attribute2.getS() != null && attribute2.getS().compareTo(attribute1.getS()) < 0)
+    if (value.getS() != null && value.getS().compareTo(comparisonValue.getS()) < 0)
+        return true;
+
+    if (value.getN() == null ^ value.getN() == null)
         return false;
-    if (attribute2.getN() == null ^ attribute1.getN() == null)
+    if (value.getN() != null && value.getN().compareTo(comparisonValue.getN()) < 0)
+        return true;
+
+    if (value.getB() == null ^ value.getB() == null)
         return false;
-    if (attribute2.getN() != null && attribute2.getN().compareTo(attribute1.getN()) < 0)
+    if (value.getB() != null && value.getB().compareTo(comparisonValue.getB()) < 0)
+        return true;
+
+//    if (value.getSS() == null ^ comparisonValue.getSS() == null)
+//        return false;
+//    if (value.getSS() != null && value.getSS().compareTo(comparisonValue.getSS()) < 0)
+//        return true;
+
+//    if (value.getNS() == null ^ comparisonValue.getNS() == null)
+//        return false;
+//    if (value.getNS() != null && value.getNS().compareTo(comparisonValue.getNS()) < 0)
+//        return true;
+
+//    if (value.getBS() == null ^ comparisonValue.getBS() == null)
+//        return false;
+//    if (value.getBS() != null && value.getBS().compareTo(comparisonValue.getBS()) < 0)
+//        return true;
+
+//    if (value.getM() == null ^ comparisonValue.getM() == null)
+//        return false;
+//    if (value.getM() != null && value.getM().compareTo(comparisonValue.getM()) < 0)
+//        return true;
+
+//    if (value.getL() == null ^ comparisonValue.getL() == null)
+//        return false;
+//    if (value.getL() != null && value.getL().compareTo(comparisonValue.getL()) < 0)
+//        return true;
+
+    if (value.getNULL() == null ^ value.getNULL() == null)
         return false;
-    if (attribute2.getB() == null ^ attribute1.getB() == null)
+    if (value.getNULL() != null && value.getNULL().compareTo(comparisonValue.getNULL()) < 0)
+        return true;
+
+    if (value.getBOOL() == null ^ value.getBOOL() == null)
         return false;
-    if (attribute2.getB() != null && attribute2.getB().compareTo(attribute1.getB()) < 0)
-        return false;
-//    if (attribute2.getSS() == null ^ attribute1.getSS() == null)
-//        return false;
-//    if (attribute2.getSS() != null && attribute2.getSS().compareTo(attribute1.getSS()) < 0)
-//        return false;
-//    if (attribute2.getNS() == null ^ attribute1.getNS() == null)
-//        return false;
-//    if (attribute2.getNS() != null && attribute2.getNS().compareTo(attribute1.getNS()) < 0)
-//        return false;
-//    if (attribute2.getBS() == null ^ attribute1.getBS() == null)
-//        return false;
-//    if (attribute2.getBS() != null && attribute2.getBS().compareTo(attribute1.getBS()) < 0)
-//        return false;
-//    if (attribute2.getM() == null ^ attribute1.getM() == null)
-//        return false;
-//    if (attribute2.getM() != null && attribute2.getM().compareTo(attribute1.getM()) < 0)
-//        return false;
-//    if (attribute2.getL() == null ^ attribute1.getL() == null)
-//        return false;
-//    if (attribute2.getL() != null && attribute2.getL().compareTo(attribute1.getL()) < 0)
-//        return false;
-    if (attribute2.getNULL() == null ^ attribute1.getNULL() == null)
-        return false;
-    if (attribute2.getNULL() != null && attribute2.getNULL().compareTo(attribute1.getNULL()) < 0)
-        return false;
-    if (attribute2.getBOOL() == null ^ attribute1.getBOOL() == null)
-        return false;
-    if (attribute2.getBOOL() != null && attribute2.getBOOL().compareTo(attribute1.getBOOL()) < 0)
-        return false;
-    return true;
+    if (value.getBOOL() != null && value.getBOOL().compareTo(comparisonValue.getBOOL()) < 0)
+        return true;
+
+    return false;
   }
 
-  // attribute1 > attribute2
-  public static boolean greaterThan(AttributeValue attribute1, AttributeValue attribute2) {
-    if ((attribute1 == null) || (attribute2 == null))
+  // value > comparisonValue
+  //  true: + 1
+  public static boolean greaterThan(AttributeValue value, AttributeValue comparisonValue) {
+    if ((value == null) || (comparisonValue == null))
       throw new NullAttributeValueException("Both AttributeValue instances must be non-null.");
-    if (attribute1 == attribute2)
+    if (value == comparisonValue)
       return false;
 
-    if (attribute2.getS() == null ^ attribute1.getS() == null)
+    if (value.getS() == null ^ value.getS() == null)
         return false;
-    if (attribute2.getS() != null && attribute2.getS().compareTo(attribute1.getS()) > 0)
+    if (value.getS() != null && value.getS().compareTo(comparisonValue.getS()) > 0)
+        return true;
+
+    if (value.getN() == null ^ value.getN() == null)
         return false;
-    if (attribute2.getN() == null ^ attribute1.getN() == null)
+    if (value.getN() != null && value.getN().compareTo(comparisonValue.getN()) > 0)
+        return true;
+
+    if (value.getB() == null ^ value.getB() == null)
         return false;
-    if (attribute2.getN() != null && attribute2.getN().compareTo(attribute1.getN()) > 0)
+    if (value.getB() != null && value.getB().compareTo(comparisonValue.getB()) > 0)
+        return true;
+
+//    if (value.getSS() == null ^ comparisonValue.getSS() == null)
+//        return false;
+//    if (value.getSS() != null && value.getSS().compareTo(comparisonValue.getSS()) > 0)
+//        return true;
+
+//    if (value.getNS() == null ^ comparisonValue.getNS() == null)
+//        return false;
+//    if (value.getNS() != null && value.getNS().compareTo(comparisonValue.getNS()) > 0)
+//        return true;
+
+//    if (value.getBS() == null ^ comparisonValue.getBS() == null)
+//        return false;
+//    if (value.getBS() != null && value.getBS().compareTo(comparisonValue.getBS()) > 0)
+//        return true;
+
+//    if (value.getM() == null ^ comparisonValue.getM() == null)
+//        return false;
+//    if (value.getM() != null && value.getM().compareTo(comparisonValue.getM()) > 0)
+//        return true;
+
+//    if (value.getL() == null ^ comparisonValue.getL() == null)
+//        return false;
+//    if (value.getL() != null && value.getL().compareTo(comparisonValue.getL()) > 0)
+//        return true;
+
+    if (value.getNULL() == null ^ value.getNULL() == null)
         return false;
-    if (attribute2.getB() == null ^ attribute1.getB() == null)
+    if (value.getNULL() != null && value.getNULL().compareTo(comparisonValue.getNULL()) > 0)
+        return true;
+
+    if (value.getBOOL() == null ^ value.getBOOL() == null)
         return false;
-    if (attribute2.getB() != null && attribute2.getB().compareTo(attribute1.getB()) > 0)
-        return false;
-//    if (attribute2.getSS() == null ^ attribute1.getSS() == null)
-//        return false;
-//    if (attribute2.getSS() != null && attribute2.getSS().compareTo(attribute1.getSS()) > 0)
-//        return false;
-//    if (attribute2.getNS() == null ^ attribute1.getNS() == null)
-//        return false;
-//    if (attribute2.getNS() != null && attribute2.getNS().compareTo(attribute1.getNS()) > 0)
-//        return false;
-//    if (attribute2.getBS() == null ^ attribute1.getBS() == null)
-//        return false;
-//    if (attribute2.getBS() != null && attribute2.getBS().compareTo(attribute1.getBS()) > 0)
-//        return false;
-//    if (attribute2.getM() == null ^ attribute1.getM() == null)
-//        return false;
-//    if (attribute2.getM() != null && attribute2.getM().compareTo(attribute1.getM()) > 0)
-//        return false;
-//    if (attribute2.getL() == null ^ attribute1.getL() == null)
-//        return false;
-//    if (attribute2.getL() != null && attribute2.getL().compareTo(attribute1.getL()) > 0)
-//        return false;
-    if (attribute2.getNULL() == null ^ attribute1.getNULL() == null)
-        return false;
-    if (attribute2.getNULL() != null && attribute2.getNULL().compareTo(attribute1.getNULL()) > 0)
-        return false;
-    if (attribute2.getBOOL() == null ^ attribute1.getBOOL() == null)
-        return false;
-    if (attribute2.getBOOL() != null && attribute2.getBOOL().compareTo(attribute1.getBOOL()) > 0)
-        return false;
-    return true;
+    if (value.getBOOL() != null && value.getBOOL().compareTo(comparisonValue.getBOOL()) > 0)
+        return true;
+
+    return false;
   }
 
-  // attribute1 <= attribute2
-  public static boolean lessThanEqual(AttributeValue attribute1, AttributeValue attribute2) {
-    if (attribute1 == attribute2)
+  // value <= comparisonValue
+  //  true: -1, 0
+  public static boolean lessThanEqual(AttributeValue value, AttributeValue comparisonValue) {
+    if (value == comparisonValue)
       return true;
-    if ((attribute1 == null) || (attribute2 == null))
+    if ((value == null) || (comparisonValue == null))
       throw new NullAttributeValueException("Both AttributeValue instances must be non-null.");
 
-    if (attribute2.getS() == null ^ attribute1.getS() == null)
+    if (value.getS() == null ^ value.getS() == null)
         return false;
-    if (attribute2.getS() != null && attribute2.getS().compareTo(attribute1.getS()) <= 0)
+    if (value.getS() != null && value.getS().compareTo(comparisonValue.getS()) <= 0)
+        return true;
+
+    if (value.getN() == null ^ value.getN() == null)
         return false;
-    if (attribute2.getN() == null ^ attribute1.getN() == null)
+    if (value.getN() != null && value.getN().compareTo(comparisonValue.getN()) <= 0)
+        return true;
+
+    if (value.getB() == null ^ value.getB() == null)
         return false;
-    if (attribute2.getN() != null && attribute2.getN().compareTo(attribute1.getN()) <= 0)
+    if (value.getB() != null && value.getB().compareTo(comparisonValue.getB()) <= 0)
+        return true;
+
+//    if (value.getSS() == null ^ comparisonValue.getSS() == null)
+//        return false;
+//    if (value.getSS() != null && value.getSS().compareTo(comparisonValue.getSS()) <= 0)
+//        return true;
+
+//    if (value.getNS() == null ^ comparisonValue.getNS() == null)
+//        return false;
+//    if (value.getNS() != null && value.getNS().compareTo(comparisonValue.getNS()) <= 0)
+//        return true;
+
+//    if (value.getBS() == null ^ comparisonValue.getBS() == null)
+//        return false;
+//    if (value.getBS() != null && value.getBS().compareTo(comparisonValue.getBS()) <= 0)
+//        return true;
+
+//    if (value.getM() == null ^ comparisonValue.getM() == null)
+//        return false;
+//    if (value.getM() != null && value.getM().compareTo(comparisonValue.getM()) <= 0)
+//        return true;
+
+//    if (value.getL() == null ^ comparisonValue.getL() == null)
+//        return false;
+//    if (value.getL() != null && value.getL().compareTo(comparisonValue.getL()) <= 0)
+//        return true;
+
+    if (value.getNULL() == null ^ value.getNULL() == null)
         return false;
-    if (attribute2.getB() == null ^ attribute1.getB() == null)
+    if (value.getNULL() != null && value.getNULL().compareTo(comparisonValue.getNULL()) <= 0)
+        return true;
+
+    if (value.getBOOL() == null ^ value.getBOOL() == null)
         return false;
-    if (attribute2.getB() != null && attribute2.getB().compareTo(attribute1.getB()) <= 0)
-        return false;
-//    if (attribute2.getSS() == null ^ attribute1.getSS() == null)
-//        return false;
-//    if (attribute2.getSS() != null && attribute2.getSS().compareTo(attribute1.getSS()) <= 0)
-//        return false;
-//    if (attribute2.getNS() == null ^ attribute1.getNS() == null)
-//        return false;
-//    if (attribute2.getNS() != null && attribute2.getNS().compareTo(attribute1.getNS()) <= 0)
-//        return false;
-//    if (attribute2.getBS() == null ^ attribute1.getBS() == null)
-//        return false;
-//    if (attribute2.getBS() != null && attribute2.getBS().compareTo(attribute1.getBS()) <= 0)
-//        return false;
-//    if (attribute2.getM() == null ^ attribute1.getM() == null)
-//        return false;
-//    if (attribute2.getM() != null && attribute2.getM().compareTo(attribute1.getM()) <= 0)
-//        return false;
-//    if (attribute2.getL() == null ^ attribute1.getL() == null)
-//        return false;
-//    if (attribute2.getL() != null && attribute2.getL().compareTo(attribute1.getL()) <= 0)
-//        return false;
-    if (attribute2.getNULL() == null ^ attribute1.getNULL() == null)
-        return false;
-    if (attribute2.getNULL() != null && attribute2.getNULL().compareTo(attribute1.getNULL()) <= 0)
-        return false;
-    if (attribute2.getBOOL() == null ^ attribute1.getBOOL() == null)
-        return false;
-    if (attribute2.getBOOL() != null && attribute2.getBOOL().compareTo(attribute1.getBOOL()) <= 0)
-        return false;
-    return true;
+    if (value.getBOOL() != null && value.getBOOL().compareTo(comparisonValue.getBOOL()) <= 0)
+        return true;
+
+    return false;
   }
 
-  // attribute1 >= attribute2
-  public static boolean greaterThanEqual(AttributeValue attribute1, AttributeValue attribute2) {
-    if (attribute1 == attribute2)
+  // value >= comparisonValue
+  //  true: + 1, 0
+  public static boolean greaterThanEqual(AttributeValue value, AttributeValue comparisonValue) {
+    if (value == comparisonValue)
       return true;
-    if ((attribute1 == null) || (attribute2 == null))
+    if ((value == null) || (comparisonValue == null))
       throw new NullAttributeValueException("Both AttributeValue instances must be non-null.");
 
-    if (attribute2.getS() == null ^ attribute1.getS() == null)
+    if (value.getS() == null ^ value.getS() == null)
         return false;
-    if (attribute2.getS() != null && attribute2.getS().compareTo(attribute1.getS()) >= 0)
+    if (value.getS() != null && value.getS().compareTo(comparisonValue.getS()) >= 0)
+        return true;
+
+    if (value.getN() == null ^ value.getN() == null)
         return false;
-    if (attribute2.getN() == null ^ attribute1.getN() == null)
+    if (value.getN() != null && value.getN().compareTo(comparisonValue.getN()) >= 0)
+        return true;
+
+    if (value.getB() == null ^ value.getB() == null)
         return false;
-    if (attribute2.getN() != null && attribute2.getN().compareTo(attribute1.getN()) >= 0)
+    if (value.getB() != null && value.getB().compareTo(comparisonValue.getB()) >= 0)
+        return true;
+
+//    if (value.getSS() == null ^ comparisonValue.getSS() == null)
+//        return false;
+//    if (value.getSS() != null && value.getSS().compareTo(comparisonValue.getSS()) >= 0)
+//        return true;
+
+//    if (value.getNS() == null ^ comparisonValue.getNS() == null)
+//        return false;
+//    if (value.getNS() != null && value.getNS().compareTo(comparisonValue.getNS()) >= 0)
+//        return true;
+
+//    if (value.getBS() == null ^ comparisonValue.getBS() == null)
+//        return false;
+//    if (value.getBS() != null && value.getBS().compareTo(comparisonValue.getBS()) >= 0)
+//        return true;
+
+//    if (value.getM() == null ^ comparisonValue.getM() == null)
+//        return false;
+//    if (value.getM() != null && value.getM().compareTo(comparisonValue.getM()) >= 0)
+//        return true;
+
+//    if (value.getL() == null ^ comparisonValue.getL() == null)
+//        return false;
+//    if (value.getL() != null && value.getL().compareTo(comparisonValue.getL()) >= 0)
+//        return true;
+
+    if (value.getNULL() == null ^ value.getNULL() == null)
         return false;
-    if (attribute2.getB() == null ^ attribute1.getB() == null)
+    if (value.getNULL() != null && value.getNULL().compareTo(comparisonValue.getNULL()) >= 0)
+        return true;
+
+    if (value.getBOOL() == null ^ value.getBOOL() == null)
         return false;
-    if (attribute2.getB() != null && attribute2.getB().compareTo(attribute1.getB()) >= 0)
-        return false;
-//    if (attribute2.getSS() == null ^ attribute1.getSS() == null)
-//        return false;
-//    if (attribute2.getSS() != null && attribute2.getSS().compareTo(attribute1.getSS()) >= 0)
-//        return false;
-//    if (attribute2.getNS() == null ^ attribute1.getNS() == null)
-//        return false;
-//    if (attribute2.getNS() != null && attribute2.getNS().compareTo(attribute1.getNS()) >= 0)
-//        return false;
-//    if (attribute2.getBS() == null ^ attribute1.getBS() == null)
-//        return false;
-//    if (attribute2.getBS() != null && attribute2.getBS().compareTo(attribute1.getBS()) >= 0)
-//        return false;
-//    if (attribute2.getM() == null ^ attribute1.getM() == null)
-//        return false;
-//    if (attribute2.getM() != null && attribute2.getM().compareTo(attribute1.getM()) >= 0)
-//        return false;
-//    if (attribute2.getL() == null ^ attribute1.getL() == null)
-//        return false;
-//    if (attribute2.getL() != null && attribute2.getL().compareTo(attribute1.getL()) >= 0)
-//        return false;
-    if (attribute2.getNULL() == null ^ attribute1.getNULL() == null)
-        return false;
-    if (attribute2.getNULL() != null && attribute2.getNULL().compareTo(attribute1.getNULL()) >= 0)
-        return false;
-    if (attribute2.getBOOL() == null ^ attribute1.getBOOL() == null)
-        return false;
-    if (attribute2.getBOOL() != null && attribute2.getBOOL().compareTo(attribute1.getBOOL()) >= 0)
-        return false;
-    return true;
+    if (value.getBOOL() != null && value.getBOOL().compareTo(comparisonValue.getBOOL()) >= 0)
+        return true;
+
+    return false;
   }
 }

@@ -58,6 +58,8 @@ public class AmazonDynamoDBStubTest {
 
   private static final String TEST_ATTRIBUTE = "Attribute1";
   private static final String TEST_ATTRIBUTE_VALUE = "AttributeValue1";
+  private static final String TEST_ATTRIBUTE_2 = "Attribute2";
+  private static final String TEST_ATTRIBUTE_VALUE_2 = "AttributeValue2";
 
   private AmazonDynamoDBStub dynamoDb = null;
 
@@ -78,9 +80,6 @@ public class AmazonDynamoDBStubTest {
 
   @Test
   public void test_batchGetItem_WithAllParameters() throws Exception {
-    String TEST_ATTRIBUTE_2 = "Attribute2";
-    String TEST_ATTRIBUTE_VALUE_2 = "AttributeValue2";
-
     createTable();
     putItem(TEST_ATTRIBUTE, TEST_ATTRIBUTE_VALUE);
     putItem(TEST_ATTRIBUTE_2, TEST_ATTRIBUTE_VALUE_2);
