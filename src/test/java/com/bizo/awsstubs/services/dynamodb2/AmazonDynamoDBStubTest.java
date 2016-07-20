@@ -3,6 +3,8 @@ package com.bizo.awsstubs.services.dynamodb2;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
 import com.amazonaws.services.dynamodbv2.model.BatchGetItemResult;
 import com.amazonaws.services.dynamodbv2.model.BatchWriteItemResult;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.ConsumedCapacity;
 import com.amazonaws.services.dynamodbv2.model.CreateTableResult;
@@ -55,6 +58,8 @@ public class AmazonDynamoDBStubTest {
 
   private static final String TEST_ATTRIBUTE = "Attribute1";
   private static final String TEST_ATTRIBUTE_VALUE = "AttributeValue1";
+  private static final String TEST_ATTRIBUTE_2 = "Attribute2";
+  private static final String TEST_ATTRIBUTE_VALUE_2 = "AttributeValue2";
 
   private AmazonDynamoDBStub dynamoDb = null;
 
@@ -75,9 +80,6 @@ public class AmazonDynamoDBStubTest {
 
   @Test
   public void test_batchGetItem_WithAllParameters() throws Exception {
-    String TEST_ATTRIBUTE_2 = "Attribute2";
-    String TEST_ATTRIBUTE_VALUE_2 = "AttributeValue2";
-
     createTable();
     putItem(TEST_ATTRIBUTE, TEST_ATTRIBUTE_VALUE);
     putItem(TEST_ATTRIBUTE_2, TEST_ATTRIBUTE_VALUE_2);
@@ -169,8 +171,6 @@ public class AmazonDynamoDBStubTest {
       .withAttributeType(ScalarAttributeType.S);
     attributeDefinitions.add(attributeDefinition);
 
-    String tableName = TEST_TABLE_NAME;
-
     List<KeySchemaElement> keySchema = new ArrayList<KeySchemaElement>();
     KeySchemaElement keySchemaElement = new KeySchemaElement()
       .withAttributeName(TEST_ATTRIBUTE)
@@ -180,7 +180,7 @@ public class AmazonDynamoDBStubTest {
       .withReadCapacityUnits(UNITS)
       .withWriteCapacityUnits(UNITS);
 
-    CreateTableResult result = dynamoDb.createTable(attributeDefinitions, tableName, keySchema, provisionedThroughput);
+    CreateTableResult result = dynamoDb.createTable(attributeDefinitions, TEST_TABLE_NAME, keySchema, provisionedThroughput);
 
     return result;
   }
@@ -380,11 +380,27 @@ public class AmazonDynamoDBStubTest {
     return result;
   }
 
-  @Test(expected=InternalServerErrorException.class)
+  @Test
   public void test_query() throws Exception {
-    QueryResult result = dynamoDb.query(new QueryRequest());
+    createTable();
+    putItem(TEST_ATTRIBUTE, TEST_ATTRIBUTE_VALUE);
 
-    return;
+    Condition keyCondition = new Condition()
+      .withComparisonOperator(ComparisonOperator.EQ)
+      .withAttributeValueList(new AttributeValue().withS(TEST_ATTRIBUTE_VALUE));
+
+    Map<String, Condition> keyConditions = new HashMap<String, Condition>();
+    keyConditions.put(TEST_ATTRIBUTE, keyCondition);
+
+    QueryRequest queryRequest = new QueryRequest()
+      .withTableName(TEST_TABLE_NAME)
+      .withKeyConditions(keyConditions);
+
+    QueryResult result = dynamoDb.query(queryRequest);
+    Integer found = result.getCount();
+
+    assertNotNull(found);
+    assertEquals(found.longValue(), 1);
   }
 
 //  @Test(expected=InternalServerErrorException.class)
