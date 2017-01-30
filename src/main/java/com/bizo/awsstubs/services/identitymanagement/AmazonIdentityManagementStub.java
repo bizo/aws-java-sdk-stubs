@@ -7,6 +7,7 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.identitymanagement.AmazonIdentityManagement;
 import com.amazonaws.services.identitymanagement.model.*;
+import com.amazonaws.services.identitymanagement.waiters.AmazonIdentityManagementWaiters;
 
 public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
 
@@ -31,7 +32,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deleteAccountAlias(final DeleteAccountAliasRequest arg0) {
+  public DeleteAccountAliasResult deleteAccountAlias(final DeleteAccountAliasRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -46,22 +47,22 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deleteAccessKey(final DeleteAccessKeyRequest arg0) {
+  public DeleteAccessKeyResult deleteAccessKey(final DeleteAccessKeyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteVirtualMFADevice(final DeleteVirtualMFADeviceRequest arg0) {
+  public DeleteVirtualMFADeviceResult deleteVirtualMFADevice(final DeleteVirtualMFADeviceRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteUserPolicy(final DeleteUserPolicyRequest arg0) {
+  public DeleteUserPolicyResult deleteUserPolicy(final DeleteUserPolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void putUserPolicy(final PutUserPolicyRequest arg0) {
+  public PutUserPolicyResult putUserPolicy(final PutUserPolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -81,27 +82,27 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void updateServerCertificate(final UpdateServerCertificateRequest arg0) {
+  public UpdateServerCertificateResult updateServerCertificate(final UpdateServerCertificateRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void updateUser(final UpdateUserRequest arg0) {
+  public UpdateUserResult updateUser(final UpdateUserRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void putRolePolicy(final PutRolePolicyRequest arg0) {
+  public PutRolePolicyResult putRolePolicy(final PutRolePolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void updateSigningCertificate(final UpdateSigningCertificateRequest arg0) {
+  public UpdateSigningCertificateResult updateSigningCertificate(final UpdateSigningCertificateRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteGroupPolicy(final DeleteGroupPolicyRequest arg0) {
+  public DeleteGroupPolicyResult deleteGroupPolicy(final DeleteGroupPolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -116,7 +117,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void updateGroup(final UpdateGroupRequest arg0) {
+  public UpdateGroupResult updateGroup(final UpdateGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -126,17 +127,17 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void enableMFADevice(final EnableMFADeviceRequest arg0) {
+  public EnableMFADeviceResult enableMFADevice(final EnableMFADeviceRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteAccountPasswordPolicy(final DeleteAccountPasswordPolicyRequest arg0) {
+  public DeleteAccountPasswordPolicyResult deleteAccountPasswordPolicy(final DeleteAccountPasswordPolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteAccountPasswordPolicy() {
+  public DeleteAccountPasswordPolicyResult deleteAccountPasswordPolicy() {
     throw new UnsupportedOperationException();
   }
 
@@ -151,32 +152,32 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void createAccountAlias(final CreateAccountAliasRequest arg0) {
+  public CreateAccountAliasResult createAccountAlias(final CreateAccountAliasRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteUser(final DeleteUserRequest arg0) {
+  public DeleteUserResult deleteUser(final DeleteUserRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deactivateMFADevice(final DeactivateMFADeviceRequest arg0) {
+  public DeactivateMFADeviceResult deactivateMFADevice(final DeactivateMFADeviceRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void removeUserFromGroup(final RemoveUserFromGroupRequest arg0) {
+  public RemoveUserFromGroupResult removeUserFromGroup(final RemoveUserFromGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteRole(final DeleteRoleRequest arg0) {
+  public DeleteRoleResult deleteRole(final DeleteRoleRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteServerCertificate(final DeleteServerCertificateRequest arg0) {
+  public DeleteServerCertificateResult deleteServerCertificate(final DeleteServerCertificateRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -201,7 +202,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void resyncMFADevice(final ResyncMFADeviceRequest arg0) {
+  public ResyncMFADeviceResult resyncMFADevice(final ResyncMFADeviceRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -231,12 +232,12 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void updateAccessKey(final UpdateAccessKeyRequest arg0) {
+  public UpdateAccessKeyResult updateAccessKey(final UpdateAccessKeyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void addUserToGroup(final AddUserToGroupRequest arg0) {
+  public AddUserToGroupResult addUserToGroup(final AddUserToGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -256,7 +257,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deleteGroup(final DeleteGroupRequest arg0) {
+  public DeleteGroupResult deleteGroup(final DeleteGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -286,7 +287,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deleteInstanceProfile(final DeleteInstanceProfileRequest arg0) {
+  public DeleteInstanceProfileResult deleteInstanceProfile(final DeleteInstanceProfileRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -296,17 +297,17 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void updateLoginProfile(final UpdateLoginProfileRequest arg0) {
+  public UpdateLoginProfileResult updateLoginProfile(final UpdateLoginProfileRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteLoginProfile(final DeleteLoginProfileRequest arg0) {
+  public DeleteLoginProfileResult deleteLoginProfile(final DeleteLoginProfileRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void changePassword(final ChangePasswordRequest arg0) {
+  public ChangePasswordResult changePassword(final ChangePasswordRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -316,12 +317,12 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void putGroupPolicy(final PutGroupPolicyRequest arg0) {
+  public PutGroupPolicyResult putGroupPolicy(final PutGroupPolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteSigningCertificate(final DeleteSigningCertificateRequest arg0) {
+  public DeleteSigningCertificateResult deleteSigningCertificate(final DeleteSigningCertificateRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -346,7 +347,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void addRoleToInstanceProfile(final AddRoleToInstanceProfileRequest arg0) {
+  public AddRoleToInstanceProfileResult addRoleToInstanceProfile(final AddRoleToInstanceProfileRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -376,7 +377,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deleteRolePolicy(final DeleteRolePolicyRequest arg0) {
+  public DeleteRolePolicyResult deleteRolePolicy(final DeleteRolePolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -396,17 +397,17 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void removeRoleFromInstanceProfile(final RemoveRoleFromInstanceProfileRequest arg0) {
+  public RemoveRoleFromInstanceProfileResult removeRoleFromInstanceProfile(final RemoveRoleFromInstanceProfileRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void updateAccountPasswordPolicy(final UpdateAccountPasswordPolicyRequest arg0) {
+  public UpdateAccountPasswordPolicyResult updateAccountPasswordPolicy(final UpdateAccountPasswordPolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void updateAssumeRolePolicy(final UpdateAssumeRolePolicyRequest arg0) {
+  public UpdateAssumeRolePolicyResult updateAssumeRolePolicy(final UpdateAssumeRolePolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -456,7 +457,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deleteSAMLProvider(final DeleteSAMLProviderRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public DeleteSAMLProviderResult deleteSAMLProvider(final DeleteSAMLProviderRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -501,12 +502,12 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deleteOpenIDConnectProvider(DeleteOpenIDConnectProviderRequest deleteOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
+  public DeleteOpenIDConnectProviderResult deleteOpenIDConnectProvider(DeleteOpenIDConnectProviderRequest deleteOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void attachRolePolicy(AttachRolePolicyRequest attachRolePolicyRequest) throws AmazonServiceException, AmazonClientException {
+  public AttachRolePolicyResult attachRolePolicy(AttachRolePolicyRequest attachRolePolicyRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -516,7 +517,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deletePolicy(DeletePolicyRequest deletePolicyRequest) throws AmazonServiceException, AmazonClientException {
+  public DeletePolicyResult deletePolicy(DeletePolicyRequest deletePolicyRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -526,7 +527,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deletePolicyVersion(DeletePolicyVersionRequest deletePolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
+  public DeletePolicyVersionResult  deletePolicyVersion(DeletePolicyVersionRequest deletePolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -547,12 +548,12 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void updateOpenIDConnectProviderThumbprint(UpdateOpenIDConnectProviderThumbprintRequest updateOpenIDConnectProviderThumbprintRequest) throws AmazonServiceException, AmazonClientException {
+  public UpdateOpenIDConnectProviderThumbprintResult updateOpenIDConnectProviderThumbprint(UpdateOpenIDConnectProviderThumbprintRequest updateOpenIDConnectProviderThumbprintRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void detachRolePolicy(DetachRolePolicyRequest detachRolePolicyRequest) throws AmazonServiceException, AmazonClientException {
+  public DetachRolePolicyResult detachRolePolicy(DetachRolePolicyRequest detachRolePolicyRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -577,12 +578,12 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void addClientIDToOpenIDConnectProvider(AddClientIDToOpenIDConnectProviderRequest addClientIDToOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
+  public AddClientIDToOpenIDConnectProviderResult addClientIDToOpenIDConnectProvider(AddClientIDToOpenIDConnectProviderRequest addClientIDToOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void removeClientIDFromOpenIDConnectProvider(RemoveClientIDFromOpenIDConnectProviderRequest removeClientIDFromOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
+  public RemoveClientIDFromOpenIDConnectProviderResult removeClientIDFromOpenIDConnectProvider(RemoveClientIDFromOpenIDConnectProviderRequest removeClientIDFromOpenIDConnectProviderRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -602,7 +603,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void detachGroupPolicy(DetachGroupPolicyRequest detachGroupPolicyRequest) throws AmazonServiceException, AmazonClientException {
+  public DetachGroupPolicyResult detachGroupPolicy(DetachGroupPolicyRequest detachGroupPolicyRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -612,22 +613,22 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void detachUserPolicy(DetachUserPolicyRequest detachUserPolicyRequest) throws AmazonServiceException, AmazonClientException {
+  public DetachUserPolicyResult detachUserPolicy(DetachUserPolicyRequest detachUserPolicyRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void attachUserPolicy(AttachUserPolicyRequest attachUserPolicyRequest) throws AmazonServiceException, AmazonClientException {
+  public AttachUserPolicyResult attachUserPolicy(AttachUserPolicyRequest attachUserPolicyRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void setDefaultPolicyVersion(SetDefaultPolicyVersionRequest setDefaultPolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
+  public SetDefaultPolicyVersionResult setDefaultPolicyVersion(SetDefaultPolicyVersionRequest setDefaultPolicyVersionRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void attachGroupPolicy(AttachGroupPolicyRequest attachGroupPolicyRequest) throws AmazonServiceException, AmazonClientException {
+  public AttachGroupPolicyResult attachGroupPolicy(AttachGroupPolicyRequest attachGroupPolicyRequest) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -657,7 +658,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void deleteSSHPublicKey(DeleteSSHPublicKeyRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public DeleteSSHPublicKeyResult deleteSSHPublicKey(DeleteSSHPublicKeyRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -677,7 +678,7 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
   }
 
   @Override
-  public void updateSSHPublicKey(UpdateSSHPublicKeyRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public UpdateSSHPublicKeyResult updateSSHPublicKey(UpdateSSHPublicKeyRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -706,4 +707,34 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
     throw new UnsupportedOperationException();
   }
 
+  @Override
+  public AmazonIdentityManagementWaiters waiters() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public UpdateServiceSpecificCredentialResult updateServiceSpecificCredential(UpdateServiceSpecificCredentialRequest r) {
+    throw new UnsupportedOperationException();
+  } 
+
+  @Override
+  public ResetServiceSpecificCredentialResult resetServiceSpecificCredential(ResetServiceSpecificCredentialRequest r) {
+    throw new UnsupportedOperationException();
+  }
+ 
+  @Override
+  public ListServiceSpecificCredentialsResult listServiceSpecificCredentials(ListServiceSpecificCredentialsRequest r) {
+    throw new UnsupportedOperationException();
+  }
+ 
+  @Override
+  public DeleteServiceSpecificCredentialResult deleteServiceSpecificCredential(DeleteServiceSpecificCredentialRequest r) {
+    throw new UnsupportedOperationException();
+  }
+ 
+  @Override
+  public CreateServiceSpecificCredentialResult createServiceSpecificCredential(CreateServiceSpecificCredentialRequest r) {
+    throw new UnsupportedOperationException();
+  }
+    
 }

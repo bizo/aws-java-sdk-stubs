@@ -7,6 +7,7 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.model.*;
+import com.amazonaws.services.ec2.waiters.*;
 
 public class AmazonEC2Stub implements AmazonEC2 {
   @Override
@@ -25,7 +26,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void rebootInstances(final RebootInstancesRequest arg0) {
+  public RebootInstancesResult rebootInstances(final RebootInstancesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -55,7 +56,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deleteKeyPair(final DeleteKeyPairRequest arg0) {
+  public DeleteKeyPairResult deleteKeyPair(final DeleteKeyPairRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -75,12 +76,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deleteSecurityGroup(final DeleteSecurityGroupRequest arg0) {
+  public DeleteSecurityGroupResult deleteSecurityGroup(final DeleteSecurityGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Deprecated
-  public void deleteSecurityGroup() {
+  public DeleteSecurityGroupResult deleteSecurityGroup() {
     throw new UnsupportedOperationException();
   }
 
@@ -95,12 +96,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void associateDhcpOptions(final AssociateDhcpOptionsRequest arg0) {
+  public AssociateDhcpOptionsResult associateDhcpOptions(final AssociateDhcpOptionsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void authorizeSecurityGroupEgress(final AuthorizeSecurityGroupEgressRequest arg0) {
+  public AuthorizeSecurityGroupEgressResult authorizeSecurityGroupEgress(final AuthorizeSecurityGroupEgressRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -115,12 +116,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deleteNetworkInterface(final DeleteNetworkInterfaceRequest arg0) {
+  public DeleteNetworkInterfaceResult deleteNetworkInterface(final DeleteNetworkInterfaceRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void modifyVpcAttribute(final ModifyVpcAttributeRequest arg0) {
+  public ModifyVpcAttributeResult modifyVpcAttribute(final ModifyVpcAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -170,12 +171,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void resetSnapshotAttribute(final ResetSnapshotAttributeRequest arg0) {
+  public ResetSnapshotAttributeResult resetSnapshotAttribute(final ResetSnapshotAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteRoute(final DeleteRouteRequest arg0) {
+  public DeleteRouteResult deleteRoute(final DeleteRouteRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -210,12 +211,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void detachVpnGateway(final DetachVpnGatewayRequest arg0) {
+  public DetachVpnGatewayResult detachVpnGateway(final DetachVpnGatewayRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deregisterImage(final DeregisterImageRequest arg0) {
+  public DeregisterImageResult deregisterImage(final DeregisterImageRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -230,12 +231,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deleteTags(final DeleteTagsRequest arg0) {
+  public DeleteTagsResult deleteTags(final DeleteTagsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteSubnet(final DeleteSubnetRequest arg0) {
+  public DeleteSubnetResult deleteSubnet(final DeleteSubnetRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -255,12 +256,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void enableVolumeIO(final EnableVolumeIORequest arg0) {
+  public EnableVolumeIOResult enableVolumeIO(final EnableVolumeIORequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteVpnGateway(final DeleteVpnGatewayRequest arg0) {
+  public DeleteVpnGatewayResult deleteVpnGateway(final DeleteVpnGatewayRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -280,7 +281,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void resetImageAttribute(final ResetImageAttributeRequest arg0) {
+  public ResetImageAttributeResult resetImageAttribute(final ResetImageAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -295,7 +296,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void enableVgwRoutePropagation(final EnableVgwRoutePropagationRequest arg0) {
+  public EnableVgwRoutePropagationResult enableVgwRoutePropagation(final EnableVgwRoutePropagationRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -305,7 +306,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deleteVolume(final DeleteVolumeRequest arg0) {
+  public DeleteVolumeResult deleteVolume(final DeleteVolumeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -325,12 +326,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void unassignPrivateIpAddresses(final UnassignPrivateIpAddressesRequest arg0) {
+  public UnassignPrivateIpAddressesResult unassignPrivateIpAddresses(final UnassignPrivateIpAddressesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void cancelConversionTask(final CancelConversionTaskRequest arg0) {
+  public CancelConversionTaskResult cancelConversionTask(final CancelConversionTaskRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -340,12 +341,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deleteCustomerGateway(final DeleteCustomerGatewayRequest arg0) {
+  public DeleteCustomerGatewayResult deleteCustomerGateway(final DeleteCustomerGatewayRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void createNetworkAclEntry(final CreateNetworkAclEntryRequest arg0) {
+  public CreateNetworkAclEntryResult createNetworkAclEntry(final CreateNetworkAclEntryRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -360,7 +361,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void detachInternetGateway(final DetachInternetGatewayRequest arg0) {
+  public DetachInternetGatewayResult detachInternetGateway(final DetachInternetGatewayRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -390,12 +391,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void reportInstanceStatus(final ReportInstanceStatusRequest arg0) {
+  public ReportInstanceStatusResult reportInstanceStatus(final ReportInstanceStatusRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Deprecated
-  public void reportInstanceStatus() {
+  public ReportInstanceStatusResult reportInstanceStatus() {
     throw new UnsupportedOperationException();
   }
 
@@ -450,12 +451,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void revokeSecurityGroupIngress() {
+  public RevokeSecurityGroupIngressResult revokeSecurityGroupIngress() {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void revokeSecurityGroupIngress(final RevokeSecurityGroupIngressRequest arg0) {
+  public RevokeSecurityGroupIngressResult revokeSecurityGroupIngress(final RevokeSecurityGroupIngressRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -475,17 +476,17 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deleteVpnConnectionRoute(final DeleteVpnConnectionRouteRequest arg0) {
+  public DeleteVpnConnectionRouteResult deleteVpnConnectionRoute(final DeleteVpnConnectionRouteRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void detachNetworkInterface(final DetachNetworkInterfaceRequest arg0) {
+  public DetachNetworkInterfaceResult detachNetworkInterface(final DetachNetworkInterfaceRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void modifyImageAttribute(final ModifyImageAttributeRequest arg0) {
+  public ModifyImageAttributeResult modifyImageAttribute(final ModifyImageAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -500,12 +501,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void attachInternetGateway(final AttachInternetGatewayRequest arg0) {
+  public AttachInternetGatewayResult attachInternetGateway(final AttachInternetGatewayRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteVpnConnection(final DeleteVpnConnectionRequest arg0) {
+  public DeleteVpnConnectionResult deleteVpnConnection(final DeleteVpnConnectionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -570,12 +571,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deleteNetworkAcl(final DeleteNetworkAclRequest arg0) {
+  public DeleteNetworkAclResult deleteNetworkAcl(final DeleteNetworkAclRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void modifyVolumeAttribute(final ModifyVolumeAttributeRequest arg0) {
+  public ModifyVolumeAttributeResult modifyVolumeAttribute(final ModifyVolumeAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -600,22 +601,22 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void modifyInstanceAttribute(final ModifyInstanceAttributeRequest arg0) {
+  public ModifyInstanceAttributeResult modifyInstanceAttribute(final ModifyInstanceAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteDhcpOptions(final DeleteDhcpOptionsRequest arg0) {
+  public DeleteDhcpOptionsResult deleteDhcpOptions(final DeleteDhcpOptionsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Deprecated
-  public void authorizeSecurityGroupIngress() {
+  public AuthorizeSecurityGroupIngressResult authorizeSecurityGroupIngress() {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void authorizeSecurityGroupIngress(final AuthorizeSecurityGroupIngressRequest arg0) {
+  public AuthorizeSecurityGroupIngressResult authorizeSecurityGroupIngress(final AuthorizeSecurityGroupIngressRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -645,7 +646,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void cancelExportTask(final CancelExportTaskRequest arg0) {
+  public CancelExportTaskResult cancelExportTask(final CancelExportTaskRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -660,12 +661,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void modifyNetworkInterfaceAttribute(final ModifyNetworkInterfaceAttributeRequest arg0) {
+  public ModifyNetworkInterfaceAttributeResult  modifyNetworkInterfaceAttribute(final ModifyNetworkInterfaceAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteRouteTable(final DeleteRouteTableRequest arg0) {
+  public DeleteRouteTableResult deleteRouteTable(final DeleteRouteTableRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -680,7 +681,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void createTags(final CreateTagsRequest arg0) {
+  public CreateTagsResult createTags(final CreateTagsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -695,7 +696,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void replaceRoute(final ReplaceRouteRequest arg0) {
+  public ReplaceRouteResult replaceRoute(final ReplaceRouteRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -715,7 +716,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void disableVgwRoutePropagation(final DisableVgwRoutePropagationRequest arg0) {
+  public DisableVgwRoutePropagationResult disableVgwRoutePropagation(final DisableVgwRoutePropagationRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -730,7 +731,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void modifySnapshotAttribute(final ModifySnapshotAttributeRequest arg0) {
+  public ModifySnapshotAttributeResult modifySnapshotAttribute(final ModifySnapshotAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -740,17 +741,17 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deleteSpotDatafeedSubscription() {
+  public DeleteSpotDatafeedSubscriptionResult deleteSpotDatafeedSubscription() {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteSpotDatafeedSubscription(final DeleteSpotDatafeedSubscriptionRequest arg0) {
+  public DeleteSpotDatafeedSubscriptionResult deleteSpotDatafeedSubscription(final DeleteSpotDatafeedSubscriptionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteInternetGateway(final DeleteInternetGatewayRequest arg0) {
+  public DeleteInternetGatewayResult deleteInternetGateway(final DeleteInternetGatewayRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -795,7 +796,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void disassociateRouteTable(final DisassociateRouteTableRequest arg0) {
+  public DisassociateRouteTableResult disassociateRouteTable(final DisassociateRouteTableRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -805,12 +806,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void revokeSecurityGroupEgress(final RevokeSecurityGroupEgressRequest arg0) {
+  public RevokeSecurityGroupEgressResult revokeSecurityGroupEgress(final RevokeSecurityGroupEgressRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteNetworkAclEntry(final DeleteNetworkAclEntryRequest arg0) {
+  public DeleteNetworkAclEntryResult deleteNetworkAclEntry(final DeleteNetworkAclEntryRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -855,12 +856,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void assignPrivateIpAddresses(final AssignPrivateIpAddressesRequest arg0) {
+  public AssignPrivateIpAddressesResult assignPrivateIpAddresses(final AssignPrivateIpAddressesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteSnapshot(final DeleteSnapshotRequest arg0) {
+  public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -870,17 +871,17 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Deprecated
-  public void disassociateAddress() {
+  public DisassociateAddressResult disassociateAddress() {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void disassociateAddress(final DisassociateAddressRequest arg0) {
+  public DisassociateAddressResult disassociateAddress(final DisassociateAddressRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void createPlacementGroup(final CreatePlacementGroupRequest arg0) {
+  public CreatePlacementGroupResult createPlacementGroup(final CreatePlacementGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -890,12 +891,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void deletePlacementGroup(final DeletePlacementGroupRequest arg0) {
+  public DeletePlacementGroupResult deletePlacementGroup(final DeletePlacementGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteVpc(final DeleteVpcRequest arg0) {
+  public DeleteVpcResult deleteVpc(final DeleteVpcRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -915,17 +916,17 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Deprecated
-  public void releaseAddress() {
+  public ReleaseAddressResult releaseAddress() {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void releaseAddress(final ReleaseAddressRequest arg0) {
+  public ReleaseAddressResult releaseAddress(final ReleaseAddressRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Deprecated
-  public void resetInstanceAttribute(final ResetInstanceAttributeRequest arg0) {
+  public ResetInstanceAttributeResult resetInstanceAttribute(final ResetInstanceAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -935,7 +936,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void replaceNetworkAclEntry(final ReplaceNetworkAclEntryRequest arg0) {
+  public ReplaceNetworkAclEntryResult replaceNetworkAclEntry(final ReplaceNetworkAclEntryRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -965,12 +966,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void resetNetworkInterfaceAttribute(final ResetNetworkInterfaceAttributeRequest arg0) {
+  public ResetNetworkInterfaceAttributeResult resetNetworkInterfaceAttribute(final ResetNetworkInterfaceAttributeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void createVpnConnectionRoute(final CreateVpnConnectionRouteRequest arg0) {
+  public CreateVpnConnectionRouteResult createVpnConnectionRoute(final CreateVpnConnectionRouteRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -1052,7 +1053,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void modifySubnetAttribute(final ModifySubnetAttributeRequest modifySubnetAttributeRequest) {
+  public ModifySubnetAttributeResult modifySubnetAttribute(final ModifySubnetAttributeRequest modifySubnetAttributeRequest) {
     throw new UnsupportedOperationException();
   }
 
@@ -1312,7 +1313,7 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public void modifyIdFormat(ModifyIdFormatRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public ModifyIdFormatResult modifyIdFormat(ModifyIdFormatRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -1327,37 +1328,147 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public RunScheduledInstancesResult runScheduledInstances(RunScheduledInstancesRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public AmazonEC2Waiters waiters() {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public DescribeScheduledInstancesResult describeScheduledInstances(DescribeScheduledInstancesRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public UnassignIpv6AddressesResult unassignIpv6Addresses(UnassignIpv6AddressesRequest r) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public DescribeScheduledInstanceAvailabilityResult describeScheduledInstanceAvailability(DescribeScheduledInstanceAvailabilityRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public RunScheduledInstancesResult runScheduledInstances(RunScheduledInstancesRequest r) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public PurchaseScheduledInstancesResult purchaseScheduledInstances(PurchaseScheduledInstancesRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public PurchaseScheduledInstancesResult purchaseScheduledInstances(PurchaseScheduledInstancesRequest r) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public EnableVpcClassicLinkDnsSupportResult enableVpcClassicLinkDnsSupport(EnableVpcClassicLinkDnsSupportRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public PurchaseHostReservationResult purchaseHostReservation(PurchaseHostReservationRequest r) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public DisableVpcClassicLinkDnsSupportResult disableVpcClassicLinkDnsSupport(DisableVpcClassicLinkDnsSupportRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public ModifyVpcPeeringConnectionOptionsResult modifyVpcPeeringConnectionOptions(ModifyVpcPeeringConnectionOptionsRequest r) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public DescribeVpcClassicLinkDnsSupportResult describeVpcClassicLinkDnsSupport(DescribeVpcClassicLinkDnsSupportRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public ModifyIdentityIdFormatResult modifyIdentityIdFormat(ModifyIdentityIdFormatRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetReservedInstancesExchangeQuoteResult getReservedInstancesExchangeQuote(GetReservedInstancesExchangeQuoteRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetHostReservationPurchasePreviewResult getHostReservationPurchasePreview(GetHostReservationPurchasePreviewRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetConsoleScreenshotResult getConsoleScreenshot(GetConsoleScreenshotRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public EnableVpcClassicLinkDnsSupportResult enableVpcClassicLinkDnsSupport(EnableVpcClassicLinkDnsSupportRequest req) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DisassociateVpcCidrBlockResult disassociateVpcCidrBlock(DisassociateVpcCidrBlockRequest r) {
+    throw new UnsupportedOperationException();
+  }    
+
+  @Override
+  public DisassociateSubnetCidrBlockResult disassociateSubnetCidrBlock(DisassociateSubnetCidrBlockRequest r) {
+    throw new UnsupportedOperationException();
+  }  
+
+  @Override
+  public DisableVpcClassicLinkDnsSupportResult disableVpcClassicLinkDnsSupport(DisableVpcClassicLinkDnsSupportRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeVpcClassicLinkDnsSupportResult describeVpcClassicLinkDnsSupport(DescribeVpcClassicLinkDnsSupportRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeStaleSecurityGroupsResult describeStaleSecurityGroups(DescribeStaleSecurityGroupsRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeSecurityGroupReferencesResult describeSecurityGroupReferences(DescribeSecurityGroupReferencesRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeScheduledInstancesResult describeScheduledInstances(DescribeScheduledInstancesRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeScheduledInstanceAvailabilityResult describeScheduledInstanceAvailability(DescribeScheduledInstanceAvailabilityRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeIdentityIdFormatResult describeIdentityIdFormat(DescribeIdentityIdFormatRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeHostReservationsResult describeHostReservations(DescribeHostReservationsRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeHostReservationOfferingsResult describeHostReservationOfferings(DescribeHostReservationOfferingsRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeEgressOnlyInternetGatewaysResult describeEgressOnlyInternetGateways(DescribeEgressOnlyInternetGatewaysRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DeleteEgressOnlyInternetGatewayResult deleteEgressOnlyInternetGateway(DeleteEgressOnlyInternetGatewayRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CreateEgressOnlyInternetGatewayResult createEgressOnlyInternetGateway(CreateEgressOnlyInternetGatewayRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AssociateVpcCidrBlockResult associateVpcCidrBlock(AssociateVpcCidrBlockRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AssociateSubnetCidrBlockResult associateSubnetCidrBlock(AssociateSubnetCidrBlockRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AssignIpv6AddressesResult assignIpv6Addresses(AssignIpv6AddressesRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AcceptReservedInstancesExchangeQuoteResult acceptReservedInstancesExchangeQuote(AcceptReservedInstancesExchangeQuoteRequest r) {
     throw new UnsupportedOperationException();
   }
 }

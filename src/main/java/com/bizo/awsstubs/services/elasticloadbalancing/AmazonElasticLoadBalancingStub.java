@@ -7,6 +7,7 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing;
 import com.amazonaws.services.elasticloadbalancing.model.*;
+import com.amazonaws.services.elasticloadbalancing.waiters.*;
 
 public class AmazonElasticLoadBalancingStub implements AmazonElasticLoadBalancing {
   @Override
@@ -122,9 +123,7 @@ public class AmazonElasticLoadBalancingStub implements AmazonElasticLoadBalancin
   }
 
   @Override
-  public SetLoadBalancerListenerSSLCertificateResult setLoadBalancerListenerSSLCertificate(final SetLoadBalancerListenerSSLCertificateRequest arg0)
-      throws AmazonServiceException,
-      AmazonClientException {
+  public SetLoadBalancerListenerSSLCertificateResult setLoadBalancerListenerSSLCertificate(final SetLoadBalancerListenerSSLCertificateRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -205,4 +204,11 @@ public class AmazonElasticLoadBalancingStub implements AmazonElasticLoadBalancin
       AmazonClientException {
     throw new UnsupportedOperationException();
   }
+
+  @Override
+  public AmazonElasticLoadBalancingWaiters waiters() {
+    throw new UnsupportedOperationException();
+  }
+
+  
 }

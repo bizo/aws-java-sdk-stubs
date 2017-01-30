@@ -5,6 +5,7 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatch;
 import com.amazonaws.services.cloudwatch.model.*;
+import com.amazonaws.services.cloudwatch.waiters.*;
 
 public class AmazonCloudWatchStub implements AmazonCloudWatch {
   @Override
@@ -23,12 +24,12 @@ public class AmazonCloudWatchStub implements AmazonCloudWatch {
   }
 
   @Override
-  public void putMetricAlarm(final PutMetricAlarmRequest arg0) {
+  public PutMetricAlarmResult putMetricAlarm(final PutMetricAlarmRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void putMetricData(final PutMetricDataRequest arg0) {
+  public PutMetricDataResult putMetricData(final PutMetricDataRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -48,7 +49,7 @@ public class AmazonCloudWatchStub implements AmazonCloudWatch {
   }
 
   @Override
-  public void disableAlarmActions(final DisableAlarmActionsRequest arg0) {
+  public DisableAlarmActionsResult disableAlarmActions(final DisableAlarmActionsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -78,22 +79,27 @@ public class AmazonCloudWatchStub implements AmazonCloudWatch {
   }
 
   @Override
-  public void enableAlarmActions(final EnableAlarmActionsRequest arg0) {
+  public EnableAlarmActionsResult enableAlarmActions(final EnableAlarmActionsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteAlarms(final DeleteAlarmsRequest arg0) {
+  public DeleteAlarmsResult deleteAlarms(final DeleteAlarmsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void setAlarmState(final SetAlarmStateRequest arg0) {
+  public SetAlarmStateResult setAlarmState(final SetAlarmStateRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public ResponseMetadata getCachedResponseMetadata(final AmazonWebServiceRequest arg0) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AmazonCloudWatchWaiters waiters() {
     throw new UnsupportedOperationException();
   }
 }

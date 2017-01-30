@@ -26,27 +26,27 @@ public class AmazonSimpleDBStub implements AmazonSimpleDB {
   }
 
   @Override
-  public void putAttributes(final PutAttributesRequest arg0) {
+  public PutAttributesResult putAttributes(final PutAttributesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void batchDeleteAttributes(final BatchDeleteAttributesRequest arg0) {
+  public BatchDeleteAttributesResult batchDeleteAttributes(final BatchDeleteAttributesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteDomain(final DeleteDomainRequest arg0) {
+  public DeleteDomainResult deleteDomain(final DeleteDomainRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void createDomain(final CreateDomainRequest arg0) {
+  public CreateDomainResult createDomain(final CreateDomainRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteAttributes(final DeleteAttributesRequest arg0) {
+  public DeleteAttributesResult deleteAttributes(final DeleteAttributesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -61,7 +61,7 @@ public class AmazonSimpleDBStub implements AmazonSimpleDB {
   }
 
   @Override
-  public void batchPutAttributes(final BatchPutAttributesRequest arg0) {
+  public BatchPutAttributesResult batchPutAttributes(final BatchPutAttributesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 

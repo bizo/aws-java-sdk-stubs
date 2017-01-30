@@ -50,7 +50,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void setQueueAttributes(final SetQueueAttributesRequest arg0) {
+  public SetQueueAttributesResult setQueueAttributes(final SetQueueAttributesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -60,7 +60,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void changeMessageVisibility(final ChangeMessageVisibilityRequest arg0) {
+  public ChangeMessageVisibilityResult changeMessageVisibility(final ChangeMessageVisibilityRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -70,7 +70,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void removePermission(final RemovePermissionRequest arg0) {
+  public RemovePermissionResult removePermission(final RemovePermissionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -85,7 +85,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void deleteQueue(final DeleteQueueRequest arg0) {
+  public DeleteQueueResult deleteQueue(final DeleteQueueRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -153,14 +153,15 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void addPermission(final AddPermissionRequest arg0) {
+  public AddPermissionResult addPermission(final AddPermissionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteMessage(final DeleteMessageRequest request) {
+  public DeleteMessageResult deleteMessage(final DeleteMessageRequest request) {
     final Queue queue = queuesByQueueUrl.get(request.getQueueUrl());
     queue.deleteMessage(request.getReceiptHandle());
+    return new DeleteMessageResult();
   }
 
   @Override
@@ -174,7 +175,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void setQueueAttributes(final String queueUrl, final Map<String, String> attributes) {
+  public SetQueueAttributesResult setQueueAttributes(final String queueUrl, final Map<String, String> attributes) {
     throw new UnsupportedOperationException();
   }
 
@@ -186,7 +187,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void changeMessageVisibility(final String queueUrl, final String receiptHandle, final Integer visibilityTimeout) {
+  public ChangeMessageVisibilityResult changeMessageVisibility(final String queueUrl, final String receiptHandle, final Integer visibilityTimeout) {
     throw new UnsupportedOperationException();
   }
 
@@ -196,7 +197,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void removePermission(final String queueUrl, final String label) {
+  public RemovePermissionResult removePermission(final String queueUrl, final String label) {
     throw new UnsupportedOperationException();
   }
 
@@ -211,7 +212,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void deleteQueue(final String queueUrl) {
+  public DeleteQueueResult deleteQueue(final String queueUrl) {
     throw new UnsupportedOperationException();
   }
 
@@ -241,13 +242,14 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void addPermission(final String queueUrl, final String label, final List<String> aWSAccountIds, final List<String> actions) {
+  public AddPermissionResult addPermission(final String queueUrl, final String label, final List<String> aWSAccountIds, final List<String> actions) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteMessage(final String queueUrl, final String receiptHandle) {
+  public DeleteMessageResult deleteMessage(final String queueUrl, final String receiptHandle) {
     deleteMessage(new DeleteMessageRequest().withQueueUrl(queueUrl).withReceiptHandle(receiptHandle));
+    return new DeleteMessageResult();
   }
 
   // Testing support
@@ -305,13 +307,13 @@ public class AmazonSQSStub implements AmazonSQS {
       return message;
     }
 
-    public void deleteMessage(final String receiptHandle) throws ReceiptHandleIsInvalidException {
+    public DeleteMessageResult deleteMessage(final String receiptHandle) throws ReceiptHandleIsInvalidException {
       final Iterator<Message> it = inflightMessages.iterator();
       while (it.hasNext()) {
         final Message m = it.next();
         if (m.getReceiptHandle().equals(receiptHandle)) {
           it.remove();
-          return;
+          return new DeleteMessageResult();
         }
       }
 
@@ -325,8 +327,7 @@ public class AmazonSQSStub implements AmazonSQS {
   }
 
   @Override
-  public void purgeQueue(PurgeQueueRequest purgeQueueRequest) throws AmazonServiceException, AmazonClientException {
-    // TODO Auto-generated method stub
-
+  public PurgeQueueResult purgeQueue(PurgeQueueRequest purgeQueueRequest) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
   }
 }

@@ -42,17 +42,17 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void setTopicAttributes(final SetTopicAttributesRequest arg0) {
+  public SetTopicAttributesResult setTopicAttributes(final SetTopicAttributesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteTopic(final DeleteTopicRequest arg0) {
+  public DeleteTopicResult deleteTopic(final DeleteTopicRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void removePermission(final RemovePermissionRequest arg0) {
+  public RemovePermissionResult removePermission(final RemovePermissionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -67,12 +67,12 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void setSubscriptionAttributes(final SetSubscriptionAttributesRequest arg0) {
+  public SetSubscriptionAttributesResult setSubscriptionAttributes(final SetSubscriptionAttributesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void addPermission(final AddPermissionRequest arg0) {
+  public AddPermissionResult addPermission(final AddPermissionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -97,7 +97,7 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void unsubscribe(final UnsubscribeRequest arg0) {
+  public UnsubscribeResult unsubscribe(final UnsubscribeRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -125,7 +125,7 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void deleteEndpoint(final DeleteEndpointRequest deleteEndpointRequest)
+  public DeleteEndpointResult deleteEndpoint(final DeleteEndpointRequest deleteEndpointRequest)
       throws AmazonServiceException,
       AmazonClientException {
     throw new UnsupportedOperationException();
@@ -148,7 +148,7 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void deletePlatformApplication(final DeletePlatformApplicationRequest deletePlatformApplicationRequest)
+  public DeletePlatformApplicationResult deletePlatformApplication(final DeletePlatformApplicationRequest deletePlatformApplicationRequest)
       throws AmazonServiceException,
       AmazonClientException {
     throw new UnsupportedOperationException();
@@ -163,7 +163,7 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void setEndpointAttributes(final SetEndpointAttributesRequest setEndpointAttributesRequest)
+  public SetEndpointAttributesResult setEndpointAttributes(final SetEndpointAttributesRequest setEndpointAttributesRequest)
       throws AmazonServiceException,
       AmazonClientException {
     throw new UnsupportedOperationException();
@@ -178,7 +178,7 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void setPlatformApplicationAttributes(
+  public SetPlatformApplicationAttributesResult setPlatformApplicationAttributes(
       final SetPlatformApplicationAttributesRequest setPlatformApplicationAttributesRequest)
       throws AmazonServiceException,
       AmazonClientException {
@@ -199,7 +199,7 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void addPermission(final String arg0, final String arg1, final List<String> arg2, final List<String> arg3)
+  public AddPermissionResult addPermission(final String arg0, final String arg1, final List<String> arg2, final List<String> arg3)
       throws AmazonServiceException,
       AmazonClientException {
     throw new UnsupportedOperationException();
@@ -225,7 +225,7 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void deleteTopic(final String arg0) throws AmazonServiceException, AmazonClientException {
+  public DeleteTopicResult deleteTopic(final String arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -284,21 +284,21 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void removePermission(final String arg0, final String arg1)
+  public RemovePermissionResult removePermission(final String arg0, final String arg1)
       throws AmazonServiceException,
       AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void setSubscriptionAttributes(final String arg0, final String arg1, final String arg2)
+  public SetSubscriptionAttributesResult setSubscriptionAttributes(final String arg0, final String arg1, final String arg2)
       throws AmazonServiceException,
       AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void setTopicAttributes(final String arg0, final String arg1, final String arg2)
+  public SetTopicAttributesResult setTopicAttributes(final String arg0, final String arg1, final String arg2)
       throws AmazonServiceException,
       AmazonClientException {
     throw new UnsupportedOperationException();
@@ -312,7 +312,32 @@ public class AmazonSNSStub implements AmazonSNS {
   }
 
   @Override
-  public void unsubscribe(final String arg0) throws AmazonServiceException, AmazonClientException {
+  public UnsubscribeResult unsubscribe(final String arg0) throws AmazonServiceException, AmazonClientException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public SetSMSAttributesResult setSMSAttributes(SetSMSAttributesRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public GetSMSAttributesResult getSMSAttributes(GetSMSAttributesRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public OptInPhoneNumberResult optInPhoneNumber(OptInPhoneNumberRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public ListPhoneNumbersOptedOutResult listPhoneNumbersOptedOut(ListPhoneNumbersOptedOutRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public CheckIfPhoneNumberIsOptedOutResult checkIfPhoneNumberIsOptedOut(CheckIfPhoneNumberIsOptedOutRequest r) {
     throw new UnsupportedOperationException();
   }
 

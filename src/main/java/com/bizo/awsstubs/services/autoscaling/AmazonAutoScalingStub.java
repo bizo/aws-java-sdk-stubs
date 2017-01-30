@@ -7,8 +7,10 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.autoscaling.AmazonAutoScaling;
 import com.amazonaws.services.autoscaling.model.*;
+import com.amazonaws.services.autoscaling.waiters.AmazonAutoScalingWaiters;
 
 public class AmazonAutoScalingStub implements AmazonAutoScaling {
+
   @Override
   public void shutdown() {
     throw new UnsupportedOperationException();
@@ -35,17 +37,17 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   }
 
   @Override
-  public void enableMetricsCollection(final EnableMetricsCollectionRequest arg0) {
+  public EnableMetricsCollectionResult enableMetricsCollection(final EnableMetricsCollectionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void resumeProcesses(final ResumeProcessesRequest arg0) {
+  public ResumeProcessesResult resumeProcesses(final ResumeProcessesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteLaunchConfiguration(final DeleteLaunchConfigurationRequest arg0) {
+  public DeleteLaunchConfigurationResult deleteLaunchConfiguration(final DeleteLaunchConfigurationRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -70,7 +72,7 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   }
 
   @Override
-  public void createAutoScalingGroup(final CreateAutoScalingGroupRequest arg0) {
+  public CreateAutoScalingGroupResult createAutoScalingGroup(final CreateAutoScalingGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -117,12 +119,12 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   }
 
   @Override
-  public void executePolicy(final ExecutePolicyRequest arg0) {
+  public ExecutePolicyResult executePolicy(final ExecutePolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteTags(final DeleteTagsRequest arg0) {
+  public DeleteTagsResult deleteTags(final DeleteTagsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -132,27 +134,27 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   }
 
   @Override
-  public void putNotificationConfiguration(final PutNotificationConfigurationRequest arg0) {
+  public PutNotificationConfigurationResult putNotificationConfiguration(final PutNotificationConfigurationRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deletePolicy(final DeletePolicyRequest arg0) {
+  public DeletePolicyResult deletePolicy(final DeletePolicyRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteNotificationConfiguration(final DeleteNotificationConfigurationRequest arg0) {
+  public DeleteNotificationConfigurationResult deleteNotificationConfiguration(final DeleteNotificationConfigurationRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteScheduledAction(final DeleteScheduledActionRequest arg0) {
+  public DeleteScheduledActionResult deleteScheduledAction(final DeleteScheduledActionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void setInstanceHealth(final SetInstanceHealthRequest arg0) {
+  public SetInstanceHealthResult setInstanceHealth(final SetInstanceHealthRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -168,12 +170,12 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   }
 
   @Override
-  public void createOrUpdateTags(final CreateOrUpdateTagsRequest arg0) {
+  public CreateOrUpdateTagsResult createOrUpdateTags(final CreateOrUpdateTagsRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void suspendProcesses(final SuspendProcessesRequest arg0) {
+  public SuspendProcessesResult suspendProcesses(final SuspendProcessesRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -188,22 +190,22 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   }
 
   @Override
-  public void createLaunchConfiguration(final CreateLaunchConfigurationRequest arg0) {
+  public CreateLaunchConfigurationResult createLaunchConfiguration(final CreateLaunchConfigurationRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void deleteAutoScalingGroup(final DeleteAutoScalingGroupRequest arg0) {
+  public DeleteAutoScalingGroupResult deleteAutoScalingGroup(final DeleteAutoScalingGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void disableMetricsCollection(final DisableMetricsCollectionRequest arg0) {
+  public DisableMetricsCollectionResult  disableMetricsCollection(final DisableMetricsCollectionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public void updateAutoScalingGroup(final UpdateAutoScalingGroupRequest arg0) {
+  public UpdateAutoScalingGroupResult updateAutoScalingGroup(final UpdateAutoScalingGroupRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -238,7 +240,7 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   }
 
   @Override
-  public void putScheduledUpdateGroupAction(final PutScheduledUpdateGroupActionRequest arg0) {
+  public PutScheduledUpdateGroupActionResult putScheduledUpdateGroupAction(final PutScheduledUpdateGroupActionRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -254,7 +256,7 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   }
 
   @Override
-  public void setDesiredCapacity(final SetDesiredCapacityRequest arg0) {
+  public SetDesiredCapacityResult setDesiredCapacity(final SetDesiredCapacityRequest arg0) {
     throw new UnsupportedOperationException();
   }
 
@@ -270,7 +272,7 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
   }
 
   @Override
-  public void attachInstances(final AttachInstancesRequest arg0) throws AmazonServiceException, AmazonClientException {
+  public AttachInstancesResult attachInstances(final AttachInstancesRequest arg0) throws AmazonServiceException, AmazonClientException {
     throw new UnsupportedOperationException();
   }
 
@@ -383,6 +385,26 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
 
   @Override
   public SetInstanceProtectionResult setInstanceProtection(SetInstanceProtectionRequest arg0) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AmazonAutoScalingWaiters waiters() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DetachLoadBalancerTargetGroupsResult detachLoadBalancerTargetGroups(DetachLoadBalancerTargetGroupsRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public DescribeLoadBalancerTargetGroupsResult describeLoadBalancerTargetGroups(DescribeLoadBalancerTargetGroupsRequest r) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public AttachLoadBalancerTargetGroupsResult attachLoadBalancerTargetGroups(AttachLoadBalancerTargetGroupsRequest r) {
     throw new UnsupportedOperationException();
   }
 
