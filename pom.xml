@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.bizo</groupId>
   <artifactId>aws-java-sdk-stubs</artifactId>
-  <version>1.11.86</version>
+  <version>1.11.22</version>
   <packaging>jar</packaging>
   <name>aws-java-sdk-stubs</name>
   <description>stubs for the aws-java-sdk services</description>
@@ -45,7 +45,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk</artifactId>
-      <version>1.11.86</version>
+      <version>1.11.22</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

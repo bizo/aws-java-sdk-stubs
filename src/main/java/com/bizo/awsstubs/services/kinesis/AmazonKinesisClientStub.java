@@ -17,7 +17,6 @@ import com.amazonaws.*;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.kinesis.AmazonKinesis;
 import com.amazonaws.services.kinesis.model.*;
-import com.amazonaws.services.kinesis.waiters.*;
 import com.amazonaws.services.kinesis.model.transform.PutRecordRequestMarshaller;
 import com.amazonaws.services.kinesis.model.transform.PutRecordsRequestMarshaller;
 
@@ -257,16 +256,6 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
   }
 
   @Override
-  public AmazonKinesisWaiters waiters() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public UpdateShardCountResult updateShardCount(UpdateShardCountRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public EnableEnhancedMonitoringResult enableEnhancedMonitoring(EnableEnhancedMonitoringRequest r) {
     throw new UnsupportedOperationException();
   }
@@ -276,8 +265,4 @@ public class AmazonKinesisClientStub implements AmazonKinesis {
     throw new UnsupportedOperationException();
   }
 
-  @Override
-  public DescribeLimitsResult describeLimits(DescribeLimitsRequest r) {
-    throw new UnsupportedOperationException();
-  }
 }

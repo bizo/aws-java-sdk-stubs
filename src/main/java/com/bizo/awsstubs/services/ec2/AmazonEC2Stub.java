@@ -7,7 +7,6 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.model.*;
-import com.amazonaws.services.ec2.waiters.*;
 
 public class AmazonEC2Stub implements AmazonEC2 {
   @Override
@@ -1328,27 +1327,12 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public AmazonEC2Waiters waiters() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public UnassignIpv6AddressesResult unassignIpv6Addresses(UnassignIpv6AddressesRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public RunScheduledInstancesResult runScheduledInstances(RunScheduledInstancesRequest r) {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public PurchaseScheduledInstancesResult purchaseScheduledInstances(PurchaseScheduledInstancesRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public PurchaseHostReservationResult purchaseHostReservation(PurchaseHostReservationRequest r) {
     throw new UnsupportedOperationException();
   }
 
@@ -1363,16 +1347,6 @@ public class AmazonEC2Stub implements AmazonEC2 {
   }
 
   @Override
-  public GetReservedInstancesExchangeQuoteResult getReservedInstancesExchangeQuote(GetReservedInstancesExchangeQuoteRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public GetHostReservationPurchasePreviewResult getHostReservationPurchasePreview(GetHostReservationPurchasePreviewRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public GetConsoleScreenshotResult getConsoleScreenshot(GetConsoleScreenshotRequest r) {
     throw new UnsupportedOperationException();
   }
@@ -1381,16 +1355,6 @@ public class AmazonEC2Stub implements AmazonEC2 {
   public EnableVpcClassicLinkDnsSupportResult enableVpcClassicLinkDnsSupport(EnableVpcClassicLinkDnsSupportRequest req) {
     throw new UnsupportedOperationException();
   }
-
-  @Override
-  public DisassociateVpcCidrBlockResult disassociateVpcCidrBlock(DisassociateVpcCidrBlockRequest r) {
-    throw new UnsupportedOperationException();
-  }    
-
-  @Override
-  public DisassociateSubnetCidrBlockResult disassociateSubnetCidrBlock(DisassociateSubnetCidrBlockRequest r) {
-    throw new UnsupportedOperationException();
-  }  
 
   @Override
   public DisableVpcClassicLinkDnsSupportResult disableVpcClassicLinkDnsSupport(DisableVpcClassicLinkDnsSupportRequest r) {
@@ -1427,48 +1391,4 @@ public class AmazonEC2Stub implements AmazonEC2 {
     throw new UnsupportedOperationException();
   }
 
-  @Override
-  public DescribeHostReservationsResult describeHostReservations(DescribeHostReservationsRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DescribeHostReservationOfferingsResult describeHostReservationOfferings(DescribeHostReservationOfferingsRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DescribeEgressOnlyInternetGatewaysResult describeEgressOnlyInternetGateways(DescribeEgressOnlyInternetGatewaysRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeleteEgressOnlyInternetGatewayResult deleteEgressOnlyInternetGateway(DeleteEgressOnlyInternetGatewayRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public CreateEgressOnlyInternetGatewayResult createEgressOnlyInternetGateway(CreateEgressOnlyInternetGatewayRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public AssociateVpcCidrBlockResult associateVpcCidrBlock(AssociateVpcCidrBlockRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public AssociateSubnetCidrBlockResult associateSubnetCidrBlock(AssociateSubnetCidrBlockRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public AssignIpv6AddressesResult assignIpv6Addresses(AssignIpv6AddressesRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public AcceptReservedInstancesExchangeQuoteResult acceptReservedInstancesExchangeQuote(AcceptReservedInstancesExchangeQuoteRequest r) {
-    throw new UnsupportedOperationException();
-  }
 }

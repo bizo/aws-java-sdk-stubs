@@ -7,7 +7,6 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.autoscaling.AmazonAutoScaling;
 import com.amazonaws.services.autoscaling.model.*;
-import com.amazonaws.services.autoscaling.waiters.AmazonAutoScalingWaiters;
 
 public class AmazonAutoScalingStub implements AmazonAutoScaling {
 
@@ -385,26 +384,6 @@ public class AmazonAutoScalingStub implements AmazonAutoScaling {
 
   @Override
   public SetInstanceProtectionResult setInstanceProtection(SetInstanceProtectionRequest arg0) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public AmazonAutoScalingWaiters waiters() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DetachLoadBalancerTargetGroupsResult detachLoadBalancerTargetGroups(DetachLoadBalancerTargetGroupsRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DescribeLoadBalancerTargetGroupsResult describeLoadBalancerTargetGroups(DescribeLoadBalancerTargetGroupsRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public AttachLoadBalancerTargetGroupsResult attachLoadBalancerTargetGroups(AttachLoadBalancerTargetGroupsRequest r) {
     throw new UnsupportedOperationException();
   }
 

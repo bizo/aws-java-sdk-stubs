@@ -15,7 +15,6 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.model.*;
-import com.amazonaws.services.dynamodbv2.waiters.*;
 
 /**
  * @author rzanelli
@@ -734,23 +733,4 @@ public class AmazonDynamoDBStub implements AmazonDynamoDB {
     }
   }
 
-  @Override
-  public AmazonDynamoDBWaiters waiters() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public UntagResourceResult untagResource(UntagResourceRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public TagResourceResult tagResource(TagResourceRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public ListTagsOfResourceResult listTagsOfResource(ListTagsOfResourceRequest r) {
-    throw new UnsupportedOperationException();
-  }
 }

@@ -15,10 +15,6 @@ import com.amazonaws.services.s3.S3ResponseMetadata;
 import com.amazonaws.services.s3.internal.Mimetypes;
 import com.amazonaws.services.s3.internal.RepeatableFileInputStream;
 import com.amazonaws.services.s3.model.*;
-import com.amazonaws.services.s3.model.analytics.AnalyticsConfiguration;
-import com.amazonaws.services.s3.model.inventory.InventoryConfiguration;
-import com.amazonaws.services.s3.model.metrics.MetricsConfiguration;
-import com.amazonaws.services.s3.waiters.*;
 import com.amazonaws.services.s3.model.DeleteObjectsRequest.KeyVersion;
 import com.amazonaws.services.s3.model.DeleteObjectsResult.DeletedObject;
 import com.amazonaws.util.BinaryUtils;
@@ -972,127 +968,12 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public AmazonS3Waiters waiters() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public URL getUrl(String a, String b) {
     throw new UnsupportedOperationException();
   }
 
   @Override
   public Region getRegion() {  
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public String getRegionName() {  
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public ListBucketInventoryConfigurationsResult listBucketInventoryConfigurations(ListBucketInventoryConfigurationsRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public SetBucketInventoryConfigurationResult setBucketInventoryConfiguration(SetBucketInventoryConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public SetBucketInventoryConfigurationResult setBucketInventoryConfiguration(String s, InventoryConfiguration r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public GetBucketInventoryConfigurationResult getBucketInventoryConfiguration(GetBucketInventoryConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public GetBucketInventoryConfigurationResult getBucketInventoryConfiguration(String a, String b) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeleteBucketInventoryConfigurationResult deleteBucketInventoryConfiguration(DeleteBucketInventoryConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeleteBucketInventoryConfigurationResult deleteBucketInventoryConfiguration(String a, String b) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public GetBucketAnalyticsConfigurationResult getBucketAnalyticsConfiguration(GetBucketAnalyticsConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public GetBucketAnalyticsConfigurationResult getBucketAnalyticsConfiguration(String a, String b) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeleteBucketAnalyticsConfigurationResult deleteBucketAnalyticsConfiguration(DeleteBucketAnalyticsConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeleteBucketAnalyticsConfigurationResult deleteBucketAnalyticsConfiguration(String a, String b) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public ListBucketAnalyticsConfigurationsResult listBucketAnalyticsConfigurations(ListBucketAnalyticsConfigurationsRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public SetBucketAnalyticsConfigurationResult setBucketAnalyticsConfiguration(SetBucketAnalyticsConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public SetBucketAnalyticsConfigurationResult setBucketAnalyticsConfiguration(String a, AnalyticsConfiguration b) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public ListBucketMetricsConfigurationsResult listBucketMetricsConfigurations(ListBucketMetricsConfigurationsRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public SetBucketMetricsConfigurationResult setBucketMetricsConfiguration(SetBucketMetricsConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public SetBucketMetricsConfigurationResult setBucketMetricsConfiguration(String a, MetricsConfiguration b) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeleteBucketMetricsConfigurationResult deleteBucketMetricsConfiguration(DeleteBucketMetricsConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public GetBucketMetricsConfigurationResult getBucketMetricsConfiguration(GetBucketMetricsConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public GetBucketMetricsConfigurationResult getBucketMetricsConfiguration(String a, String b) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeleteBucketMetricsConfigurationResult deleteBucketMetricsConfiguration(String a, String b) {
     throw new UnsupportedOperationException();
   }
 
@@ -1117,31 +998,6 @@ public class AmazonS3Stub implements AmazonS3 {
   }
 
   @Override
-  public boolean doesObjectExist(String a, String b) throws AmazonServiceException, SdkClientException {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public GetObjectTaggingResult getObjectTagging(GetObjectTaggingRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public SetObjectTaggingResult setObjectTagging(SetObjectTaggingRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeleteObjectTaggingResult deleteObjectTagging(DeleteObjectTaggingRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public String getObjectAsString(String bucketName, String key) throws AmazonServiceException, SdkClientException {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public AccessControlList getObjectAcl(GetObjectAclRequest r) {
     throw new UnsupportedOperationException();
   }
@@ -1158,6 +1014,14 @@ public class AmazonS3Stub implements AmazonS3 {
 
   @Override
   public ListObjectsV2Result listObjectsV2(String bucketName, String prefix) {
+    throw new UnsupportedOperationException();
+  }
+
+  public boolean doesObjectExist(String a, String b) {
+    throw new UnsupportedOperationException();
+  }
+
+  public String getObjectAsString(String a, String b) {
     throw new UnsupportedOperationException();
   }
 }

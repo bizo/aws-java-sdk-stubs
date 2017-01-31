@@ -5,7 +5,6 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.cloudwatch.AmazonCloudWatch;
 import com.amazonaws.services.cloudwatch.model.*;
-import com.amazonaws.services.cloudwatch.waiters.*;
 
 public class AmazonCloudWatchStub implements AmazonCloudWatch {
   @Override
@@ -98,8 +97,4 @@ public class AmazonCloudWatchStub implements AmazonCloudWatch {
     throw new UnsupportedOperationException();
   }
 
-  @Override
-  public AmazonCloudWatchWaiters waiters() {
-    throw new UnsupportedOperationException();
-  }
 }

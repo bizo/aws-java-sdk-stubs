@@ -7,7 +7,6 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduce;
 import com.amazonaws.services.elasticmapreduce.model.*;
-import com.amazonaws.services.elasticmapreduce.waiters.*;
 
 public class AmazonElasticMapReduceStub implements AmazonElasticMapReduce {
   @Override
@@ -184,43 +183,4 @@ public class AmazonElasticMapReduceStub implements AmazonElasticMapReduce {
     throw new UnsupportedOperationException();
   }
 
-  @Override
-  public AmazonElasticMapReduceWaiters waiters() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public RemoveAutoScalingPolicyResult removeAutoScalingPolicy(RemoveAutoScalingPolicyRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public PutAutoScalingPolicyResult putAutoScalingPolicy(PutAutoScalingPolicyRequest r) {
-    throw new UnsupportedOperationException();
-  }  
-
-  @Override
-  public ListSecurityConfigurationsResult listSecurityConfigurations(ListSecurityConfigurationsRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DescribeSecurityConfigurationResult describeSecurityConfiguration(DescribeSecurityConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public DeleteSecurityConfigurationResult deleteSecurityConfiguration(DeleteSecurityConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public CreateSecurityConfigurationResult createSecurityConfiguration(CreateSecurityConfigurationRequest r) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public CancelStepsResult cancelSteps(CancelStepsRequest r) {
-    throw new UnsupportedOperationException();
-  }
 }

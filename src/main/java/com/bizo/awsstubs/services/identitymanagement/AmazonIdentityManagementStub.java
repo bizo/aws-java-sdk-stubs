@@ -7,7 +7,6 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.identitymanagement.AmazonIdentityManagement;
 import com.amazonaws.services.identitymanagement.model.*;
-import com.amazonaws.services.identitymanagement.waiters.AmazonIdentityManagementWaiters;
 
 public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
 
@@ -707,34 +706,4 @@ public class AmazonIdentityManagementStub implements AmazonIdentityManagement {
     throw new UnsupportedOperationException();
   }
 
-  @Override
-  public AmazonIdentityManagementWaiters waiters() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public UpdateServiceSpecificCredentialResult updateServiceSpecificCredential(UpdateServiceSpecificCredentialRequest r) {
-    throw new UnsupportedOperationException();
-  } 
-
-  @Override
-  public ResetServiceSpecificCredentialResult resetServiceSpecificCredential(ResetServiceSpecificCredentialRequest r) {
-    throw new UnsupportedOperationException();
-  }
- 
-  @Override
-  public ListServiceSpecificCredentialsResult listServiceSpecificCredentials(ListServiceSpecificCredentialsRequest r) {
-    throw new UnsupportedOperationException();
-  }
- 
-  @Override
-  public DeleteServiceSpecificCredentialResult deleteServiceSpecificCredential(DeleteServiceSpecificCredentialRequest r) {
-    throw new UnsupportedOperationException();
-  }
- 
-  @Override
-  public CreateServiceSpecificCredentialResult createServiceSpecificCredential(CreateServiceSpecificCredentialRequest r) {
-    throw new UnsupportedOperationException();
-  }
-    
 }
